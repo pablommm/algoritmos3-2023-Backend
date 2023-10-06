@@ -1,3 +1,1 @@
-
-rootProject.name = "tp-worldcapp2023-grupo08"
-
+rootProject.name = "proyecto-base-tp"
