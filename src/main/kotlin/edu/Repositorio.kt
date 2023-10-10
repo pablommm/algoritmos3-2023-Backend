@@ -1,3 +1,6 @@
+import org.springframework.stereotype.Component
+import org.springframework.stereotype.Repository
+@Component
 open class Repositorio<T : Entidad>() {
     val elementos :MutableList<T> = mutableListOf()
     var siguienteID :Int = 1
@@ -42,3 +45,6 @@ open class Repositorio<T : Entidad>() {
     }
 
 }
+
+@Repository
+class  RepoSeleccion: Repositorio<Seleccion>()

@@ -11,4 +11,6 @@ class EjemploController {
     @Operation(summary = "Devuelve simplemente hola y muestra cómo documentar Swagger")
     fun defaultGet(): String = "hola"
 
+
+
 }
