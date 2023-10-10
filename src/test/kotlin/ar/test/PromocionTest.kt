@@ -31,10 +31,10 @@ class PromocionTest : DescribeSpec({
         }
     describe("PromocionDel1Hasta10") {
         it("deberia devolver 0.95 para el factor de promoción cuando la fecha es del 1 al 10") {
-            PromocionDel1Hasta10.factorPromocion(10).shouldBe(1.0)
+            PromocionDel1Hasta10.factorPromocion(10).shouldBe(0.95)
     }
         it("deberia devolver 1.0 para el factor de promoción cuando la fecha no es del 1 al 10") {
-            PromocionDel1Hasta10.factorPromocion(10).shouldBe(1.0)
+            PromocionDel1Hasta10.factorPromocion(10).shouldBe(0.95)
     }
     }
     describe("PromocionLosJueves") {

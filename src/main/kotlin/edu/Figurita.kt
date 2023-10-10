@@ -1,3 +1,4 @@
+
 class Figurita(
     var numero: Int = 0, var nivelDeImpresion: NivelDeImpresion, var onFire: Boolean, val jugador: Jugador
 ) :Entidad() {
