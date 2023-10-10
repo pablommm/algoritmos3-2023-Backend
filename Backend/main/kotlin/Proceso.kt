@@ -1,3 +1,6 @@
+import ar.edu.unsam.algo3.Backend.main.kotlin.Mail
+import ar.edu.unsam.algo3.Backend.main.kotlin.MailSender
+
 abstract class Proceso{
     lateinit var mailSender: MailSender
     val direccionDeMail :String = "admin@worldcapp.com.ar"

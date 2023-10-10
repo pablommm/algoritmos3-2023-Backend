@@ -1,3 +1,5 @@
+import ar.edu.unsam.algo3.Backend.main.kotlin.Mail
+import ar.edu.unsam.algo3.Backend.main.kotlin.MailSender
 
 interface SolicitudObserver{
     fun notificacionExitosa(usuario: Usuario, figurita: Figurita) { if (debeSerNotificado(usuario,figurita)) evento(usuario,figurita)}
@@ -59,12 +61,14 @@ class SiLlenoElAlbumConNotificacion(val mail: MailSender) : SolicitudObserver {
     override fun debeSerNotificado(usuario: Usuario, figurita: Figurita): Boolean = usuario.seLlenoElAlbum()
 
     override fun evento(usuario: Usuario, figurita: Figurita) {
-        mail.sendMail(Mail("info@WorldCup.com.ar",
+        mail.sendMail(
+            Mail("info@WorldCup.com.ar",
             usuario.email,
             "Completaste el album",
             "completaste el album con la figurita numero" +
                     "${figurita.numero.toString()} " +
-                    "${figurita.jugador.nombre} "))
+                    "${figurita.jugador.nombre} ")
+        )
     }
 
 }

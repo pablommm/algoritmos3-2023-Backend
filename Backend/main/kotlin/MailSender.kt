@@ -1,3 +1,5 @@
+package ar.edu.unsam.algo3.Backend.main.kotlin
+
 interface MailSender {
     fun sendMail(mail: Mail)
 

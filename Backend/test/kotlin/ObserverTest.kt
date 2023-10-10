@@ -267,12 +267,12 @@ class ObserverTest : DescribeSpec({
             usuarioMenorEdad.figuritasRepetidas.add(figuritaRiquelme)
             usuarioMayorEdad.solicitar(figuritaRiquelme, usuarioMenorEdad)
             usuarioMayorEdad.seLlenoElAlbum() shouldBe true
-            val mockedMailSender = mockk<MailSender>(relaxUnitFun = true)
+            val mockedMailSender = mockk<ar.edu.unsam.algo3.Backend.main.kotlin.MailSender>(relaxUnitFun = true)
             val lista = listaDeAccion().apply {
                     add(mockedMailSender)
                 }
-            MailSender = mockedMailSender
-            verify(exactly = 1) { mockedMailSender.sendMail(mail = Mail(
+            ar.edu.unsam.algo3.Backend.main.kotlin.MailSender = mockedMailSender
+            verify(exactly = 1) { mockedMailSender.sendMail(mail = ar.edu.unsam.algo3.Backend.main.kotlin.Mail(
               from="usuario1@usuario.com",
               to="usuario2@usuario.com, usuario3@usuario.com",
               subject="[algo2] Sale asado?",

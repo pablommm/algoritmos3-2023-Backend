@@ -38,6 +38,13 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-common:2.2.0")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
     implementation("org.springframework.boot:spring-boot-devtools")
+    implementation("org.uqbar-project:geodds-xtend:1.0.3")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.8.10")
+    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+    testImplementation("io.mockk:mockk:1.13.5")
+    implementation("org.uqbar-project:geodds-xtend:1.0.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.0")
 
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 
