@@ -1,4 +1,4 @@
-import edu.Repositorio
+import ar.edu.unsam.algo3.repository.Repositorio
 
 interface iProcesoDeAministracion{
     fun run(program: List<Proceso>, repositorio: Repositorio<Entidad>)

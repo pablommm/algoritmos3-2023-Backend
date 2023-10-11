@@ -2,7 +2,7 @@ package ar.edu.unsam.algo3.bootstrap
 
 import Confederacion
 import Seleccion
-import edu.RepoSeleccion
+import ar.edu.unsam.algo3.repository.RepoSeleccion
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

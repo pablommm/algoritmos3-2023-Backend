@@ -1,6 +1,6 @@
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import edu.Repositorio
+import ar.edu.unsam.algo3.repository.Repositorio
 
 interface ServiceDeSeleccion {
 

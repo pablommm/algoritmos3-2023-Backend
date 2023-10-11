@@ -9,7 +9,9 @@ import org.springframework.context.annotation.ComponentScans
 @ComponentScans(
     ComponentScan("edu")
 )
-class ProyectoApplication
+class ProyectoApplication{
+    
+}
 
 
 fun main(args: Array<String>) {

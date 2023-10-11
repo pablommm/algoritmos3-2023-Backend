@@ -1,6 +1,6 @@
 import ar.edu.unsam.algo3.Backend.main.kotlin.Mail
 import ar.edu.unsam.algo3.Backend.main.kotlin.MailSender
-import edu.Repositorio
+import ar.edu.unsam.algo3.repository.Repositorio
 
 abstract class Proceso{
     lateinit var mailSender: MailSender

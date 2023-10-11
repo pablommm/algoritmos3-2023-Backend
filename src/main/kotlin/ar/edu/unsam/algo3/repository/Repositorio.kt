@@ -1,80 +1,54 @@
 package ar.edu.unsam.algo3.repository
-
 import Entidad
-import InvalidElementException
-import InvalidIdException
-import PuntoDeVentas
+import Seleccion
+import genericException
+import org.springframework.stereotype.Component
+import org.springframework.stereotype.Repository
+@Component
+open class Repositorio<T : Entidad>() {
+    val elementos :MutableList<T> = mutableListOf()
+    var siguienteID :Int = 1
 
-open class Repositorio<T : Entidad> {
-    var nextID = Entidad.ID_INICIAL + 1
-        private set
-    val elementos: MutableList<T> = mutableListOf()
+    fun incrementadorAsignador(elemento: T) {
 
-    /**Agrega un nuevo objeto a la colección, y le asigna un identificador único (id).
-     * El identificador puede ser autoincremental para evitar que se repita.*/
+        elemento.id = siguienteID++
+    }
+    fun allInstances()=elementos
+    fun existeElId(id:Int) :Boolean = elementos.any { it.id == id }
+
+
     fun create(elemento: T) {
         elemento.validar()
-        elemento.id = getNewID()
-        validarID(elemento.id)
+        validarInExistencia(elemento)
+        this.incrementadorAsignador(elemento)
         elementos.add(elemento)
     }
 
-    fun guardar(puntoDeVentas: PuntoDeVentas){
-
-    }
-
-    private fun getNewID(): Int = nextID++
-
-    private fun validarID(id: Int) {
-        if (elementos.any { elemento -> elemento.id == id }) {
-            throw InvalidIdException("Error ID: $id. Ya existe un elemento con ese ID")
-        }
-    }
-
-    /** Elimina el objeto de la colección.*/
     fun delete(elemento: T) {
-        val elementoAEliminar = getById(elemento.id)
-        elementos.remove(elementoAEliminar)
+        elementos.remove(getById(elemento.id))
     }
-
-    private fun existeElemento(elemento: T) {
-        if (!elementos.contains(elemento)) {
-            throw InvalidElementException("Elemento invalido: El elemento no ha sido encontrado")
-        }
-    }
-
-    /**Modifica el objeto dentro de la colección.
-     * De no existir el objeto buscado, es decir, un objeto con ese id, se debe lanzar una excepción.*/
-
-    /**fun update(elemento: T) {
+    fun update(elemento: T) {
         elemento.validar()
-        if (elemento.esNuevo()) throw InvalidElementException("Elemento invalido: El elemento no existe en el repositorio")
-        val elementoEncontrado = getById(elemento.id)
+        val elementoViejo=getById(elemento.id)
+        val index= elementos.indexOf(elementoViejo)
+        elementos[index] = elemento
+    }
 
-        elementoEncontrado.actualizarDatos(elemento)
-    }Falta implementar actualizarDatos*/
-
-    /**Retorna el objeto cuyo id sea el recibido como parámetro.*/
     fun getById(id: Int): T {
-        val elementoRequerido = elementos.find { id == it.id }
-        esNoNulo(elementoRequerido)
-        return elementoRequerido!!
+        validarId(id)
+        return elementos.first { it.id == id }
     }
+    fun search(condicionDeBusqueda :String) :List<T> = this.elementos.filter { it.busqueda(condicionDeBusqueda) }
 
-    private fun esNoNulo(elementoRequerido: T?) {
-        if (elementoRequerido == null) {
-            throw InvalidElementException("Elemento invalido: No se encontro un elemento con ese ID")
-        }
 
+    fun validarInExistencia(elemento: T) {
+     if (existeElId(elemento.id)) throw genericException("No se pudo crear, ID ya se encuentra utilizado")
+ }
+    fun validarId(id: Int) {
+        if (!existeElId(id)) throw genericException("El ID $id no es valido")
     }
-
-    /**Devuelve los objetos que coincidan con la búsqueda de acuerdo a los siguientes criterios:*/
-    fun search(value: String): List<T> = elementos.filter { it.busqueda(value) }
-
 
 }
 
-class RepositorioDePuntosDeVentas : Repositorio<PuntoDeVentas>() {
-
-}
-
+@Repository
+class  RepoSeleccion: Repositorio<Seleccion>()

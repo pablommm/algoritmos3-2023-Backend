@@ -1,6 +1,6 @@
 package ar.edu.unsam.algo3.service
 
-import edu.RepoSeleccion
+import ar.edu.unsam.algo3.repository.RepoSeleccion
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
