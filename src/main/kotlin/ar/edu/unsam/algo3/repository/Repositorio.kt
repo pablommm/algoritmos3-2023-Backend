@@ -1,5 +1,6 @@
 package ar.edu.unsam.algo3.repository
 import Entidad
+import PuntoDeVentas
 import Seleccion
 import genericException
 import org.springframework.stereotype.Component
@@ -52,3 +53,6 @@ open class Repositorio<T : Entidad>() {
 
 @Repository
 class  RepoSeleccion: Repositorio<Seleccion>()
+
+@Repository
+class RepoPuntoDeVentas: Repositorio<PuntoDeVentas>()
