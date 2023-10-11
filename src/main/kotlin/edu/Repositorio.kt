@@ -1,3 +1,7 @@
+package edu
+import Entidad
+import Seleccion
+import genericException
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
 @Component

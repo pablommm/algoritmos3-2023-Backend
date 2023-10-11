@@ -1,3 +1,5 @@
+import edu.Repositorio
+
 interface iProcesoDeAministracion{
     fun run(program: List<Proceso>, repositorio: Repositorio<Entidad>)
 

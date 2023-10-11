@@ -1,10 +1,10 @@
 package ar.edu.unsam.algo3.bootstrap
 
-import RepoSeleccion
+import Confederacion
 import Seleccion
+import edu.RepoSeleccion
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 
 @Service

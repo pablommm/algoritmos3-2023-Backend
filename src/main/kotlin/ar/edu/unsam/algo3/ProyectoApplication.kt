@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScans
 
 @SpringBootApplication
 @ComponentScans(
-    ComponentScan("kotlin")
+    ComponentScan("edu")
 )
 class ProyectoApplication
 
