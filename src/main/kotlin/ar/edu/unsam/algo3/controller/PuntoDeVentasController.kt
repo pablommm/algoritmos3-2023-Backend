@@ -7,36 +7,34 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@CrossOrigin("*")
-class PuntoDeVentasController {
+class PuntoDeVentasController(@Autowired val puntoDeVentasService: PuntoDeVentasService) {
 
-    @Autowired
-    lateinit var PuntoDeVentasService: PuntoDeVentasService
 
-    @GetMapping("/puntoDeVentas")
-    fun getPuntoDeVentas() = PuntoDeVentasService.getPuntoDeVentas()
+    @GetMapping("/puntoDeVentas/")
+    fun getPuntoDeVentas() = puntoDeVentasService.getPuntoDeVentas()
 
     @GetMapping("/puntoDeVenta/{id}")
     @Operation(summary = "Devuelve un punto de ventas buscado por id")
-    fun getPuntoDeVenta(@PathVariable id: Int) = PuntoDeVentasService.getPuntoDeVenta(id)
+    fun getPuntoDeVenta(@PathVariable id: Int) = puntoDeVentasService.getPuntoDeVenta(id)
 
     @PostMapping("/nuevoPuntoDeVentas")
     @Operation(summary = "Crea un nuevo punto de ventas")
     fun create(@RequestBody puntoDeVentasBody : PuntoDeVentas): PuntoDeVentas {
-        return PuntoDeVentasService.create(puntoDeVentasBody)
+        return puntoDeVentasService.create(puntoDeVentasBody)
     }
 
     @GetMapping("/puntoDeVentasFiltrado/{nombreABuscar}")
-    fun getPuntoDeVentasFiltrado(@PathVariable nombreABuscar : String) = PuntoDeVentasService.getPuntoDeVentasFiltrado(nombreABuscar)
+    fun getPuntoDeVentasFiltrado(@PathVariable nombreABuscar : String) = puntoDeVentasService.getPuntoDeVentasFiltrado(nombreABuscar)
 
 
     @PutMapping("/puntoDeVenta/{id}")
     @Operation(summary = "Actualiza puntoDeVentas")
     fun updatePuntoDeventas(@RequestBody puntoDeVentasBody: PuntoDeVentas) {
         //if (true) throw BusinessException("Unknown error happened")
-        return PuntoDeVentasService.updatePuntoDeVenta(puntoDeVentasBody)
+        return puntoDeVentasService.updatePuntoDeVenta(puntoDeVentasBody)
     }
 
     @DeleteMapping("/puntoDeVenta/{id}")
-    fun deletePuntoDeVenta(@PathVariable id : Int) = PuntoDeVentasService.deletePuntoDeVenta(id)
+    fun deletePuntoDeVenta(@PathVariable id : Int) = puntoDeVentasService.deletePuntoDeVenta(id)
+
 }

@@ -1,6 +1,7 @@
 package ar.edu.unsam.algo3.service
 
 import PuntoDeVentas
+import ar.edu.unsam.algo3.repository.RepoPuntoDeVentas
 import ar.edu.unsam.algo3.repository.Repositorio
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -9,9 +10,9 @@ import org.springframework.stereotype.Service
 class PuntoDeVentasService {
 
     @Autowired
-    lateinit var puntoDeVentasRepository: Repositorio<PuntoDeVentas>
+    lateinit var puntoDeVentasRepository: RepoPuntoDeVentas
 
-    fun getPuntoDeVentas() = puntoDeVentasRepository.search("")
+    fun getPuntoDeVentas() = puntoDeVentasRepository.allInstances()
     fun getPuntoDeVenta(id: Int) = puntoDeVentasRepository.getById(id)
 
     fun deletePuntoDeVenta(id: Int) {
@@ -24,4 +25,5 @@ class PuntoDeVentasService {
     }
 
     fun getPuntoDeVentasFiltrado(nombreABuscar: String) = puntoDeVentasRepository.search(nombreABuscar)
+
 }
