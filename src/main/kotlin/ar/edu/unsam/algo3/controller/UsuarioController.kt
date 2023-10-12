@@ -15,24 +15,24 @@ class UserController(@Autowired val userService : UsuarioService) {
     @Operation(summary = "Devuelve un usuario por id")
     fun getUsuario(@PathVariable id: Int) = userService.getUser(id)
 
-    @PostMapping("/nuevoPuntoDeVentas")
+    @PostMapping("/NuevoUsuario")
     @Operation(summary = "Crea un nuevo usuario")
     fun create(@RequestBody usuarioBody : Usuario): Usuario {
         return userService.create(usuarioBody)
     }
 
-    @GetMapping("/puntoDeVentasFiltrado/{nombreABuscar}")
+    @GetMapping("/UsuarioFiltrado/{nombreABuscar}")
     fun getUsuarioFiltrado(@PathVariable nombreABuscar : String) = userService.getUserFiltrado(nombreABuscar)
 
 
-    @PutMapping("/puntoDeVenta/{id}")
+    @PutMapping("/Usuario/{id}")
     @Operation(summary = "Actualiza usuario")
     fun updateUsuario(@RequestBody usuarioBody: Usuario) {
         //if (true) throw BusinessException("Unknown error happened")
         return userService.updateUser(usuarioBody)
     }
 
-    @DeleteMapping("/puntoDeVenta/{id}")
+    @DeleteMapping("/Usuario/{id}")
     fun deleteUsuario(@PathVariable id : Int) = userService.deleteUser(id)
 
 }
