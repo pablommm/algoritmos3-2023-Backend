@@ -21,15 +21,22 @@ class WorldCappBootstrap: InitializingBean {
 
     @Autowired(required=true)
     lateinit var repoSelecciones: RepoSeleccion
-    val argentina = Seleccion("Argentina",Confederacion.CONCACAF,1,1)
-    val brasil = Seleccion("brasil",Confederacion.CONCACAF,1,1)
-    val alemania = Seleccion("alemania",Confederacion.CONCACAF,1,1)
-    val francia = Seleccion("francia",Confederacion.CONCACAF,1,1)
+    final val argentina = Seleccion("Argentina",Confederacion.CONCACAF,1,1)
+    final val brasil = Seleccion("brasil",Confederacion.CONCACAF,1,1)
+    final val alemania = Seleccion("alemania",Confederacion.CONCACAF,1,1)
+    final val francia = Seleccion("francia",Confederacion.CONCACAF,1,1)
 
     val seleciones = listOf(argentina,brasil,alemania,francia)
 
     fun crearSeleciones(){
         seleciones.forEach { repoSelecciones.create(it) }
+    }
+
+    override fun afterPropertiesSet() {
+        crearSeleciones()
+        crearRepoPuntoDeVenta()
+        crearUser()
+        crearFiguritas()
     }
 
     @Autowired(required=true)
@@ -52,9 +59,7 @@ class WorldCappBootstrap: InitializingBean {
         repoPuntoDeVentas.create(kioscoJuanito)
     }
 
-    override fun afterPropertiesSet() {
-        crearRepoPuntoDeVenta()
-    }
+
 
 
     @Autowired(required=true)
@@ -70,17 +75,13 @@ class WorldCappBootstrap: InitializingBean {
     val figuritas = listOf(figuritaLeyenda,figuritaPromesa)
 
     fun crearFiguritas(){
-        //figuritas.forEach { figuritaRepo.create(it) }
-        jugadorRepo.create(jugadorLeyenda)
-        figuritaRepo.create(figuritaLeyenda)
+        figuritas.forEach { figuritaRepo.create(it) }
     }
 
     @Autowired(required = true)
     lateinit var repoUser : RepoUser
     val figuritasFaltantes = mutableListOf<Figurita>()
     val figuritasRepetidas = mutableListOf<Figurita>()
-    /*val FiguritasFaltantes2 = mutableListOf<Figurita>()
-    val FiguritasRepetidas2 = mutableListOf<Figurita>()*/
 
 
     val DireccionSanMartin =

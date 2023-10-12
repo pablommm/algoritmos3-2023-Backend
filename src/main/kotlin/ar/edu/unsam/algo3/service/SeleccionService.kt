@@ -1,5 +1,6 @@
 package ar.edu.unsam.algo3.service
 
+import Seleccion
 import ar.edu.unsam.algo3.repository.RepoSeleccion
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -9,7 +10,21 @@ class SeleccionService {
     @Autowired
     lateinit var repoSeleccion: RepoSeleccion
 
-    fun allInstance() = repoSeleccion.allInstances()
+    fun getSelecciones() = repoSeleccion.allInstances()
+    fun getSeleccion(id: Int) = repoSeleccion.getById(id)
+
+    fun deleteSeleccion(id: Int) {
+        repoSeleccion.delete(repoSeleccion.getById(id))
+    }
+    fun updateSeleccion(seleccion: Seleccion) = repoSeleccion.update(seleccion)
+
+    fun create(nuevaSeleccion: Seleccion): Seleccion { repoSeleccion.create(nuevaSeleccion)
+        return nuevaSeleccion
+    }
+
+    fun getSeleccionesFiltrado(nombreABuscar: String) = repoSeleccion.search(nombreABuscar)
+
+    //fun allInstance() = repoSeleccion.allInstances()
 
 
 }
