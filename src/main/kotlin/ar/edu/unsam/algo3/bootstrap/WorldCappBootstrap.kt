@@ -1,24 +1,20 @@
 package ar.edu.unsam.algo3.bootstrap
 
 import Confederacion
+import Delantero
+import Desprendido
 import Seleccion
-import ar.edu.unsam.algo3.repository.RepoPuntoDeVentas
-import ar.edu.unsam.algo3.repository.RepoSeleccion
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.time.LocalDate
-import Desprendido
 import Direccion
 import Figurita
+import Jugador
 import Kiosco
-import Libreria
-import NoHayPromocion
 import Pedido
-import Promocion
-import PromocionDel1Hasta10
-import Supermercado
 import Usuario
+import ar.edu.unsam.algo3.repository.*
 
 @Service
 class WorldCappBootstrap: InitializingBean {
@@ -59,5 +55,54 @@ class WorldCappBootstrap: InitializingBean {
     override fun afterPropertiesSet() {
         crearRepoPuntoDeVenta()
     }
+
+
+    @Autowired(required=true)
+    lateinit var jugadorRepo : RepoJugador
+    val jugadorLeyenda =  Jugador("Leo","Messi",LocalDate.now().minusYears(30),7,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",21000000)
+    val jugadorPromesa =  Jugador("Alejandro","Garnacho",LocalDate.now().minusYears(18),11,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",21000000)
+
+    @Autowired(required=true)
+    lateinit var figuritaRepo: RepoFigurita
+    val figuritaLeyenda =Figurita(10, nivelDeImpresion = NivelDeImpresion.ALTA,false,jugadorLeyenda)
+    val figuritaPromesa =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorPromesa)
+
+    val figuritas = listOf(figuritaLeyenda,figuritaPromesa)
+
+    fun crearFiguritas(){
+        //figuritas.forEach { figuritaRepo.create(it) }
+        jugadorRepo.create(jugadorLeyenda)
+        figuritaRepo.create(figuritaLeyenda)
+    }
+
+    @Autowired(required = true)
+    lateinit var repoUser : RepoUser
+    val figuritasFaltantes = mutableListOf<Figurita>()
+    val figuritasRepetidas = mutableListOf<Figurita>()
+    /*val FiguritasFaltantes2 = mutableListOf<Figurita>()
+    val FiguritasRepetidas2 = mutableListOf<Figurita>()*/
+
+
+    val DireccionSanMartin =
+        Direccion(org.uqbar.geodds.Point(-34.582137, -58.520687), "San Martin", "Buenos Aires", "25 de Mayo", 1653)
+
+    val usuarioPrueba = Usuario(
+        name = "Jose",
+        apellido = "Martinez",
+        username = "JMartinez",
+        fechaDeNacimiento = LocalDate.now().minusYears(30),
+        "JMartinez@gmail.com",
+        DireccionSanMartin,
+        figuritasFaltantes,
+        figuritasRepetidas,
+        Desprendido,
+        jugadorLeyenda,
+        20
+    )
+
+    fun crearUser(){
+        repoUser.create(usuarioPrueba)
+    }
+
 
 }
