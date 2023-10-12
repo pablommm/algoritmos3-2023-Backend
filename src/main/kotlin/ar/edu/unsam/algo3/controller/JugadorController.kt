@@ -14,4 +14,29 @@ class JugadorController(@Autowired val jugadorService: JugadorService){
     @GetMapping("/jugador/")
     fun getJugador() = jugadorService.getJugadores()
 
+    @GetMapping("/jugador/{id}")
+    @Operation(summary = "Devuelve un jugador buscado por id")
+    fun getJugador(@PathVariable id: Int) = jugadorService.getJugador(id)
+
+    @PostMapping("/nuevoJugador/")
+    @Operation(summary = "Crea un nuevo jugador")
+    fun create(@RequestBody jugadorBody: Jugador): Jugador {
+        return jugadorService.create(jugadorBody)
+    }
+
+    @GetMapping("/jugadorFiltrado/{nombreABuscar}")
+    fun getJugadorFiltrado(@PathVariable nombreABuscar : String) = jugadorService.getJugadorFiltrado(nombreABuscar)
+
+
+    @PutMapping("/modificarJugador/{id}")
+    @Operation(summary = "Actualiza jugador")
+    fun updateJugador(@RequestBody jugadorBody: Jugador) {
+        //if (true) throw BusinessException("Unknown error happened")
+        return jugadorService.updateJugador(jugadorBody)
+    }
+
+    @DeleteMapping("/borrarJugador/{id}")
+    fun deleteJugador(@PathVariable id : Int) = jugadorService.deleteJugador(id)
+
+
 }
