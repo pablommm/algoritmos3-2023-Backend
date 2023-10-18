@@ -149,10 +149,10 @@ class WorldCappBootstrap: InitializingBean {
         //usuarioPrueba.aniadirFiguritaFaltantes(figuritaPromesa)
         //usuarioPrueba2.aniadirFiguritaRepetidas(figuritaPromesa)
         //usuarioPrueba2.aniadirFiguritaFaltantes(figuritaLeyenda)
-        figuritasFaltantes.add(figuritaLeyenda)
-        figuritasRepetidas.add(figuritaPromesa)
-        figuritasFaltantes2.add(figuritaPromesa)
-        figuritasRepetidas2.add(figuritaLeyenda)
+        figuritasFaltantes.add(figuritaLeyenda) // Falta Messi
+        figuritasRepetidas.add(figuritaPromesa) // Garnacho Repetido
+        figuritasFaltantes2.add(figuritaPromesa) // Falta Garnacho
+        figuritasRepetidas2.add(figuritaLeyenda) // Messi Repetido
     }
 
     fun crearUser(){

@@ -13,9 +13,13 @@ class FigurinesController (@Autowired val figuritaService :FiguritaService ){
     @Operation(summary = "Trae todas las figuritas repetidas menos las del usuario logueado")
     fun getFiguritasRepetidas(@PathVariable idUsuario : Int) = figuritaService.getFiguritasRepetidas(idUsuario)
 
-    @GetMapping("/FiguritasFaltantes/{idUsuario}")
+    @GetMapping("/PerfilUsuario/FiguritasFaltantes/{idUsuario}")
     @Operation(summary = "Trae todas las figuritas faltantes del usuario logueado")
-    fun getFiguritasFaltantes(@PathVariable idUsuario : Int) = figuritaService.getFiguritasFaltantes(idUsuario)
+    fun getFiguritasFaltantesUsuario(@PathVariable idUsuario : Int) = figuritaService.getFiguritasFaltantesUsuario(idUsuario)
+
+    @GetMapping("/PerfilUsuario/FiguritasRepetidas/{idUsuario}")
+    @Operation(summary = "Trae todas las figuritas repetidas del usuario logueado")
+    fun getFiguritasRepetidasUsuario(@PathVariable idUsuario : Int) = figuritaService.getFiguritasRepetidasUsuario(idUsuario)
 
 
     @GetMapping("/Figuritas")
