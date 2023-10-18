@@ -1,3 +1,14 @@
+
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type
+import com.fasterxml.jackson.annotation.JsonTypeInfo
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="posicion")
+@JsonSubTypes(
+    Type(value=Arquero::class, name="arquero"),
+    Type(value=Delantero::class, name="Delantero")
+
+)
+
 interface Posicion {
     fun valorPorPosicion(jugador: Jugador) = factorPosicion(jugador) + puntos
     fun factorPosicion(jugador: Jugador): Double = if (criterio(jugador))factorCriterio(jugador) else 0.0
