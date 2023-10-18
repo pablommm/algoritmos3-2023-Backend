@@ -9,7 +9,16 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class FigurinesController (@Autowired val figuritaService :FiguritaService ){
 
-    @GetMapping("/Figures/")
+    @GetMapping("/FiguritasRepetidas/{idUsuario}")
+    @Operation(summary = "Trae todas las figuritas repetidas menos las del usuario")
+    fun getFiguritasRepetidas(@PathVariable idUsuario : Int) = figuritaService.getFiguritasRepetidas(idUsuario)
+
+    @GetMapping("/FiguritasFaltantes/{idUsuario}")
+    @Operation(summary = "Trae todas las figuritas faltantes menos las del usuario")
+    fun getFiguritasFaltantes(@PathVariable idUsuario : Int) = figuritaService.getFiguritasFaltantes(idUsuario)
+
+
+    @GetMapping("/Figuritas")
     fun getFiguritas() = figuritaService.allInstance()
 
     @GetMapping("/Figurine/{id}")

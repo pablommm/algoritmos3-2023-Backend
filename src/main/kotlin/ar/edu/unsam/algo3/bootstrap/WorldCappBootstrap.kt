@@ -35,9 +35,10 @@ class WorldCappBootstrap: InitializingBean {
     override fun afterPropertiesSet() {
         crearSeleciones()
         crearRepoPuntoDeVenta()
-        crearUser()
-        crearFiguritas()
         crearJugador()
+        crearFiguritas()
+        agregarFiguritasUsuario()
+        crearUser()
     }
 
 
@@ -87,6 +88,9 @@ class WorldCappBootstrap: InitializingBean {
     lateinit var repoUser : RepoUser
     val figuritasFaltantes = mutableListOf<Figurita>()
     val figuritasRepetidas = mutableListOf<Figurita>()
+    val figuritasFaltantes2 = mutableListOf<Figurita>()
+    val figuritasRepetidas2 = mutableListOf<Figurita>()
+
 
 
     val provinciasYLocalidades = mapOf(
@@ -116,6 +120,20 @@ class WorldCappBootstrap: InitializingBean {
         20
     )
 
+    val usuarioPrueba2 = Usuario(
+        name = "Jose",
+        apellido = "Martinez",
+        username = "JMartinez",
+        fechaDeNacimiento = LocalDate.now().minusYears(30),
+        "JMartinez@gmail.com",
+        DireccionSanMartin,
+        figuritasFaltantes2,
+        figuritasRepetidas2,
+        Desprendido,
+        jugadorLeyenda,
+        20
+    )
+
     val listaUsuario = listOf (
         "nacionalista",
         "Conservador",
@@ -126,9 +144,23 @@ class WorldCappBootstrap: InitializingBean {
         "Conservador")
 
 
-    fun crearUser(){
-        repoUser.create(usuarioPrueba)
+    fun agregarFiguritasUsuario(){
+        //usuarioPrueba.aniadirFiguritaRepetidas(figuritaLeyenda)
+        //usuarioPrueba.aniadirFiguritaFaltantes(figuritaPromesa)
+        //usuarioPrueba2.aniadirFiguritaRepetidas(figuritaPromesa)
+        //usuarioPrueba2.aniadirFiguritaFaltantes(figuritaLeyenda)
+        figuritasFaltantes.add(figuritaLeyenda)
+        figuritasRepetidas.add(figuritaPromesa)
+        figuritasFaltantes2.add(figuritaPromesa)
+        figuritasRepetidas2.add(figuritaLeyenda)
     }
+
+    fun crearUser(){
+
+        repoUser.create(usuarioPrueba)
+        repoUser.create(usuarioPrueba2)
+    }
+
 
 
 }
