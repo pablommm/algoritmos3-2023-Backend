@@ -1,9 +1,11 @@
 package ar.edu.unsam.algo3.repository
+import Direccion
 import Entidad
 import Figurita
 import Jugador
 import PuntoDeVentas
 import Seleccion
+import TipoDeUsuario
 import Usuario
 import genericException
 import org.springframework.stereotype.Component
@@ -66,3 +68,4 @@ class RepoFigurita: Repositorio<Figurita>()
 class RepoJugador: Repositorio<Jugador>()
 @Repository
 class RepoUser: Repositorio<Usuario>()
+

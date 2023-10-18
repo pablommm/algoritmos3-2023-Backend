@@ -1,3 +1,22 @@
+
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type
+import com.fasterxml.jackson.annotation.JsonTypeInfo
+
+
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="tipoDeUsuario")
+@JsonSubTypes(
+    Type(value=Nacionalista::class, name="nacionalista"),
+    Type(value=Conservador::class, name="Conservador"),
+    Type(value=Fanatico::class, name="Fanatico"),
+    Type(value=Desprendido::class, name="Desprendido"),
+    Type(value=Apostador::class, name="Apostador"),
+    Type(value=Interesado::class, name="Interesado"),
+    Type(value=Delantero::class, name="Conservador")
+)
+
+
+
 interface TipoDeUsuario {
     fun puedeRegalar(figurita: Figurita,usuario: Usuario): Boolean
 }

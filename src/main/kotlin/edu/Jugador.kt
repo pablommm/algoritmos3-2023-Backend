@@ -1,4 +1,4 @@
-import com.fasterxml.jackson.annotation.JsonIgnore
+
 import java.time.LocalDate
 
 class Jugador(
