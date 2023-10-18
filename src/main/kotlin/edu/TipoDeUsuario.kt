@@ -15,8 +15,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo
     Type(value=Delantero::class, name="Conservador")
 )
 
-
-
 interface TipoDeUsuario {
     fun puedeRegalar(figurita: Figurita,usuario: Usuario): Boolean
 }

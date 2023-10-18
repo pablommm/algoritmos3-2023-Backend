@@ -89,6 +89,16 @@ class WorldCappBootstrap: InitializingBean {
     val figuritasRepetidas = mutableListOf<Figurita>()
 
 
+    val provinciasYLocalidades = mapOf(
+        "Buenos Aires" to listOf("La Plata", "Mar del Plata", "Bahía Blanca"),
+        "Catamarca" to listOf("San Fernando del Valle de Catamarca", "Andalgalá", "Belén"),
+        "Chaco" to listOf("Resistencia", "Barranqueras", "Villa Ángela"),
+        "Chubut" to listOf("Rawson", "Comodoro Rivadavia", "Trelew"),
+        "Córdoba" to listOf("Córdoba", "Villa María", "Río Cuarto"),
+        "Corrientes" to listOf("Corrientes", "Goya", "Mercedes"),
+
+    )
+
     val DireccionSanMartin =
         Direccion(org.uqbar.geodds.Point(-34.582137, -58.520687), "San Martin", "Buenos Aires", "25 de Mayo", 1653)
 
@@ -105,6 +115,16 @@ class WorldCappBootstrap: InitializingBean {
         jugadorLeyenda,
         20
     )
+
+    val listaUsuario = listOf (
+        "nacionalista",
+        "Conservador",
+        "Fanatico",
+        "Desprendido",
+        "Apostador",
+        "Interesado",
+        "Conservador")
+
 
     fun crearUser(){
         repoUser.create(usuarioPrueba)
