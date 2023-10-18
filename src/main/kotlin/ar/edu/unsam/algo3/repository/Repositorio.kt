@@ -23,6 +23,8 @@ open class Repositorio<T : Entidad>() {
 
     fun allInstancesExcludeId(id : Int) = allInstances().filter {it.id != id}
 
+    fun filterById(id : Int) = allInstances().filter {it.id == id}
+
     fun existeElId(id:Int) :Boolean = elementos.any { it.id == id }
 
 

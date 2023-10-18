@@ -31,7 +31,7 @@ class FiguritaService {
 
     fun getFiguritasRepetidas(idUsuario : Int) = usuarioRepository.allInstancesExcludeId(idUsuario).flatMap { it.figuritasRepetidas }
 
-    fun getFiguritasFaltantes(idUsuario : Int) = usuarioRepository.allInstancesExcludeId(idUsuario).flatMap { it.figuritasFaltantes }
+    fun getFiguritasFaltantes(idUsuario : Int) = usuarioRepository.filterById(idUsuario).flatMap { it.figuritasFaltantes }
 
     fun updateFigurita(figurita: Figurita) = figuritaRepository.update(figurita)
 }
