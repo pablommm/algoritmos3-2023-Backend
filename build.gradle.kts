@@ -44,7 +44,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.0")
 
     //CODIGO HACIENDO PRUEBAS PARA LINKEAR CON EL FRONT
-    implementation ("org.springframework.boot:spring-boot-starter-security:2.5.4")
+    //implementation ("org.springframework.boot:spring-boot-starter-security:2.5.4")
 
     // testing
     testImplementation("org.springframework.boot:spring-boot-starter-test")

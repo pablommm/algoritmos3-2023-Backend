@@ -1,3 +1,5 @@
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDate
 import kotlin.math.ceil
 
@@ -62,13 +64,16 @@ abstract class PuntoDeVentas(
         validarPedidoPendientesDeEntrega()
     }
 
+    @JsonProperty
+    fun cantidadPedidosPendientes() = listaDePedidosPendientes.count()
+
 
 
 }
 
 class Kiosco (
 
-  val esDueño: Boolean, val esEmpleado: Boolean, costoDeSobre: Int, nombre: String, ubicacion: Direccion,
+  @JsonIgnore val esDueño: Boolean, @JsonIgnore val esEmpleado: Boolean, costoDeSobre: Int, nombre: String, ubicacion: Direccion,
     stockDeFigurita: Int, pedidosPendientesDeEntrega: Pedido,listaDePedidosPendientes: MutableList<Pedido>
 ) : PuntoDeVentas(nombre, ubicacion, stockDeFigurita, pedidosPendientesDeEntrega, listaDePedidosPendientes) {
 

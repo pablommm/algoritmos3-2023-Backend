@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
+@CrossOrigin("http://localhost:4200/")
 class PuntoDeVentasController(@Autowired val puntoDeVentasService: PuntoDeVentasService) {
 
 
