@@ -5,6 +5,7 @@ import kotlin.math.ceil
 
 abstract class PuntoDeVentas(
     var nombre: String = "",
+    @JsonIgnore
     val ubicacion: Direccion = Direccion(),
     var stockDeSobres: Int = 0,
     var pedidosPendientes: Pedido,
@@ -66,6 +67,12 @@ abstract class PuntoDeVentas(
 
     @JsonProperty
     fun cantidadPedidosPendientes() = listaDePedidosPendientes.count()
+
+    @JsonProperty
+    fun direccion () = ubicacion.calle + " " + ubicacion.altura
+
+    @JsonProperty
+    fun ubicacionGeografica () = ubicacion.ubicacion
 
 
 

@@ -20,16 +20,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 @ComponentScans(
     ComponentScan("edu")
 )
+
 class ProyectoApplication{
-
-    /*@Bean
-    fun getPuntoDeVentas() = RepoPuntoDeVentas().apply {
-        create(kioscoJuanito)
-    }
-
-     */
 }
-
 
 fun main(args: Array<String>) {
     runApplication<ProyectoApplication>(*args)

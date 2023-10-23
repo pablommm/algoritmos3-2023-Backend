@@ -15,25 +15,11 @@ class FiguritaService {
     @Autowired
     lateinit var usuarioRepository: RepoUser
 
-    fun allInstance() = figuritaRepository.allInstances()
-    fun getFigurita(id: Int) = figuritaRepository.getById(id)
-
-    fun deleteFigurita(id: Int) {
-        figuritaRepository.delete(figuritaRepository.getById(id))
-    }
-
     fun getFiguritaFiltrado(nombreABuscar: String) = figuritaRepository.search(nombreABuscar)
-
-    fun create(nuevaFigurita: Figurita): Figurita {
-        figuritaRepository.create(nuevaFigurita)
-        return nuevaFigurita
-    }
 
     fun getFiguritasRepetidas(idUsuario : Int) = usuarioRepository.allInstancesExcludeId(idUsuario).flatMap { it.figuritasRepetidas }
 
     fun getFiguritasFaltantesUsuario(idUsuario : Int) = usuarioRepository.filterById(idUsuario).flatMap { it.figuritasFaltantes }
 
     fun getFiguritasRepetidasUsuario(idUsuario : Int) = usuarioRepository.filterById(idUsuario).flatMap { it.figuritasRepetidas }
-
-    fun updateFigurita(figurita: Figurita) = figuritaRepository.update(figurita)
 }
