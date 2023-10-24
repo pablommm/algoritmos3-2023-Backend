@@ -1,6 +1,7 @@
 package ar.edu.unsam.algo3.service
 
 import Figurita
+import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.repository.RepoFigurita
 import ar.edu.unsam.algo3.repository.RepoUser
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,9 +18,12 @@ class FiguritaService {
 
     fun getFiguritaFiltrado(nombreABuscar: String) = figuritaRepository.search(nombreABuscar)
 
-    fun getFiguritasRepetidas(idUsuario : Int) = usuarioRepository.allInstancesExcludeId(idUsuario).flatMap { it.figuritasRepetidas }
+    fun getFiguritasRepetidas(idUsuario: Int) =
+        usuarioRepository.allInstancesExcludeId(idUsuario)
+            .flatMap { it.figuritasRepetidas }
+            .map { it.toDTO() }
 
-    fun getFiguritasFaltantesUsuario(idUsuario : Int) = usuarioRepository.filterById(idUsuario).flatMap { it.figuritasFaltantes }
+    fun getFiguritasFaltantesUsuario(idUsuario : Int) = usuarioRepository.filterById(idUsuario).flatMap { it.figuritasFaltantes }.map { it.toDTO() }
 
-    fun getFiguritasRepetidasUsuario(idUsuario : Int) = usuarioRepository.filterById(idUsuario).flatMap { it.figuritasRepetidas }
+    fun getFiguritasRepetidasUsuario(idUsuario : Int) = usuarioRepository.filterById(idUsuario).flatMap { it.figuritasRepetidas }.map { it.toDTO() }
 }
