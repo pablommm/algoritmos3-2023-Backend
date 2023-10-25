@@ -117,7 +117,8 @@ class WorldCappBootstrap: InitializingBean {
         figuritasRepetidas,
         Desprendido,
         jugadorLeyenda,
-        20
+        20,
+        password = 1234
     )
 
     val usuarioPrueba2 = Usuario(
@@ -134,7 +135,7 @@ class WorldCappBootstrap: InitializingBean {
         20
     )
 
-    val listaUsuario = listOf (
+    val criterios = listOf (
         "nacionalista",
         "Conservador",
         "Fanatico",
