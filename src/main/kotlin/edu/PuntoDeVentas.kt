@@ -8,7 +8,9 @@ abstract class PuntoDeVentas(
     @JsonIgnore
     val ubicacion: Direccion = Direccion(),
     var stockDeSobres: Int = 0,
+    @JsonIgnore
     var pedidosPendientes: Pedido,
+    @JsonIgnore
     val listaDePedidosPendientes :MutableList<Pedido> = mutableListOf()
 ):Entidad(){
     companion object{
@@ -34,7 +36,7 @@ abstract class PuntoDeVentas(
     fun esInactivo() = !hayDisponibilidad() && !tienePedidosDentroDe(90) && !hayPedidosSinProcesar()
     fun faltaProcesar() = Pedido().fechaEstimadaDeEntrega < LocalDate.now()
 
-    override fun busqueda(condicionDeBusqueda: String): Boolean = nombre.lowercase() == condicionDeBusqueda.lowercase()
+    override fun busqueda(condicionDeBusqueda: String): Boolean = nombre.lowercase().contains( condicionDeBusqueda.lowercase())
 
     fun cantidadDeKM(usuario: Usuario)  = ceil(this.ubicacion.distancia(usuario.direccion))
     fun esCercano(usuario: Usuario) :Boolean = cantidadDeKM(usuario) < 10
@@ -69,12 +71,10 @@ abstract class PuntoDeVentas(
     fun cantidadPedidosPendientes() = listaDePedidosPendientes.count()
 
     @JsonProperty
-    fun direccion () = ubicacion.calle + " " + ubicacion.altura
+    fun direccion () = "${ubicacion.calle} ${ubicacion.altura}"
 
     @JsonProperty
     fun ubicacionGeografica () = ubicacion.ubicacion
-
-
 
 }
 

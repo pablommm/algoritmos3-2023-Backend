@@ -12,6 +12,11 @@ class PuntoDeVentasService {
     lateinit var puntoDeVentasRepository: RepoPuntoDeVentas
 
     fun getPuntoDeVentas() = puntoDeVentasRepository.allInstances()
-    fun getPuntoDeVentasFiltrado(nombreABuscar: String) = puntoDeVentasRepository.search(nombreABuscar)
-
+    fun getPuntoDeVentasFiltrado(nombreABuscar: String?): List<PuntoDeVentas>{
+        if (nombreABuscar === null || nombreABuscar === "") {
+            return puntoDeVentasRepository.allInstances()
+        } else {
+            return puntoDeVentasRepository.search(nombreABuscar)
+        }
+    }
 }

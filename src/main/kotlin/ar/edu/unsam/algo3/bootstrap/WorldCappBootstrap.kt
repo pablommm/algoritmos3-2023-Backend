@@ -57,10 +57,16 @@ class WorldCappBootstrap: InitializingBean {
     )
 
     val listadepedidos = mutableListOf<Pedido>()
-    val kioscoJuanito = Kiosco(true, true, 170, "juanito", direccionAvellaneda, 5, pedido, listadepedidos)
+    val kioscoJuanito = Kiosco(true, true, 170, "Juanito", direccionAvellaneda, 5, pedido, listadepedidos)
+    val kioscoPedro = Kiosco(true, true, 170, "Pedrito", direccionAvellaneda, 5, pedido, listadepedidos)
+    val kioscoEnzito = Kiosco(true, true, 170, "Enzito", direccionAvellaneda, 5, pedido, listadepedidos)
+    val kiosco912 = Kiosco(true, true, 170, "912", direccionAvellaneda, 5, pedido, listadepedidos)
 
     fun crearRepoPuntoDeVenta(){
         repoPuntoDeVentas.create(kioscoJuanito)
+        repoPuntoDeVentas.create(kioscoPedro)
+        repoPuntoDeVentas.create(kioscoEnzito)
+        repoPuntoDeVentas.create(kiosco912)
     }
 
     @Autowired(required=true)

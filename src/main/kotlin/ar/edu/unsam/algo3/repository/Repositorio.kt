@@ -19,7 +19,7 @@ open class Repositorio<T : Entidad>() {
 
         elemento.id = siguienteID++
     }
-    fun allInstances()=elementos
+    fun allInstances() = elementos
 
     fun allInstancesExcludeId(id : Int) = allInstances().filter {it.id != id}
 

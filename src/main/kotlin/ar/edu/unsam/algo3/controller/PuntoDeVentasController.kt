@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.*
 class PuntoDeVentasController(@Autowired val puntoDeVentasService: PuntoDeVentasService) {
 
     @GetMapping("/puntoDeVentas/")
-    fun getPuntoDeVentas() = puntoDeVentasService.getPuntoDeVentas()
+    fun getPuntoDeVentas(@RequestParam("campoDeBusqueda") campoDeBusqueda: String? = "") = puntoDeVentasService.getPuntoDeVentasFiltrado(campoDeBusqueda)
+
+    //@GetMapping("/puntoDeVentas/")
+    //fun getPuntoDeVentas() = puntoDeVentasService.getPuntoDeVentasFiltrado(null)
+    //fun getPuntoDeVentas() = puntoDeVentasService.puntoDeVentasRepository.allInstances()
 
 }
