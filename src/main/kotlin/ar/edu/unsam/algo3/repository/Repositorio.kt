@@ -59,6 +59,14 @@ open class Repositorio<T : Entidad>() {
         if (!existeElId(id)) throw genericException("El ID $id no es valido")
     }
 
+    /*fun orderByAscending(parameterName: String): List<T> {
+        return elementos.sortedBy { it.parameterName }
+    }
+
+    fun orderByDescending(parameterName: String): List<T> {
+        return elementos.sortedByDescending { it.getPropertyValue(parameterName) }
+    }*/
+
 }
 
 @Repository
