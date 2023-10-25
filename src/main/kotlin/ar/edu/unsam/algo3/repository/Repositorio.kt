@@ -72,5 +72,7 @@ class RepoFigurita: Repositorio<Figurita>()
 @Repository
 class RepoJugador: Repositorio<Jugador>()
 @Repository
-class RepoUser: Repositorio<Usuario>()
+class RepoUser: Repositorio<Usuario>(){
+    fun getUserPass(username:String,pass:Int) = elementos.find { user -> user.accesoUsuario(username,pass) }
+}
 

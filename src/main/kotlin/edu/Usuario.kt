@@ -13,8 +13,8 @@ class Usuario (
     var jugadorFavorito: Jugador = Jugador(),
     var kmCercania: Int = 0,
     var listaDeAccion : MutableList<SolicitudObserver> = mutableListOf(),
-    var listaDeSolicitudDeIntercambioXSeleccion : MutableList<Seleccion> = mutableListOf()
-
+    var listaDeSolicitudDeIntercambioXSeleccion : MutableList<Seleccion> = mutableListOf(),
+    var password :Int =0
 ) :Entidad() {
 
     fun notificarEvento(figurita: Figurita){
@@ -128,6 +128,7 @@ class Usuario (
 
     fun esValidoCorreo() :Boolean = email.esValido()
     fun validarCorreo() { if(!esValidoCorreo()) throw genericException("El correo  no es valido ")}
+    fun accesoUsuario(user:String,pass:Int) = user == username && pass == password
 
     override fun validar() {
         validarNombre()

@@ -24,7 +24,7 @@ class UsuarioService {
         usuarioService.create(nuevoUsuario)
         return nuevoUsuario
     }
-
+    fun getUsuarioLogin(user:String, pass:Int) = usuarioService.getUserPass(user,pass)
     fun getUserFiltrado(nombreABuscar: String) = usuarioService.search(nombreABuscar)
 
 }
