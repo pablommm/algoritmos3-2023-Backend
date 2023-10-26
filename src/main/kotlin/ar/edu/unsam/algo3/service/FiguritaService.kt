@@ -18,6 +18,8 @@ class FiguritaService {
 
     fun getFiguritaFiltrado(nombreABuscar: String) = figuritaRepository.search(nombreABuscar)
 
+    fun getFiguritas() = figuritaRepository.allInstances()
+
     fun getFiguritasRepetidas(idUsuario: Int) =
         usuarioRepository.allInstancesExcludeId(idUsuario)
             .flatMap { it.figuritasRepetidas }

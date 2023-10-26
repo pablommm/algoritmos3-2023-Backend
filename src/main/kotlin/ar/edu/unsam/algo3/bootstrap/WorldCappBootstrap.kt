@@ -92,6 +92,7 @@ class WorldCappBootstrap: InitializingBean {
 
     @Autowired(required = true)
     lateinit var repoUser : RepoUser
+    lateinit var repoFigurita: RepoFigurita
     val figuritasFaltantes = mutableListOf<Figurita>()
     val figuritasRepetidas = mutableListOf<Figurita>()
     val figuritasFaltantes2 = mutableListOf<Figurita>()
@@ -167,7 +168,4 @@ class WorldCappBootstrap: InitializingBean {
         repoUser.create(usuarioPrueba)
         repoUser.create(usuarioPrueba2)
     }
-
-
-
 }

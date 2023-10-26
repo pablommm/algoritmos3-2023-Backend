@@ -1,9 +1,50 @@
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonProperty
+import java.time.LocalDate
 
 class Figurita(
-    var numero: Int = 0, var nivelDeImpresion: NivelDeImpresion, var onFire: Boolean, val jugador: Jugador
+    @JsonIgnore var numero: Int = 0, var nivelDeImpresion: NivelDeImpresion, var onFire: Boolean, @JsonIgnore val jugador: Jugador
 ) :Entidad() {
 
+
     fun esPar(): Boolean = numero.esPar()
+    @JsonProperty
+    fun nombre():String = jugador.nombre
+
+    @JsonProperty
+    fun apellido():String = jugador.apellido
+
+    @JsonProperty
+    fun fechaNacimiento(): LocalDate = jugador.fechaDeNacimiento
+
+    @JsonProperty
+    fun numeroCamiseta():Int = jugador.nroDeCamiseta
+
+    @JsonProperty
+    fun seleccion():String = jugador.pais
+
+    //@JsonProperty
+    //fun copasDelMundo():Int = jugador.seleccion.cantidadDeCopasDelMundo
+
+    @JsonProperty
+    fun anioDebut():LocalDate = jugador.anioDebut
+
+    @JsonProperty
+    fun altura():Double = jugador.altura
+
+    @JsonProperty
+    fun peso():Double = jugador.peso
+
+    @JsonProperty
+    fun posicion():String = jugador.posicion.posicion
+
+    @JsonProperty
+    fun pais():String = jugador.pais
+
+    @JsonProperty
+    fun cotizacionJugador():Int = jugador.cotizacion
+
+
 
 
     fun factorOnFire(): Double = if (onFire) FACTOR_ONFIRE else SIN_FACTOR
@@ -19,7 +60,7 @@ class Figurita(
     fun nivelDeImpresionBaja(): Boolean = esNivelDeImpresion(NivelDeImpresion.BAJA)
 
 
-
+    @JsonProperty
     fun valoracionFigurita(): Double = valoracionBase() + jugador.valorPorPosicion().toDouble()
     fun esJugadorLeyenda(): Boolean = jugador.esLeyenda()
     fun esJugadorPromesa(): Boolean = jugador.esPromesaDeFutbol()

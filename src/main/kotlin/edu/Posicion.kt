@@ -18,6 +18,8 @@ interface Posicion {
 
     val puntos: Double
 
+    val posicion: String
+
 }
 
 object Arquero: Posicion {
@@ -28,7 +30,7 @@ object Arquero: Posicion {
     override fun factorCriterio(jugador: Jugador): Double =jugador.altura
     override fun factorPosicion(jugador: Jugador): Double = if (criterio(jugador))factorCriterio(jugador) else 1.0
 
-
+    override val posicion: String = "arquero"
 }
 
 object Defensor : Posicion {
@@ -37,6 +39,7 @@ object Defensor : Posicion {
     override fun criterio(jugador: Jugador): Boolean = jugador.lider
     override fun factorCriterio(jugador: Jugador): Double = 10.0 * jugador.aniosJugadosEnSeleccion()
 
+    override val posicion: String = "defensor"
 }
 
 object Mediocampista : Posicion {
@@ -45,6 +48,8 @@ object Mediocampista : Posicion {
     fun esLigero(jugador: Jugador): Boolean = jugador.peso in 65.0..70.0
     override fun criterio(jugador: Jugador): Boolean = esLigero(jugador)
     override fun factorCriterio(jugador: Jugador): Double = jugador.peso
+
+    override val posicion: String = "mediocampista"
 }
 
 
@@ -55,14 +60,16 @@ object Delantero : Posicion {
 
     override fun factorCriterio(jugador: Jugador): Double = jugador.nroDeCamiseta.toDouble() *  10.0
 
+    override val posicion: String = "delantero"
 }
  class Polivalentes(val posiciones : MutableList<Posicion>) : Posicion{
      override val puntos: Double = posiciones.sumOf { it.puntos}/cantidadDePosiciones()
      private fun cantidadDePosiciones(): Int = posiciones.count()
      override fun criterio(jugador: Jugador): Boolean = jugador.esLeyenda() || jugador.esPromesaDeFutbol()
      fun ValorPosicion(jugador: Jugador) = posiciones.sumOf { it.valorPorPosicion(jugador) }/cantidadDePosiciones()
-     override fun factorCriterio(jugador: Jugador): Double = ValorPosicion(jugador) - jugador.aniosDelJugador() 
+     override fun factorCriterio(jugador: Jugador): Double = ValorPosicion(jugador) - jugador.aniosDelJugador()
 
+     override val posicion: String = "polivalente"
  }
 
 
