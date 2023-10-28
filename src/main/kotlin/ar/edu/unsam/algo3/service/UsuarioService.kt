@@ -9,22 +9,22 @@ import org.springframework.stereotype.Service
 class UsuarioService {
 
     @Autowired
-    lateinit var usuarioService: RepoUser
+    lateinit var repoUsuario: RepoUser
 
-    fun getUser() = usuarioService.allInstances()
-    fun getUser(id: Int) = usuarioService.getById(id)
+    fun getUser() = repoUsuario.allInstances()
+    fun getUser(id: Int) = repoUsuario.getById(id)
 
     fun deleteUser(id: Int) {
-        usuarioService.delete(usuarioService.getById(id))
+        repoUsuario.delete(repoUsuario.getById(id))
     }
 
-    fun updateUser(usuario: Usuario) = usuarioService.update(usuario)
+    fun updateUser(usuario: Usuario) = repoUsuario.update(usuario)
 
     fun create(nuevoUsuario: Usuario): Usuario {
-        usuarioService.create(nuevoUsuario)
+        repoUsuario.create(nuevoUsuario)
         return nuevoUsuario
     }
-    fun getUsuarioLogin(user:String, pass:Int) = usuarioService.getUserPass(user,pass)
-    fun getUserFiltrado(nombreABuscar: String) = usuarioService.search(nombreABuscar)
+    fun getUsuarioLogin(user:String, pass:String) = repoUsuario.getUserPass(user,pass)
+    fun getUserFiltrado(nombreABuscar: String) = repoUsuario.search(nombreABuscar)
 
 }

@@ -125,21 +125,22 @@ class WorldCappBootstrap: InitializingBean {
         Desprendido,
         jugadorLeyenda,
         20,
-        password = 1234
+        password = "1234"
     )
 
     val usuarioPrueba2 = Usuario(
-        name = "Jose",
-        apellido = "Martinez",
-        username = "JMartinez",
+        name = "Frankie",
+        apellido = "Stein",
+        username = "Frankie123",
         fechaDeNacimiento = LocalDate.now().minusYears(30),
-        "JMartinez@gmail.com",
+        "FStein@gmail.com",
         DireccionSanMartin,
         figuritasFaltantes2,
         figuritasRepetidas2,
         Desprendido,
         jugadorLeyenda,
-        20
+        20,
+        password = "1234"
     )
 
     val criterios = listOf (
@@ -164,7 +165,6 @@ class WorldCappBootstrap: InitializingBean {
     }
 
     fun crearUser(){
-
         repoUser.create(usuarioPrueba)
         repoUser.create(usuarioPrueba2)
     }

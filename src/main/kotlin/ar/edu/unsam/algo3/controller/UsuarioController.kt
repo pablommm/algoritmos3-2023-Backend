@@ -22,7 +22,7 @@ class UserController(@Autowired val userService : UsuarioService) {
     }
     @PostMapping("/usuario")
     @Operation(summary = "Devuelve un usuario que coincida user y pass")
-    fun postUsuarioLoggin(@RequestBody user:String, pass:Int) = userService.getUsuarioLogin(user,pass)
+    fun postUsuarioLoggin(@RequestBody user: String, pass: String) = userService.getUsuarioLogin(user,pass)
 
     @GetMapping("/UsuarioFiltrado/{nombreABuscar}")
     fun getUsuarioFiltrado(@PathVariable nombreABuscar : String) = userService.getUserFiltrado(nombreABuscar)

@@ -11,12 +11,17 @@ import ar.edu.unsam.algo3.dto.toDTO
 @CrossOrigin("http://localhost:4200/")
 class FigurinesController (@Autowired val figuritaService :FiguritaService ){
 
-    @GetMapping("/Figuritas/")
-    fun getFiguritas() = figuritaService.getFiguritas()
+    //@GetMapping("/Figuritas/")
+    //fun getFiguritas() = figuritaService.getFiguritas()
 
     @GetMapping("/FiguritasRepetidas/{idUsuario}")
     @Operation(summary = "Trae todas las figuritas repetidas menos las del usuario logueado")
-    fun getFiguritasRepetidas(@PathVariable idUsuario : Int) = figuritaService.getFiguritasRepetidas(idUsuario)
+    fun getFiguritasRepetidas(@PathVariable idUsuario : Int,
+                              @RequestParam desde: Int? = 0,
+                              @RequestParam hasta: Int? = 0,
+                              @RequestParam esPromesa: Boolean? = false,
+                              @RequestParam esOnFire: Boolean? = false)
+    = figuritaService.getFiguritasRepetidas(idUsuario, desde, hasta, esPromesa, esOnFire)
 
     @GetMapping("/PerfilUsuario/FiguritasFaltantes/{idUsuario}")
     @Operation(summary = "Trae todas las figuritas faltantes del usuario logueado")
