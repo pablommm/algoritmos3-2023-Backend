@@ -3,7 +3,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDate
 
 class Figurita(
-    @JsonIgnore var numero: Int = 0, var nivelDeImpresion: NivelDeImpresion, var onFire: Boolean, @JsonIgnore val jugador: Jugador
+    var numero: Int = 0, var nivelDeImpresion: NivelDeImpresion, var onFire: Boolean, @JsonIgnore val jugador: Jugador
 ) :Entidad() {
 
 
@@ -23,8 +23,11 @@ class Figurita(
     @JsonProperty
     fun seleccion():String = jugador.pais
 
-    //@JsonProperty
-    //fun copasDelMundo():Int = jugador.seleccion.cantidadDeCopasDelMundo
+    @JsonProperty
+    fun copasDelMundo():Int = jugador.seleccion.cantidadDeCopasDelMundo
+
+    @JsonProperty
+    fun copasConfederacion():Int = jugador.seleccion.cantidadCopasConfederacion
 
     @JsonProperty
     fun anioDebut():LocalDate = jugador.anioDebut
@@ -44,6 +47,9 @@ class Figurita(
     @JsonProperty
     fun cotizacionJugador():Int = jugador.cotizacion
 
+    @JsonProperty
+    fun esLider():Boolean = jugador.lider
+
 
 
 
@@ -53,7 +59,9 @@ class Figurita(
 
     fun valorPorOnFire(): Double = COSTO_FIGURITA * factorOnFire()
     fun valorPorParidad(): Double = factorParidad() * valorPorOnFire()
-    fun valoracionBase(): Double = valorPorParidad() * factorNivelImpresionBaja()
+
+    @JsonProperty
+    fun valoracionBase(): Double = (valorPorParidad() * factorNivelImpresionBaja())
 
     fun esNivelDeImpresion(nivelDeImpresion: NivelDeImpresion) = nivelDeImpresion == this.nivelDeImpresion
     fun nivelDeImpresionAlta(): Boolean = esNivelDeImpresion(NivelDeImpresion.ALTA)

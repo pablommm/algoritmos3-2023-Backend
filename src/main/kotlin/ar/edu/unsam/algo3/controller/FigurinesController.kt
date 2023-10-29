@@ -23,6 +23,11 @@ class FigurinesController (@Autowired val figuritaService :FiguritaService ){
                               @RequestParam esOnFire: Boolean? = false)
     = figuritaService.getFiguritasRepetidas(idUsuario, desde, hasta, esPromesa, esOnFire)
 
+    @GetMapping("/DetalleFigurita/{idFigurita}")
+    @Operation(summary = "Trae la figurita solicitada a partir del id, utilizada para DetalleFigurita")
+    fun getFiguritaById(@PathVariable idFigurita : Int) = figuritaService.getFiguritasById(idFigurita)
+
+
     @GetMapping("/PerfilUsuario/FiguritasFaltantes/{idUsuario}")
     @Operation(summary = "Trae todas las figuritas faltantes del usuario logueado")
     fun getFiguritasFaltantesUsuario(@PathVariable idUsuario : Int) = figuritaService.getFiguritasFaltantesUsuario(idUsuario)

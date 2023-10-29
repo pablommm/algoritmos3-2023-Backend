@@ -21,10 +21,10 @@ class WorldCappBootstrap: InitializingBean {
 
     @Autowired(required=true)
     lateinit var repoSelecciones: RepoSeleccion
-    final val argentina = Seleccion("Argentina",Confederacion.CONCACAF,1,1)
-    final val brasil = Seleccion("brasil",Confederacion.CONCACAF,1,1)
-    final val alemania = Seleccion("alemania",Confederacion.CONCACAF,1,1)
-    final val francia = Seleccion("francia",Confederacion.CONCACAF,1,1)
+    final val argentina = Seleccion("Argentina",Confederacion.CONCACAF,3,2)
+    final val brasil = Seleccion("brasil",Confederacion.CONCACAF,5,4)
+    final val alemania = Seleccion("alemania",Confederacion.CONCACAF,4,1)
+    final val francia = Seleccion("francia",Confederacion.CONCACAF,2,2)
 
     val seleciones = listOf(argentina,brasil,alemania,francia)
 
@@ -71,7 +71,7 @@ class WorldCappBootstrap: InitializingBean {
 
     @Autowired(required=true)
     lateinit var jugadorRepo : RepoJugador
-    val jugadorLeyenda =  Jugador("Leo","Messi",LocalDate.now().minusYears(30),7,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",21000000)
+    val jugadorLeyenda =  Jugador("Leo","Messi",LocalDate.now().minusYears(30),7,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,true,"Argentina",21000000)
     val jugadorPromesa =  Jugador("Alejandro","Garnacho",LocalDate.now().minusYears(18),11,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",21000000)
 
     val jugadores = listOf(jugadorLeyenda,jugadorPromesa)

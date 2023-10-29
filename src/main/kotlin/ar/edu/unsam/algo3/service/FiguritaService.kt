@@ -25,23 +25,33 @@ class FiguritaService {
     fun getFiguritasRepetidas(idUsuario: Int, desde: Int?, hasta: Int?,
                               esPromesa: Boolean?, esOnFire: Boolean?): List<Figurita> {
         figuritasRepetidas(idUsuario)
-        filtrarDesdeHasta(desde, hasta)
+        filtrarDesde(desde)
+        filtrarHasta(hasta)
         filtrarPromesa(esPromesa)
         filtrarOnFire(esOnFire)
         return this.figuritas//.map {it.toDTO()}
     }
+
+    fun getFiguritasById(idFigurita: Int) = figuritaRepository.getById(idFigurita)
 
     private fun figuritasRepetidas(idUsuario: Int) {
         this.figuritas = usuarioRepository.allInstancesExcludeId(idUsuario)
             .flatMap { it.figuritasRepetidas }
     }
 
-    private fun filtrarDesdeHasta(desde: Int?, hasta: Int?){
-        if((desde == null || desde == 0) && (hasta === null || hasta == 0)){
+    private fun filtrarDesde(desde: Int?){
+        if(desde == null || desde == 0){
         } else {
-            this.figuritas = this.figuritas.filter { it.valoracionFigurita()>= desde!! && it.valoracionFigurita()<= hasta!! }
+            this.figuritas = this.figuritas.filter { it.valoracionFigurita()>= desde!!}
         }
     //&& (hasta === null || hasta === 0)
+    }
+
+    private fun filtrarHasta(hasta: Int?){
+        if(hasta == null || hasta == 0){
+        } else {
+            this.figuritas = this.figuritas.filter {it.valoracionFigurita()<= hasta!! }
+        }
     }
 
     private fun filtrarPromesa(esPromesa: Boolean?) {
