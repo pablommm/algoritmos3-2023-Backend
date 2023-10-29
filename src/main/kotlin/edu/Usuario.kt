@@ -128,8 +128,8 @@ class Usuario (
 
     fun esValidoCorreo() :Boolean = email.esValido()
     fun validarCorreo() { if(!esValidoCorreo()) throw genericException("El correo  no es valido ")}
-    fun accesoUsuario(username:String,password:String): Boolean {
-        return (username == this.username) && (password == this.password)
+    fun accesoUsuario(user:Usuario): Boolean {
+        return user.username == this.username && user.password == password
     }
 
     override fun validar() {

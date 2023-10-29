@@ -24,7 +24,7 @@ class UsuarioService {
         repoUsuario.create(nuevoUsuario)
         return nuevoUsuario
     }
-    fun getUsuarioLogin(user:String, pass:String) = repoUsuario.getUserPass(user,pass)
+    fun getUsuarioLogin(user:Usuario) = repoUsuario.getUserPass(user)
     fun getUserFiltrado(nombreABuscar: String) = repoUsuario.search(nombreABuscar)
 
 }
