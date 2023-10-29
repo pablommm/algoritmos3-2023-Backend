@@ -20,7 +20,7 @@ class UserController(@Autowired val userService : UsuarioService) {
     fun create(@RequestBody usuarioBody : Usuario): Usuario {
         return userService.create(usuarioBody)
     }
-    @PostMapping("/usuario")
+    @PostMapping("/usuarioLogin")
     @Operation(summary = "Devuelve un usuario que coincida user y pass")
     fun postUsuarioLoggin(@RequestBody user:Usuario) = userService.getUsuarioLogin(user)
 
