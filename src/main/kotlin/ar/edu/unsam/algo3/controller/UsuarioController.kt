@@ -38,7 +38,8 @@ class UserController(@Autowired val userService : UsuarioService) {
     @DeleteMapping("/Usuario/{id}")
     fun deleteUsuario(@PathVariable id : Int) = userService.deleteUser(id)
 
-
+    //@GetMapping("/listaTiposUsuarios")
+    //fun getlistaTiposUsuarios()  =  userService.getListaTiposUsuarios()
 
 
 }

@@ -74,6 +74,7 @@ class WorldCappBootstrap: InitializingBean {
     val jugadorLeyenda =  Jugador("Leo","Messi",LocalDate.now().minusYears(30),7,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",21000000)
     val jugadorPromesa =  Jugador("Alejandro","Garnacho",LocalDate.now().minusYears(18),11,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",21000000)
 
+
     val jugadores = listOf(jugadorLeyenda,jugadorPromesa)
     fun crearJugador() {
         jugadores.forEach { jugadorRepo.create(it)}

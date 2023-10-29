@@ -1,5 +1,6 @@
 package ar.edu.unsam.algo3.service
 
+import TipoDeUsuario
 import Usuario
 import ar.edu.unsam.algo3.repository.RepoUser
 import org.springframework.beans.factory.annotation.Autowired
@@ -27,4 +28,5 @@ class UsuarioService {
     fun getUsuarioLogin(user:Usuario) = repoUsuario.getUserPass(user)
     fun getUserFiltrado(nombreABuscar: String) = repoUsuario.search(nombreABuscar)
 
+    //fun getListaTiposUsuarios(criterio: TipoDeUsuario) = repoUsuario.
 }
