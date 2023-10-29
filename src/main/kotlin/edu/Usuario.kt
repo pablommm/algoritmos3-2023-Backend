@@ -1,5 +1,8 @@
 import java.time.LocalDate
 
+
+
+
 class Usuario (
     val name: String = "",
     val apellido: String = "",
@@ -7,8 +10,8 @@ class Usuario (
     var fechaDeNacimiento: LocalDate = LocalDate.now(),
     val email: String = "",
     val direccion: Direccion = Direccion(),
-    val figuritasFaltantes: MutableList<Figurita>,
-    val figuritasRepetidas: MutableList<Figurita>,
+    val figuritasFaltantes: MutableList<Figurita> =  mutableListOf(),
+    val figuritasRepetidas: MutableList<Figurita> = mutableListOf(),
     var tipoDeUsuario: TipoDeUsuario = Par,
     var jugadorFavorito: Jugador = Jugador(),
     var kmCercania: Int = 0,
