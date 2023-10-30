@@ -1,4 +1,6 @@
 import ar.edu.unsam.algo3.dto.UsuarioLoginDTO
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDate
 
 
@@ -7,17 +9,26 @@ import java.time.LocalDate
 class Usuario (
     val name: String = "",
     val apellido: String = "",
+    @JsonIgnore
     var username: String = "",
     var fechaDeNacimiento: LocalDate = LocalDate.now(),
     val email: String = "",
+    @JsonIgnore
     val direccion: Direccion = Direccion(),
+    @JsonIgnore
     val figuritasFaltantes: MutableList<Figurita> =  mutableListOf(),
+    @JsonIgnore
     val figuritasRepetidas: MutableList<Figurita> = mutableListOf(),
+    @JsonIgnore
     var tipoDeUsuario: TipoDeUsuario = Par,
+    @JsonIgnore
     var jugadorFavorito: Jugador = Jugador(),
     var kmCercania: Int = 0,
+    @JsonIgnore
     var listaDeAccion : MutableList<SolicitudObserver> = mutableListOf(),
+    @JsonIgnore
     var listaDeSolicitudDeIntercambioXSeleccion : MutableList<Seleccion> = mutableListOf(),
+    @JsonIgnore
     var password :String = ""
 ) :Entidad() {
 
@@ -158,6 +169,19 @@ class Usuario (
     }
     fun cantidadDeFiguritasRepetidas()=figuritasRepetidas.size
     fun cantidadDeAcciones()=listaDeAccion.size
+
+    @JsonProperty
+    fun calle() = direccion.calle
+
+    @JsonProperty
+    fun altura() = direccion.altura
+
+    @JsonProperty
+    fun posicionX() = direccion.ubicacion.x
+
+    @JsonProperty
+    fun posicionY() = direccion.ubicacion.y
+
 }
 
 
