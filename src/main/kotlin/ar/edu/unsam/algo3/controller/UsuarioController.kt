@@ -1,6 +1,7 @@
 package ar.edu.unsam.algo3.controller;
 
 import Usuario
+import ar.edu.unsam.algo3.dto.UsuarioLoginDTO
 import ar.edu.unsam.algo3.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ class UserController(@Autowired val userService : UsuarioService) {
     }
     @PostMapping("/usuarioLogin")
     @Operation(summary = "Devuelve un usuario que coincida user y pass")
-    fun postUsuarioLoggin(@RequestBody user:Usuario) = userService.getUsuarioLogin(user)
+    fun postUsuarioLoggin(@RequestBody user:UsuarioLoginDTO) = userService.getUsuarioLogin(user)
 
     @GetMapping("/UsuarioFiltrado/{nombreABuscar}")
     fun getUsuarioFiltrado(@PathVariable nombreABuscar : String) = userService.getUserFiltrado(nombreABuscar)

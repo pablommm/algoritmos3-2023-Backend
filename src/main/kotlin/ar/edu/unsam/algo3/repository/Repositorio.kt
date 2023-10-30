@@ -7,6 +7,7 @@ import PuntoDeVentas
 import Seleccion
 import TipoDeUsuario
 import Usuario
+import ar.edu.unsam.algo3.dto.UsuarioLoginDTO
 import genericException
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
@@ -81,6 +82,6 @@ class RepoFigurita: Repositorio<Figurita>()
 class RepoJugador: Repositorio<Jugador>()
 @Repository
 class RepoUser: Repositorio<Usuario>(){
-    fun getUserPass(userIdentificador: Usuario) = elementos.filter { user -> user.accesoUsuario(userIdentificador) }
+    fun getUserPass(userIdentificador: UsuarioLoginDTO) = elementos.filter { user -> user.accesoUsuario(userIdentificador) }
 }
 

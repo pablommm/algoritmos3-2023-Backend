@@ -1,3 +1,4 @@
+import ar.edu.unsam.algo3.dto.UsuarioLoginDTO
 import java.time.LocalDate
 
 
@@ -131,8 +132,8 @@ class Usuario (
 
     fun esValidoCorreo() :Boolean = email.esValido()
     fun validarCorreo() { if(!esValidoCorreo()) throw genericException("El correo  no es valido ")}
-    fun accesoUsuario(user:Usuario): Boolean {
-        return user.username == this.username && user.password == password
+    fun accesoUsuario(user:UsuarioLoginDTO): Boolean {
+        return user.user == username && user.pass == password
     }
 
     override fun validar() {

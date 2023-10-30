@@ -15,6 +15,7 @@ import Jugador
 import Kiosco
 import Mediocampista
 import Pedido
+import Supermercado
 import Usuario
 import ar.edu.unsam.algo3.repository.*
 
@@ -51,7 +52,7 @@ class WorldCappBootstrap: InitializingBean {
 
     val pedido = Pedido(100, LocalDate.now())
     val direccionAvellaneda = Direccion(
-        org.uqbar.geodds.Point(-34.661289687738716, -58.36713002783264),
+        org.uqbar.geodds.Point(-34.66128, -58.36713),
         "Avellaneda",
         "Buenos Aires",
         "Av Mitre",
@@ -73,7 +74,7 @@ class WorldCappBootstrap: InitializingBean {
 
     @Autowired(required=true)
     lateinit var jugadorRepo : RepoJugador
-    val jugadorLeyenda =  Jugador("Leo","Messi",LocalDate.now().minusYears(30),7,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,true,"Argentina",21000000)
+    val jugadorLeyenda =  Jugador("Leo","Messi",LocalDate.now().minusYears(30),10,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,true,"Argentina",21000000)
     val jugadorPromesa =  Jugador("Alejandro","Garnacho",LocalDate.now().minusYears(18),11,argentina,LocalDate.now().minusYears(1),187.0,83.0, Delantero,false,"Argentina",1000000)
     val jugadorEnzo =  Jugador("Enzo","Fernández",LocalDate.now().minusYears(18),17,argentina,LocalDate.now().minusYears(14),187.0,83.0, Mediocampista,false,"Argentina",450000)
     val jugadorDalessandro =  Jugador("Andrés","D'Alessandro",LocalDate.now().minusYears(18),14,argentina,LocalDate.now().minusYears(14),187.0,83.0, Mediocampista,false,"Argentina",320000)
@@ -88,12 +89,12 @@ class WorldCappBootstrap: InitializingBean {
 
     @Autowired(required=true)
     lateinit var figuritaRepo: RepoFigurita
-    val figuritaLeyenda =Figurita(10, nivelDeImpresion = NivelDeImpresion.ALTA,true,jugadorLeyenda, imagen = "https://shorturl.at/gix79")
-    val figuritaPromesa =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorPromesa, imagen = "https://shorturl.at/fhpG6")
-    val figuritaEnzo =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorEnzo, imagen = "https://shorturl.at/rKLO8")
-    val figuritaDalessandro =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,true,jugadorDalessandro, imagen = "https://shorturl.at/oGR24")
-    val figuritaDibu =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorDibu, imagen = "https://shorturl.at/npISZ")
-    val figuritaJulian =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorJulian, imagen = "https://shorturl.at/rszX2")
+    val figuritaLeyenda =Figurita(1, nivelDeImpresion = NivelDeImpresion.ALTA,true,jugadorLeyenda, imagen = "https://shorturl.at/gix79")
+    val figuritaPromesa =Figurita(2, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorPromesa, imagen = "https://shorturl.at/fhpG6")
+    val figuritaEnzo =Figurita(3, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorEnzo, imagen = "https://shorturl.at/rKLO8")
+    val figuritaDalessandro =Figurita(4, nivelDeImpresion = NivelDeImpresion.BAJA,true,jugadorDalessandro, imagen = "https://shorturl.at/oGR24")
+    val figuritaDibu =Figurita(5, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorDibu, imagen = "https://shorturl.at/npISZ")
+    val figuritaJulian =Figurita(6, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorJulian, imagen = "https://shorturl.at/rszX2")
 
     val figuritas = listOf(figuritaLeyenda,figuritaPromesa, figuritaEnzo, figuritaDalessandro, figuritaDibu, figuritaJulian)
 

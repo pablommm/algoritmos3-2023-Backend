@@ -2,6 +2,8 @@ package ar.edu.unsam.algo3.service
 
 import TipoDeUsuario
 import Usuario
+import ar.edu.unsam.algo3.dto.UsuarioLoginDTO
+import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.repository.RepoUser
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -25,7 +27,13 @@ class UsuarioService {
         repoUsuario.create(nuevoUsuario)
         return nuevoUsuario
     }
-    fun getUsuarioLogin(user:Usuario) = repoUsuario.getUserPass(user)
+    fun getUsuarioLogin(user:UsuarioLoginDTO): Int {
+        if(repoUsuario.getUserPass(user).isNotEmpty()) {
+            return repoUsuario.getUserPass(user).first().id
+        } else {
+            return 0
+        }
+    }
     fun getUserFiltrado(nombreABuscar: String) = repoUsuario.search(nombreABuscar)
 
     //fun getListaTiposUsuarios(criterio: TipoDeUsuario) = repoUsuario.
