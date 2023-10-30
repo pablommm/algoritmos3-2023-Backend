@@ -1,5 +1,6 @@
 package ar.edu.unsam.algo3.bootstrap
 
+import Arquero
 import Confederacion
 import Delantero
 import Desprendido
@@ -12,6 +13,7 @@ import Direccion
 import Figurita
 import Jugador
 import Kiosco
+import Mediocampista
 import Pedido
 import Usuario
 import ar.edu.unsam.algo3.repository.*
@@ -72,7 +74,11 @@ class WorldCappBootstrap: InitializingBean {
     @Autowired(required=true)
     lateinit var jugadorRepo : RepoJugador
     val jugadorLeyenda =  Jugador("Leo","Messi",LocalDate.now().minusYears(30),7,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,true,"Argentina",21000000)
-    val jugadorPromesa =  Jugador("Alejandro","Garnacho",LocalDate.now().minusYears(18),11,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",21000000)
+    val jugadorPromesa =  Jugador("Alejandro","Garnacho",LocalDate.now().minusYears(18),11,argentina,LocalDate.now().minusYears(1),187.0,83.0, Delantero,false,"Argentina",1000000)
+    val jugadorEnzo =  Jugador("Enzo","Fernández",LocalDate.now().minusYears(18),17,argentina,LocalDate.now().minusYears(14),187.0,83.0, Mediocampista,false,"Argentina",450000)
+    val jugadorDalessandro =  Jugador("Andrés","D'Alessandro",LocalDate.now().minusYears(18),14,argentina,LocalDate.now().minusYears(14),187.0,83.0, Mediocampista,false,"Argentina",320000)
+    val jugadorDibu =  Jugador("Emiliano","Martinez",LocalDate.now().minusYears(18),19,argentina,LocalDate.now().minusYears(14),187.0,83.0, Arquero,false,"Argentina",100000)
+    val jugadorJulian =  Jugador("Julián","Álvarez",LocalDate.now().minusYears(18),20,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",570000)
 
 
     val jugadores = listOf(jugadorLeyenda,jugadorPromesa)
@@ -82,10 +88,14 @@ class WorldCappBootstrap: InitializingBean {
 
     @Autowired(required=true)
     lateinit var figuritaRepo: RepoFigurita
-    val figuritaLeyenda =Figurita(10, nivelDeImpresion = NivelDeImpresion.ALTA,false,jugadorLeyenda)
-    val figuritaPromesa =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorPromesa)
+    val figuritaLeyenda =Figurita(10, nivelDeImpresion = NivelDeImpresion.ALTA,true,jugadorLeyenda, imagen = "https://shorturl.at/gix79")
+    val figuritaPromesa =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorPromesa, imagen = "https://shorturl.at/fhpG6")
+    val figuritaEnzo =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorEnzo, imagen = "https://shorturl.at/rKLO8")
+    val figuritaDalessandro =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,true,jugadorDalessandro, imagen = "https://shorturl.at/oGR24")
+    val figuritaDibu =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorDibu, imagen = "https://shorturl.at/npISZ")
+    val figuritaJulian =Figurita(11, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorJulian, imagen = "https://shorturl.at/rszX2")
 
-    val figuritas = listOf(figuritaLeyenda,figuritaPromesa)
+    val figuritas = listOf(figuritaLeyenda,figuritaPromesa, figuritaEnzo, figuritaDalessandro, figuritaDibu, figuritaJulian)
 
     fun crearFiguritas(){
         figuritas.forEach { figuritaRepo.create(it) }
@@ -161,6 +171,10 @@ class WorldCappBootstrap: InitializingBean {
         //usuarioPrueba2.aniadirFiguritaFaltantes(figuritaLeyenda)
         figuritasFaltantes.add(figuritaLeyenda) // Falta Messi
         figuritasRepetidas.add(figuritaPromesa) // Garnacho Repetido
+        figuritasRepetidas.add(figuritaEnzo)
+        figuritasRepetidas.add(figuritaJulian)
+        figuritasRepetidas.add(figuritaDibu)
+        figuritasRepetidas.add(figuritaDalessandro)
         figuritasFaltantes2.add(figuritaPromesa) // Falta Garnacho
         figuritasRepetidas2.add(figuritaLeyenda) // Messi Repetido
     }
