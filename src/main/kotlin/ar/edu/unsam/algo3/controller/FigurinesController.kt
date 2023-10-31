@@ -11,8 +11,8 @@ import ar.edu.unsam.algo3.dto.toDTO
 @CrossOrigin("http://localhost:4200/")
 class FigurinesController (@Autowired val figuritaService :FiguritaService ){
 
-    //@GetMapping("/Figuritas/")
-    //fun getFiguritas() = figuritaService.getFiguritas()
+    @GetMapping("/busquedaFiguritasPerfil/")
+    fun getFiguritas() = figuritaService.getFigurines()
 
     @GetMapping("/FiguritasRepetidas/{idUsuario}")
     @Operation(summary = "Trae todas las figuritas repetidas menos las del usuario logueado")
