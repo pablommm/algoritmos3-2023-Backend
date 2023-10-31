@@ -3,6 +3,7 @@ package ar.edu.unsam.algo3.controller;
 import Usuario
 import ar.edu.unsam.algo3.dto.UsuarioLoginDTO
 import ar.edu.unsam.algo3.service.UsuarioService;
+import ar.edu.unsam.algo3.service.DireccionService;
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*
@@ -40,8 +41,10 @@ class UserController(@Autowired val userService : UsuarioService) {
     @DeleteMapping("/Usuario/{id}")
     fun deleteUsuario(@PathVariable id : Int) = userService.deleteUser(id)
 
-    //@GetMapping("/listaTiposUsuarios")
-    //fun getlistaTiposUsuarios()  =  userService.getListaTiposUsuarios()
+   /* @GetMapping("/listaTiposUsuarios")
+    fun getlistaTiposUsuarios()  = DireccionService.getProvinciasService()
+
+    */
 
 
 }
