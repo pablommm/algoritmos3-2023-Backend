@@ -13,6 +13,7 @@ import Direccion
 import Figurita
 import Jugador
 import Kiosco
+import Libreria
 import Mediocampista
 import Pedido
 import Supermercado
@@ -77,13 +78,13 @@ class WorldCappBootstrap: InitializingBean {
 
     val listadepedidos = mutableListOf<Pedido>()
     val kioscoJuanito = Kiosco(true, true, 820, "Juanito", direccionAvellaneda, 5, pedido, listadepedidos)
-    val kioscoPedro = Kiosco(true, true, 700, "Pedrito", direccionPuppo, 7, pedido, listadepedidos)
+    val libreriaPedro = Libreria(5000, "Pedrito", direccionPuppo, 7, pedido, listadepedidos)
     val kioscoEnzito = Kiosco(true, true, 5000, "Enzito", direccionBelgrano, 9, pedido, listadepedidos)
     val kiosco912 = Kiosco(true, true, 590, "912", direccionAvellaneda, 5, pedido, listadepedidos)
 
     fun crearRepoPuntoDeVenta(){
         repoPuntoDeVentas.create(kioscoJuanito)
-        repoPuntoDeVentas.create(kioscoPedro)
+        repoPuntoDeVentas.create(libreriaPedro)
         repoPuntoDeVentas.create(kioscoEnzito)
         repoPuntoDeVentas.create(kiosco912)
     }
