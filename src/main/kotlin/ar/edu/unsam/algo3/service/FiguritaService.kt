@@ -22,9 +22,10 @@ class FiguritaService {
 
     fun getFigurines() :List<Figurita> = figuritaRepository.allInstances()
 
-    fun getFiguritasRepetidas(idUsuario: Int, desde: Int?, hasta: Int?,
+    fun getFiguritasRepetidas(idUsuario: Int, nombreABuscar: String?, desde: Int?, hasta: Int?,
                               esPromesa: Boolean?, esOnFire: Boolean?): List<Figurita> {
         figuritasRepetidas(idUsuario)
+        filtrarBusqueda(nombreABuscar)
         filtrarDesde(desde)
         filtrarHasta(hasta)
         filtrarPromesa(esPromesa)
@@ -34,9 +35,16 @@ class FiguritaService {
 
     fun getFiguritasById(idFigurita: Int) = figuritaRepository.getById(idFigurita)
 
-    private fun figuritasRepetidas(idUsuario: Int) {
+    private fun figuritasRepetidas(idUsuario: Int, ) {
         this.figuritas = usuarioRepository.allInstancesExcludeId(idUsuario)
             .flatMap { it.figuritasRepetidas }
+    }
+
+    private fun filtrarBusqueda(nombreABuscar: String?) {
+        if (nombreABuscar === null || nombreABuscar === ""){
+        } else {
+            this.figuritas = this.figuritas.filter { it.busqueda(nombreABuscar) }
+        }
     }
 
     private fun filtrarDesde(desde: Int?){
