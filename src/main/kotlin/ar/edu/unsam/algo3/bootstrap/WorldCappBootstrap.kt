@@ -59,11 +59,27 @@ class WorldCappBootstrap: InitializingBean {
         750
     )
 
+    val direccionBelgrano = Direccion(
+        org.uqbar.geodds.Point(-32.66128, -55.36713),
+        "Belgrano",
+        "Buenos Aires",
+        "Av Figueroa Alcorta",
+        912
+    )
+
+    val direccionPuppo = Direccion(
+        org.uqbar.geodds.Point(-34.57291, -58.54999),
+        "Buenos Aires",
+        "San Martin",
+        "Güemes",
+        2879
+    )
+
     val listadepedidos = mutableListOf<Pedido>()
-    val kioscoJuanito = Kiosco(true, true, 170, "Juanito", direccionAvellaneda, 5, pedido, listadepedidos)
-    val kioscoPedro = Kiosco(true, true, 170, "Pedrito", direccionAvellaneda, 7, pedido, listadepedidos)
-    val kioscoEnzito = Kiosco(true, true, 170, "Enzito", direccionAvellaneda, 9, pedido, listadepedidos)
-    val kiosco912 = Kiosco(true, true, 170, "912", direccionAvellaneda, 5, pedido, listadepedidos)
+    val kioscoJuanito = Kiosco(true, true, 820, "Juanito", direccionAvellaneda, 5, pedido, listadepedidos)
+    val kioscoPedro = Kiosco(true, true, 700, "Pedrito", direccionPuppo, 7, pedido, listadepedidos)
+    val kioscoEnzito = Kiosco(true, true, 5000, "Enzito", direccionBelgrano, 9, pedido, listadepedidos)
+    val kiosco912 = Kiosco(true, true, 590, "912", direccionAvellaneda, 5, pedido, listadepedidos)
 
     fun crearRepoPuntoDeVenta(){
         repoPuntoDeVentas.create(kioscoJuanito)

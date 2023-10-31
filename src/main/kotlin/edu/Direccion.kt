@@ -8,7 +8,12 @@ class Direccion(
     val altura: Int = 0
 
 ) {
-
+    fun obtenerCoordenadaX(): Double {
+        return ubicacion.x
+    }
+    fun obtenerCoordenadaY(): Double {
+        return ubicacion.y
+    }
     fun distancia(direccion: Direccion): Double {
         return ubicacion.distance(direccion.ubicacion)
     }

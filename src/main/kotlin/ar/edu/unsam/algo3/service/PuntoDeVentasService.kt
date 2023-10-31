@@ -2,7 +2,10 @@ package ar.edu.unsam.algo3.service
 
 import PuntoDeVentas
 import Usuario
+import ar.edu.unsam.algo3.dto.PuntoDeVentasDTO
+import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.repository.RepoPuntoDeVentas
+import ar.edu.unsam.algo3.repository.RepoUser
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -12,10 +15,13 @@ class PuntoDeVentasService {
     @Autowired
     lateinit var puntoDeVentasRepository: RepoPuntoDeVentas
 
-    fun getPuntoDeVentas() = puntoDeVentasRepository.allInstances()
-    fun getPuntoDeVentasFiltrado(nombreABuscar: String?, criterioOrdenamiento: String?): List<PuntoDeVentas>{
-        return this.orderByDescendingSobres(nombreABuscar)
-    //return busquedaSearchbar(nombreABuscar)
+    @Autowired
+    lateinit var usuarioRepository: RepoUser
+
+    fun getPuntoDeVentas(): List<PuntoDeVentas> = puntoDeVentasRepository.allInstances()
+
+    fun getPuntoDeVentasFiltrado(nombreABuscar: String?, criterioOrdenamiento: CriterioOrdenamiento?, idUsuario: Int): List<PuntoDeVentasDTO> {
+        return this.ordenarPorCriterio(criterioOrdenamiento, nombreABuscar, idUsuario)
     }
 
     private fun busquedaSearchbar(nombreABuscar: String?): List<PuntoDeVentas> {
@@ -26,35 +32,40 @@ class PuntoDeVentasService {
         }
     }
 
-
-    //fun orderByAscendingDistancia(nombreABuscar: String?, usuario: Usuario) {
-        //return this.busquedaSearchbar(nombreABuscar).sortedBy { it.cantidadDeKM(usuario) }
-    //}
-
-    //fun orderByAscendingBarato() {
-        //return this.busquedaSearchbar(nombreABuscar).sortedBy { it.(usuario) }
-    //}
-    fun orderByDescendingSobres(nombreABuscar: String?): List<PuntoDeVentas> {
-        return this.busquedaSearchbar(nombreABuscar).sortedByDescending { it.stockDeSobres }
+    fun orderByAscendingDistancia(idUsuario: Int, nombreABuscar: String?): List<PuntoDeVentasDTO> {
+        val usuario = usuarioRepository.getById(idUsuario)
+        return this.busquedaSearchbar(nombreABuscar).sortedBy { it.cantidadDeKM(usuario) }.map { it.toDTO(usuario) }
     }
-    /*fun ordenarPorCriterio(criterio: CriterioOrdenamiento, nombreABuscar: String?): List<PuntoDeVentas> {
+
+    fun orderByAscendingBarato(usuarioId: Int, nombreABuscar: String?): List<PuntoDeVentasDTO> {
+        val usuario = usuarioRepository.getById(usuarioId)
+        return this.busquedaSearchbar(nombreABuscar).sortedBy { it.importeACobrar(usuario, 1) }.map { it.toDTO(usuario) }
+    }
+
+    fun orderByDescendingSobres(usuarioId: Int, nombreABuscar: String?): List<PuntoDeVentasDTO> {
+        val usuario = usuarioRepository.getById(usuarioId)
+        return this.busquedaSearchbar(nombreABuscar).sortedByDescending { it.stockDeSobres }.map { it.toDTO(usuario) }
+    }
+
+    fun ordenarPorCriterio(criterio: CriterioOrdenamiento?, nombreABuscar: String?, idUsuario: Int): List<PuntoDeVentasDTO> {
         when (criterio) {
             CriterioOrdenamiento.MenorDistancia -> {
-                //
+                return this.orderByAscendingDistancia(idUsuario, nombreABuscar)
             }
             CriterioOrdenamiento.MasBarato -> {
-                //
+                return this.orderByAscendingBarato(idUsuario, nombreABuscar)
             }
             CriterioOrdenamiento.MasSobres -> {
-                return this.orderByDescendingSobres(nombreABuscar)
+                return this.orderByDescendingSobres(idUsuario, nombreABuscar)
             }
+
+            else -> {return this.orderByAscendingDistancia(idUsuario, nombreABuscar)}
         }
-    }*/
+    }
 }
 
-/*
 enum class CriterioOrdenamiento {
     MenorDistancia,
     MasBarato,
     MasSobres,
-}*/
+}

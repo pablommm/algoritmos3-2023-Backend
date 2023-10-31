@@ -19,6 +19,10 @@ abstract class PuntoDeVentas(
         const val COSTO_POR_KM_EXCEDIDO = 100
         const val CANTIDAD_KM_MAXIMO = 10.0
     }
+
+    fun tipo(): String {
+        return this::class.simpleName ?: "Unknown"
+    }
     fun hayDisponibilidad() = stockDeSobres > 0
     fun reciboPedidoDeFabrica(pedido: Pedido) { stockDeSobres += pedido.cantidadDeSobres  }
     fun pedidoSuperioarA( cantidadDeSobres: Int) :Boolean = cantidadDeSobres > stockDeSobres
@@ -47,7 +51,12 @@ abstract class PuntoDeVentas(
     fun costoPorPedido(cantidadDeSobres:Int, usuario: Usuario) = COSTO_POR_SOBRE * cantidadDeSobres
     fun costoMinimo(cantidadDeSobres: Int,usuario: Usuario) = costoPorPedido(cantidadDeSobres,usuario) + costoDeEnvio(usuario)
     abstract fun factorPuntoDeventa(cantidadDeSobres:Int):Double
+
+    @JsonProperty
     fun importeACobrar(usuario: Usuario,cantidadDeSobres: Int) = costoMinimo(cantidadDeSobres,usuario) * factorPuntoDeventa(cantidadDeSobres)
+
+    //@JsonProperty
+    //fun importeACobrar() = 100
 
     // validaciones
     fun validacionDeVenta(cantidadDeSobres: Int) {
