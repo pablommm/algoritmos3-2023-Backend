@@ -20,7 +20,7 @@ class FiguritaService {
     lateinit var figuritas: List<Figurita>
     fun getFiguritaFiltrado(nombreABuscar: String) = figuritaRepository.search(nombreABuscar)
 
-    fun getFigurines() :List<Figurita> = this.figuritas
+    fun getFigurines() :List<Figurita> = figuritaRepository.allInstances()
 
     fun getFiguritasRepetidas(idUsuario: Int, desde: Int?, hasta: Int?,
                               esPromesa: Boolean?, esOnFire: Boolean?): List<Figurita> {
