@@ -1,8 +1,7 @@
 package ar.edu.unsam.algo3.service
 
 import Figurita
-import ar.edu.unsam.algo3.dto.FiguritaDTO
-import ar.edu.unsam.algo3.dto.toDTO
+import ar.edu.unsam.algo3.dto.*
 import ar.edu.unsam.algo3.repository.RepoFigurita
 import ar.edu.unsam.algo3.repository.RepoUser
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,29 +16,31 @@ class FiguritaService {
     @Autowired
     lateinit var usuarioRepository: RepoUser
 
-    lateinit var figuritas: List<Figurita>
+    lateinit var figuritas: List<FiguritaUsuarioDTO>
     fun getFiguritaFiltrado(nombreABuscar: String) = figuritaRepository.search(nombreABuscar)
 
     fun getFigurines() :List<Figurita> = figuritaRepository.allInstances()
 
     fun getFiguritasRepetidas(idUsuario: Int, nombreABuscar: String?, desde: Int?, hasta: Int?,
-                              esPromesa: Boolean?, esOnFire: Boolean?): List<Figurita> {
-        figuritasRepetidas(idUsuario)
-        filtrarBusqueda(nombreABuscar)
-        filtrarDesde(desde)
-        filtrarHasta(hasta)
-        filtrarPromesa(esPromesa)
-        filtrarOnFire(esOnFire)
-        return this.figuritas//.map {it.toDTO()}
+                              esPromesa: Boolean?, esOnFire: Boolean?): List<FiguritaUsuarioDTO> {
+        figuritasRepetidas()
+        //filtrarBusqueda(nombreABuscar)
+        //filtrarDesde(desde)
+        //filtrarHasta(hasta)
+        //filtrarPromesa(esPromesa)
+        //filtrarOnFire(esOnFire)
+        return this.figuritas
     }
 
     fun getFiguritasById(idFigurita: Int) = figuritaRepository.getById(idFigurita)
 
-    private fun figuritasRepetidas(idUsuario: Int, ) {
-        this.figuritas = usuarioRepository.allInstancesExcludeId(idUsuario)
-            .flatMap { it.figuritasRepetidas }
+    fun figuritasRepetidas() {
+        this.figuritas = usuarioRepository.allInstances().flatMap { usuario ->
+            usuario.figuritasRepetidas.map { figurita -> figurita.toDTOFigurita(usuario, figurita) }
+        }
     }
 
+    /*
     private fun filtrarBusqueda(nombreABuscar: String?) {
         if (nombreABuscar === null || nombreABuscar === ""){
         } else {
@@ -75,6 +76,8 @@ class FiguritaService {
             this.figuritas = this.figuritas.filter{ it.onFire }
         }
     }
+
+     */
 
     fun getFiguritasFaltantesUsuario(idUsuario : Int) = usuarioRepository.filterById(idUsuario).flatMap { it.figuritasFaltantes }
 

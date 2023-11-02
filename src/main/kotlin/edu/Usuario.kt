@@ -182,6 +182,8 @@ class Usuario (
     @JsonProperty
     fun posicionY() = direccion.ubicacion.y
 
+    fun nombreCompleto() = "$name $apellido"
+
 }
 
 

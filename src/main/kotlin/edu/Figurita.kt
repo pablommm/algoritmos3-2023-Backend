@@ -50,6 +50,9 @@ class Figurita(
     @JsonProperty
     fun esLider():Boolean = jugador.lider
 
+    @JsonProperty
+    fun edad():Int = jugador.aniosDelJugador().toInt()
+
 
 
 
