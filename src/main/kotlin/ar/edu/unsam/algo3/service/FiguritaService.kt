@@ -23,7 +23,7 @@ class FiguritaService {
 
     fun getFiguritasRepetidas(idUsuario: Int, nombreABuscar: String?, desde: Int?, hasta: Int?,
                               esPromesa: Boolean?, esOnFire: Boolean?): List<FiguritaUsuarioDTO> {
-        figuritasRepetidas()
+        figuritasRepetidas(idUsuario)
         //filtrarBusqueda(nombreABuscar)
         //filtrarDesde(desde)
         //filtrarHasta(hasta)
@@ -32,11 +32,12 @@ class FiguritaService {
         return this.figuritas
     }
 
-    fun getFiguritasById(idFigurita: Int) = figuritaRepository.getById(idFigurita)
+    fun getFiguritasById(idFigurita: Int) = usuarioRepository.allInstances().flatMap { usuario ->
+        usuario.figuritasRepetidas.map { figurita -> figurita.toDTOFigurita(usuario, figurita) }.filter { it.figurita.id == idFigurita }}.first()
 
-    fun figuritasRepetidas() {
+    fun figuritasRepetidas(idUsuario: Int) {
         this.figuritas = usuarioRepository.allInstances().flatMap { usuario ->
-            usuario.figuritasRepetidas.map { figurita -> figurita.toDTOFigurita(usuario, figurita) }
+            usuario.figuritasRepetidas.map { figurita -> figurita.toDTOFigurita(usuario, figurita) }.filter { it.idUsuario != idUsuario }
         }
     }
 
