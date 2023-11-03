@@ -17,6 +17,14 @@ public object DireccionService {
     var localidadesMendoza: MutableList<String> = mutableListOf("Río Cuarto", "Córdoba", "Villa María", "Morteros")
     var localidadesCordoba: MutableList<String> = mutableListOf("Mendoza", "San Rafael", "Godoy Cruz", "Guaymallén")
     var localidades : MutableList<String> = mutableListOf("Cordoba", "Mendoza", "Buenos Aires","Jujuy","La Matanza", "La Plata", "Lanús", "Lomas de Zamora","Mendoza", "San Rafael", "Godoy Cruz", "Guaymallén","Río Cuarto", "Córdoba", "Villa María", "Morteros")
+    val criterios = listOf (
+        "nacionalista",
+        "Conservador",
+        "Fanatico",
+        "Desprendido",
+        "Apostador",
+        "Interesado",
+        "Conservador")
     /*fun getProvinciasService(): MutableList<String> {
         return provincias
     }*/
