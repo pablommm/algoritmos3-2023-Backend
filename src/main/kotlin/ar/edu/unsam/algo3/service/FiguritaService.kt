@@ -32,14 +32,12 @@ class FiguritaService {
         return this.figuritas
     }
 
-    fun getFiguritasById(idFigurita: Int) = usuarioRepository.allInstances().flatMap { usuario ->
-        usuario.figuritasRepetidas.map { figurita -> figurita.toDTOFigurita(usuario, figurita) }.filter { it.figurita.id == idFigurita }}.first()
+    fun getFiguritasById(idFigurita: Int) = getFiguritasUsuarioDTO(idFigurita).filter { it.figurita.id == idFigurita }.first()
 
-    fun figuritasRepetidas(idUsuario: Int) {
-        this.figuritas = usuarioRepository.allInstances().flatMap { usuario ->
-            usuario.figuritasRepetidas.map { figurita -> figurita.toDTOFigurita(usuario, figurita) }.filter { it.idUsuario != idUsuario }
-        }
+    private fun figuritasRepetidas(idUsuario: Int) {
+        this.figuritas = getFiguritasUsuarioDTO(idUsuario).filter { it.idUsuario != idUsuario }
     }
+
 
     /*
     private fun filtrarBusqueda(nombreABuscar: String?) {
@@ -80,7 +78,10 @@ class FiguritaService {
 
      */
 
-    fun getFiguritasFaltantesUsuario(idUsuario : Int) = usuarioRepository.filterById(idUsuario).flatMap { it.figuritasFaltantes }
+    fun getFiguritasFaltantesUsuario(idUsuario : Int) = getFiguritasUsuarioDTO(idUsuario).filter { it.idUsuario == idUsuario }
 
-    fun getFiguritasRepetidasUsuario(idUsuario : Int) = usuarioRepository.filterById(idUsuario).flatMap { it.figuritasRepetidas }
+    fun getFiguritasRepetidasUsuario(idUsuario : Int) = getFiguritasUsuarioDTO(idUsuario).filter { it.idUsuario == idUsuario }
+
+    private fun getFiguritasUsuarioDTO(idBusqueda: Int) = usuarioRepository.allInstances().flatMap { usuario ->
+        usuario.figuritasRepetidas.map { figurita -> figurita.toDTOFigurita(usuario, figurita) }}
 }
