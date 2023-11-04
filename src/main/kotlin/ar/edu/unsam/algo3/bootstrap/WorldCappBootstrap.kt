@@ -129,15 +129,6 @@ class WorldCappBootstrap: InitializingBean {
 
 
 
-    val provinciasYLocalidades = mapOf(
-        "Buenos Aires" to listOf("La Plata", "Mar del Plata", "Bahía Blanca"),
-        "Catamarca" to listOf("San Fernando del Valle de Catamarca", "Andalgalá", "Belén"),
-        "Chaco" to listOf("Resistencia", "Barranqueras", "Villa Ángela"),
-        "Chubut" to listOf("Rawson", "Comodoro Rivadavia", "Trelew"),
-        "Córdoba" to listOf("Córdoba", "Villa María", "Río Cuarto"),
-        "Corrientes" to listOf("Corrientes", "Goya", "Mercedes"),
-
-    )
 
     val DireccionSanMartin =
         Direccion(org.uqbar.geodds.Point(-34.582137, -58.520687), "San Martin", "Buenos Aires", "25 de Mayo", 1653)
@@ -171,16 +162,6 @@ class WorldCappBootstrap: InitializingBean {
         20,
         password = "1234"
     )
-
-    val criterios = listOf (
-        "nacionalista",
-        "Conservador",
-        "Fanatico",
-        "Desprendido",
-        "Apostador",
-        "Interesado",
-        "Conservador")
-
 
     fun agregarFiguritasUsuario(){
         //usuarioPrueba.aniadirFiguritaRepetidas(figuritaLeyenda)

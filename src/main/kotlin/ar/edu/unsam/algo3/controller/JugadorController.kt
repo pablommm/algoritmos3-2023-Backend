@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class JugadorController(@Autowired val jugadorService: JugadorService) {
 
-    @GetMapping("/jugadores/")
+    @GetMapping("/jugadores")
     fun getSeleccion() = jugadorService.getJugadores()
 
 
