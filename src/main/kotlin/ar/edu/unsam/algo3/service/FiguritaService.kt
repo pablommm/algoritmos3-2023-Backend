@@ -75,10 +75,18 @@ class FiguritaService {
         }
     }
 
-    fun getFiguritasFaltantesUsuario(idUsuario : Int) = getFiguritasUsuarioDTO(idUsuario).filter { it.idUsuario == idUsuario }
+    fun getFiguritasFaltantesUsuario(idUsuario : Int) = usuarioRepository.allInstances().flatMap { usuario ->
+        usuario.figuritasFaltantes.map { figurita -> figurita.toDTOFigurita(usuario, figurita) }}.filter { it.idUsuario == idUsuario }
 
     fun getFiguritasRepetidasUsuario(idUsuario : Int) = getFiguritasUsuarioDTO(idUsuario).filter { it.idUsuario == idUsuario }
 
     private fun getFiguritasUsuarioDTO(idBusqueda: Int) = usuarioRepository.allInstances().flatMap { usuario ->
         usuario.figuritasRepetidas.map { figurita -> figurita.toDTOFigurita(usuario, figurita) }}
+
+    fun solicitarFigurita(idUsuarioLogueado: Int, usuarioFigurita: FiguritaUsuarioDTO) {
+        val usuarioLogueado = usuarioRepository.getById(idUsuarioLogueado)
+        val usuarioASolicitar = usuarioRepository.getById(usuarioFigurita.idUsuario)
+        val figurita = figuritaRepository.getById(usuarioFigurita.figurita.id)
+        usuarioLogueado.solicitar(figurita, usuarioASolicitar)
+    }
 }

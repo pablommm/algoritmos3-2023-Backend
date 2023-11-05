@@ -1,6 +1,8 @@
 package ar.edu.unsam.algo3.controller
 
 import Figurita
+import ar.edu.unsam.algo3.dto.FiguritaUsuarioDTO
+import ar.edu.unsam.algo3.dto.UsuarioLoginDTO
 import ar.edu.unsam.algo3.service.FiguritaService
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.beans.factory.annotation.Autowired
@@ -40,4 +42,7 @@ class FigurinesController (@Autowired val figuritaService :FiguritaService ){
     @Operation(summary = "Trae todas las figuritas repetidas del usuario logueado")
     fun getFiguritasRepetidasUsuario(@PathVariable idUsuario : Int) = figuritaService.getFiguritasRepetidasUsuario(idUsuario)
 
+    @PostMapping("/DetallesFigurita/{idUsuarioLogueado}")
+    fun getDetallesFigurita(@PathVariable idUsuarioLogueado: Int,
+                            @RequestBody usuarioFigurita: FiguritaUsuarioDTO) = figuritaService.solicitarFigurita(idUsuarioLogueado, usuarioFigurita)
 }
