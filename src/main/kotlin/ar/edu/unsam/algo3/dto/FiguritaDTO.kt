@@ -14,13 +14,14 @@ fun Figurita.toDTOFigurita(usuario : Usuario, figurita : Figurita) = FiguritaUsu
 data class FiguritaDTO(val id : Int, val numero : Int, val nivelDeImpresion: NivelDeImpresion, val onFire: Boolean, val imagen: String, val nombre: String,
                        val apellido: String, val fechaNacimiento: LocalDate, val numeroCamiseta: Int, val seleccion: String, val copasDelMundo: Int,
                        val copasConfederacion: Int, val anioDebut: LocalDate, val altura: Double, val peso: Double, val posicion: String,
-                       val cotizacionJugador: Int, val esLider: Boolean, val edad: Int, val valoracionBase: Double, val valoracionFigurita: Double)
+                       val cotizacionJugador: Int, val esLider: Boolean, val edad: Int, val valoracionBase: Double, val valoracionFigurita: Double, val esJugadorPromesa: Boolean)
 
 
 fun Figurita.toDTO() = FiguritaDTO(id = id, numero = numero, nivelDeImpresion = nivelDeImpresion, onFire = onFire, imagen = imagen, nombre = nombre(), apellido = apellido(),
                                     fechaNacimiento = fechaNacimiento(), numeroCamiseta = numeroCamiseta(), seleccion = seleccion(), copasDelMundo = copasDelMundo(),
                                     copasConfederacion = copasConfederacion(), anioDebut = anioDebut(), altura = altura(), peso = peso(), posicion = posicion(),
-                                    cotizacionJugador = cotizacionJugador(), esLider = esLider(), edad = edad(), valoracionBase = valoracionBase(), valoracionFigurita = valoracionFigurita())
+                                    cotizacionJugador = cotizacionJugador(), esLider = esLider(), edad = edad(), valoracionBase = valoracionBase(),
+                                    valoracionFigurita = valoracionFigurita(), esJugadorPromesa = esJugadorPromesa())
 
 
 

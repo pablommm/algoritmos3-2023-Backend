@@ -20,12 +20,12 @@ class FigurinesController (@Autowired val figuritaService :FiguritaService ){
     @GetMapping("/FiguritasRepetidas/{idUsuario}")
     @Operation(summary = "Trae todas las figuritas repetidas menos las del usuario logueado")
     fun getFiguritasRepetidas(@PathVariable idUsuario : Int,
-                              @PathVariable nombreABuscar: String?,
+                              @RequestParam campoDeBusqueda: String? = "",
                               @RequestParam desde: Int? = 0,
                               @RequestParam hasta: Int? = 0,
                               @RequestParam esPromesa: Boolean? = false,
                               @RequestParam esOnFire: Boolean? = false)
-    = figuritaService.getFiguritasRepetidas(idUsuario,nombreABuscar, desde, hasta, esPromesa, esOnFire)
+    = figuritaService.getFiguritasRepetidas(idUsuario,campoDeBusqueda, desde, hasta, esPromesa, esOnFire)
 
     @GetMapping("/DetalleFigurita/{idFigurita}")
     @Operation(summary = "Trae la figurita solicitada a partir del id, utilizada para DetalleFigurita")

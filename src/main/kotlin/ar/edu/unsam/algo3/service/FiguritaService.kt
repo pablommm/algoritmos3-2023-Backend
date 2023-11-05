@@ -21,14 +21,14 @@ class FiguritaService {
 
     fun getFigurines() :List<Figurita> = figuritaRepository.allInstances()
 
-    fun getFiguritasRepetidas(idUsuario: Int, nombreABuscar: String?, desde: Int?, hasta: Int?,
+    fun getFiguritasRepetidas(idUsuario: Int, campoDeBusqueda: String?, desde: Int?, hasta: Int?,
                               esPromesa: Boolean?, esOnFire: Boolean?): List<FiguritaUsuarioDTO> {
         figuritasRepetidas(idUsuario)
-        //filtrarBusqueda(nombreABuscar)
-        //filtrarDesde(desde)
-        //filtrarHasta(hasta)
-        //filtrarPromesa(esPromesa)
-        //filtrarOnFire(esOnFire)
+        filtrarBusqueda(campoDeBusqueda)
+        filtrarDesde(desde)
+        filtrarHasta(hasta)
+        filtrarPromesa(esPromesa)
+        filtrarOnFire(esOnFire)
         return this.figuritas
     }
 
@@ -38,19 +38,18 @@ class FiguritaService {
         this.figuritas = getFiguritasUsuarioDTO(idUsuario).filter { it.idUsuario != idUsuario }
     }
 
-
-    /*
-    private fun filtrarBusqueda(nombreABuscar: String?) {
-        if (nombreABuscar === null || nombreABuscar === ""){
+    private fun filtrarBusqueda(campoDeBusqueda: String?) {
+        if (campoDeBusqueda === null || campoDeBusqueda === ""){
         } else {
-            this.figuritas = this.figuritas.filter { it.busqueda(nombreABuscar) }
+            val campoBusqueda = campoDeBusqueda.uppercase()
+            this.figuritas = this.figuritas.filter { it.figurita.nombre.uppercase().contains(campoBusqueda) || it.figurita.apellido.uppercase().contains(campoBusqueda)}
         }
     }
 
     private fun filtrarDesde(desde: Int?){
         if(desde == null || desde == 0){
         } else {
-            this.figuritas = this.figuritas.filter { it.valoracionFigurita()>= desde!!}
+            this.figuritas = this.figuritas.filter { it.figurita.valoracionFigurita >= desde!!}
         }
     //&& (hasta === null || hasta === 0)
     }
@@ -58,25 +57,23 @@ class FiguritaService {
     private fun filtrarHasta(hasta: Int?){
         if(hasta == null || hasta == 0){
         } else {
-            this.figuritas = this.figuritas.filter {it.valoracionFigurita()<= hasta!! }
+            this.figuritas = this.figuritas.filter {it.figurita.valoracionFigurita <= hasta!! }
         }
     }
 
     private fun filtrarPromesa(esPromesa: Boolean?) {
         if((esPromesa == null || esPromesa == false)){
         } else {
-            this.figuritas = this.figuritas.filter{ it.esJugadorPromesa() }
+            this.figuritas = this.figuritas.filter{ it.figurita.esJugadorPromesa }
         }
     }
 
     private fun filtrarOnFire(esOnFire: Boolean?) {
         if((esOnFire == null || esOnFire == false)){
         } else {
-            this.figuritas = this.figuritas.filter{ it.onFire }
+            this.figuritas = this.figuritas.filter{ it.figurita.onFire }
         }
     }
-
-     */
 
     fun getFiguritasFaltantesUsuario(idUsuario : Int) = getFiguritasUsuarioDTO(idUsuario).filter { it.idUsuario == idUsuario }
 
