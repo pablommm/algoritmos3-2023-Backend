@@ -43,6 +43,14 @@ class FigurinesController (@Autowired val figuritaService :FiguritaService ){
     fun getFiguritasRepetidasUsuario(@PathVariable idUsuario : Int) = figuritaService.getFiguritasRepetidasUsuario(idUsuario)
 
     @PostMapping("/DetallesFigurita/{idUsuarioLogueado}")
-    fun getDetallesFigurita(@PathVariable idUsuarioLogueado: Int,
+    fun solicitarFigurita(@PathVariable idUsuarioLogueado: Int,
                             @RequestBody usuarioFigurita: FiguritaUsuarioDTO) = figuritaService.solicitarFigurita(idUsuarioLogueado, usuarioFigurita)
+
+    @PostMapping("/PerfilUsuario/FiguritasRepetidas/QuitarFigurita/{idUsuarioLogueado}")
+    fun quitarFiguritaRepetida(@PathVariable idUsuarioLogueado: Int,
+                            @RequestBody idFigurita: Int) = figuritaService.quitarFiguritaRepetida(idUsuarioLogueado, idFigurita)
+
+    @PostMapping("/PerfilUsuario/FiguritasFaltantes/QuitarFigurita/{idUsuarioLogueado}")
+    fun quitarFiguritaFaltante(@PathVariable idUsuarioLogueado: Int,
+                               @RequestBody idFigurita: Int) = figuritaService.quitarFiguritaFaltante(idUsuarioLogueado, idFigurita)
 }
