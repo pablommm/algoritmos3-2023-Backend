@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*
 
 
 @RestController
+@CrossOrigin("http://localhost:4200/")
 class SeleccionController( @Autowired val seleccionService: SeleccionService
 ) {
 
