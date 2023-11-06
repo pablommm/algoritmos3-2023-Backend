@@ -12,4 +12,5 @@ class JugadorService {
     lateinit var jugadorRepo: RepoJugador
 
     fun getJugadores() :List<Jugador> = jugadorRepo.allInstances()
+    fun getJugadores(id: Int) = jugadorRepo.getById(id)
 }

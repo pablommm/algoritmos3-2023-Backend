@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*
 class SeleccionController( @Autowired val seleccionService: SeleccionService
 ) {
 
-    @GetMapping("/Selecciones")
+    @GetMapping("/Selecciones/")
     fun getSeleccion() = seleccionService.getSelecciones()
 
     @GetMapping("/Seleccion/{id}")
