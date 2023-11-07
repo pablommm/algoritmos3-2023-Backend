@@ -89,4 +89,16 @@ class FiguritaService {
         val figurita = figuritaRepository.getById(usuarioFigurita.figurita.id)
         usuarioLogueado.solicitar(figurita, usuarioASolicitar)
     }
+
+    fun quitarFiguritaRepetida(idUsuarioLogueado: Int, idFigurita: Int) {
+        val usuarioLogueado = usuarioRepository.getById(idUsuarioLogueado)
+        val figuritaASacar = figuritaRepository.getById(idFigurita)
+        usuarioLogueado.quitarFiguritaRepetidas(figuritaASacar)
+    }
+
+    fun quitarFiguritaFaltante(idUsuarioLogueado: Int, idFigurita: Int) {
+        val usuarioLogueado = usuarioRepository.getById(idUsuarioLogueado)
+        val figuritaASacar = figuritaRepository.getById(idFigurita)
+        usuarioLogueado.quitarFiguritaFaltantes(figuritaASacar)
+    }
 }
