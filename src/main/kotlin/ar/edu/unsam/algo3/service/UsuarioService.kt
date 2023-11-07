@@ -34,6 +34,9 @@ class UsuarioService {
             return 0
         }
     }
+    //fun updateUser(user: UsuarioLoginDTO) = repoUsuario.update(user)
+
+
     fun getUserFiltrado(nombreABuscar: String) = repoUsuario.search(nombreABuscar)
 
     //fun getListaTiposUsuarios(criterio: TipoDeUsuario) = repoUsuario.

@@ -38,6 +38,7 @@ class UserController(@Autowired val userService : UsuarioService) {
         return userService.updateUser(usuarioBody)
     }
 
+
     @DeleteMapping("/Usuario/{id}")
     fun deleteUsuario(@PathVariable id : Int) = userService.deleteUser(id)
 

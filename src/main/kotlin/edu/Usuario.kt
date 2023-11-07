@@ -9,7 +9,7 @@ import java.time.LocalDate
 class Usuario (
     val name: String = "",
     val apellido: String = "",
-    @JsonIgnore
+    //@JsonIgnore
     var username: String = "",
     var fechaDeNacimiento: LocalDate = LocalDate.now(),
     val email: String = "",
