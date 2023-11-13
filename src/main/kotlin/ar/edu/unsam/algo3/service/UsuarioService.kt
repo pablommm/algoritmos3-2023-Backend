@@ -1,5 +1,6 @@
 package ar.edu.unsam.algo3.service
 
+import BusinessException
 import TipoDeUsuario
 import Usuario
 import ar.edu.unsam.algo3.dto.UsuarioLoginDTO
@@ -31,7 +32,7 @@ class UsuarioService {
         if(repoUsuario.getUserPass(user).isNotEmpty()) {
             return repoUsuario.getUserPass(user).first().id
         } else {
-            return 0
+            throw BusinessException("El usuario ingresado es incorrecto")
         }
     }
     //fun updateUser(user: UsuarioLoginDTO) = repoUsuario.update(user)
