@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin("*")
 class UserController(@Autowired val userService : UsuarioService) {
     @GetMapping("/Usuario/")
     fun getUsuario() = userService.getUser()
