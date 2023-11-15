@@ -1,14 +1,12 @@
 package ar.edu.unsam.algo3.repository
-import Direccion
 import Entidad
 import Figurita
 import Jugador
 import PuntoDeVentas
 import Seleccion
-import TipoDeUsuario
 import Usuario
 import ar.edu.unsam.algo3.dto.UsuarioLoginDTO
-import genericException
+import GenericException
 import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
 @Component
@@ -54,10 +52,10 @@ open class Repositorio<T : Entidad>() {
 
 
     fun validarInExistencia(elemento: T) {
-     if (existeElId(elemento.id)) throw genericException("No se pudo crear, ID ya se encuentra utilizado")
+     if (existeElId(elemento.id)) throw GenericException("No se pudo crear, ID ya se encuentra utilizado")
  }
     fun validarId(id: Int) {
-        if (!existeElId(id)) throw genericException("El ID $id no es valido")
+        if (!existeElId(id)) throw GenericException("El ID $id no es valido")
     }
 
     /*fun orderByAscending(parameterName: String): List<T> {

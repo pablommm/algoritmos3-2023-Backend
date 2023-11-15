@@ -60,16 +60,16 @@ abstract class PuntoDeVentas(
 
     // validaciones
     fun validacionDeVenta(cantidadDeSobres: Int) {
-        if (pedidoSuperioarA(cantidadDeSobres)) throw genericException("No tenemos el stock que solicita")
+        if (pedidoSuperioarA(cantidadDeSobres)) throw GenericException("No tenemos el stock que solicita")
     }
     fun esValidoNombre() :Boolean = nombre.esValido()
     fun validarNombre(){
         if(!esValidoNombre()) throw ExceptionNombre()
     }
     fun esValidoStockDeSobre() :Boolean = stockDeSobres >= 0
-    fun validarStockDeSobres(){if(!esValidoStockDeSobre())throw genericException("El numero no es valido ")}
+    fun validarStockDeSobres(){if(!esValidoStockDeSobre())throw GenericException("El numero no es valido ")}
     fun esValidoPedidoPendientesDeEntrega():Boolean = pedidosPendientes != null
-    fun validarPedidoPendientesDeEntrega(){if(!esValidoPedidoPendientesDeEntrega())throw genericException("El numero no es valido ")}
+    fun validarPedidoPendientesDeEntrega(){if(!esValidoPedidoPendientesDeEntrega())throw GenericException("El numero no es valido ")}
     override fun validar() {
         validarNombre()
         validarStockDeSobres()

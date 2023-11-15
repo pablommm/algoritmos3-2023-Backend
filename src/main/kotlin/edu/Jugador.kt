@@ -60,13 +60,13 @@ class Jugador(
     fun esValidoApellido() :Boolean = apellido.isNotEmpty()
     fun validarApellido(){ if(!esValidoApellido()) throw ExceptionApellido() }
     fun esValidoaAltura() :Boolean = altura >=0
-    fun validarAltura(){ if(!esValidoaAltura()) throw genericException("altura no valida")}
+    fun validarAltura(){ if(!esValidoaAltura()) throw GenericException("altura no valida")}
     fun esValidoPeso() :Boolean = peso >=0
-    fun validarPeso(){ if(!esValidoPeso()) throw genericException("peso no valida") }
+    fun validarPeso(){ if(!esValidoPeso()) throw GenericException("peso no valida") }
     fun esValidoNroDeCamiseta() :Boolean = nroDeCamiseta in 1..99
-    fun validarnroDeCamiseta(){ if(!esValidoNroDeCamiseta()) throw genericException("El numero de camiseta no es valido ") }
+    fun validarnroDeCamiseta(){ if(!esValidoNroDeCamiseta()) throw GenericException("El numero de camiseta no es valido ") }
     fun esValidoPais() :Boolean = pais.isNotEmpty()
-    fun validarPais(){ if(!esValidoPais()) throw genericException("El nombre del pais no es valida") }
+    fun validarPais(){ if(!esValidoPais()) throw GenericException("El nombre del pais no es valida") }
 
     override fun validar() {
         validarNombre()

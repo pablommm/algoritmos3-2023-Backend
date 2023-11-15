@@ -66,7 +66,7 @@ class SeleccionTest : DescribeSpec({
         seleccionArgentina.validar()
     }
     it ("Seleccion no Valida Excepcion"){
-        assertThrows<genericException> {seleccionNombreInvalido.validar()}
+        assertThrows<GenericException> {seleccionNombreInvalido.validar()}
 
         }
     it("validar cantidad de copas del mundo") {
@@ -76,7 +76,7 @@ class SeleccionTest : DescribeSpec({
             -1,
             3
         )
-        assertThrows<genericException> { seleccionCantidadCopasNegativa.validarCantidadDeCopasMundo() }
+        assertThrows<GenericException> { seleccionCantidadCopasNegativa.validarCantidadDeCopasMundo() }
 
     }
 
@@ -87,7 +87,7 @@ class SeleccionTest : DescribeSpec({
             2,
             -1
         )
-        assertThrows<genericException> { seleccionCantidadCopasConfederacionNegativa.validarCantidadDeCopasConfederacion() }
+        assertThrows<GenericException> { seleccionCantidadCopasConfederacionNegativa.validarCantidadDeCopasConfederacion() }
     }
 
 
