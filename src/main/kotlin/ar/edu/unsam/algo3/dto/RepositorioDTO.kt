@@ -14,7 +14,7 @@ data class RepositorioDTO(
     val cantidadFiguritasRepetidas: Int,
     val cantidadFiguritasFaltantes: Int
 )
-fun RepositorioGeneral.toDTO() = RepositorioDTO(cantidadPuntosDeVentas = RepositorioGeneral().cantidadRepoVentas(), cantidadUsuarios = RepoUser().cantidadElementos(),
+fun RepositorioGeneral.toDTO() = RepositorioDTO(cantidadPuntosDeVentas = RepoPuntoDeVentas().cantidadElementos(), cantidadUsuarios = RepoUser().cantidadElementos(),
     cantidadFiguritasRepetidas = RepoUser().allInstances().map { it.figuritasRepetidas.size }.sum(), cantidadFiguritasFaltantes = RepoUser().allInstances().map { it.figuritasFaltantes.size }.sum())
 
 
