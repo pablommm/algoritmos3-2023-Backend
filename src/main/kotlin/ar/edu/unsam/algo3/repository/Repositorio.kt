@@ -50,6 +50,10 @@ open class Repositorio<T : Entidad>() {
     }
     fun search(condicionDeBusqueda :String) :List<T> = this.elementos.filter { it.busqueda(condicionDeBusqueda) }
 
+    fun cantidadElementos(): Int {
+        return elementos.size
+    }
+
 
     fun validarInExistencia(elemento: T) {
      if (existeElId(elemento.id)) throw GenericException("No se pudo crear, ID ya se encuentra utilizado")
