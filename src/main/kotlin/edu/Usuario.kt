@@ -67,11 +67,11 @@ class Usuario (
 
     fun tieneRepetidaLa(figurita: Figurita) = figuritasRepetidas.contains(figurita)
     fun figuritaNoRepetida(figurita: Figurita){
-        if(!tieneRepetidaLa(figurita)) throw genericException("NO tiene la figurita repetida")
+        if(!tieneRepetidaLa(figurita)) throw GenericException("NO tiene la figurita repetida")
     }
     fun tieneFaltanteLa(figurita: Figurita) = figuritasFaltantes.contains(figurita)
     fun figuritaNoFaltante(figurita: Figurita){
-        if(!tieneFaltanteLa(figurita)) throw genericException("NO tiene la figurita faltante")
+        if(!tieneFaltanteLa(figurita)) throw GenericException("NO tiene la figurita faltante")
     }
     fun cuantasTieneRepetidas(figurita: Figurita) = figuritasRepetidas.count{ it==figurita}
 
@@ -80,7 +80,7 @@ class Usuario (
 
     fun esCercanoA(usuario: Usuario): Boolean = this.direccion.distancia(usuario.direccion) <= kmCercania
     fun cercanoA(usuario: Usuario) {
-        if (!esCercanoA(usuario)) throw genericException("El usuario no es cercano")
+        if (!esCercanoA(usuario)) throw GenericException("El usuario no es cercano")
     }
     fun esJugadorFavorito(figurita: Figurita) = jugadorFavorito == figurita.jugador
     fun cantidadFiguritaFaltantes() = figuritasFaltantes.count()
@@ -103,7 +103,7 @@ class Usuario (
     }
     fun puedeRegalarFigurita(figurita: Figurita) = tipoDeUsuario.puedeRegalar(figurita,this) && tieneRepetidaLa(figurita)
     fun validarSiPuedeRegalar(figurita: Figurita){
-        if(!puedeRegalarFigurita(figurita)) throw genericException("No puede regalar esta figurita")
+        if(!puedeRegalarFigurita(figurita)) throw GenericException("No puede regalar esta figurita")
     }
     fun validarSolicitud(figurita: Figurita, usuario: Usuario) {
         this.cercanoA(usuario)
@@ -139,10 +139,10 @@ class Usuario (
     fun validarApellido() { if(!esValidoapellido()) throw ExceptionApellido()}
 
     fun esValidoUsername() :Boolean = username.esValido()
-    fun validarUsername() { if(!esValidoUsername()) throw genericException("El username  no es valido")}
+    fun validarUsername() { if(!esValidoUsername()) throw GenericException("El username  no es valido")}
 
     fun esValidoCorreo() :Boolean = email.esValido()
-    fun validarCorreo() { if(!esValidoCorreo()) throw genericException("El correo  no es valido ")}
+    fun validarCorreo() { if(!esValidoCorreo()) throw GenericException("El correo  no es valido ")}
 
     fun validarUsuarioLogin() {
     }
@@ -159,10 +159,10 @@ class Usuario (
     }
 
     fun validarFiguritaFaltante(figurita:Figurita) {
-        if(tieneFaltanteLa(figurita)) throw genericException("error,la figurita  se encuentra en figuritas faltantes")
+        if(tieneFaltanteLa(figurita)) throw GenericException("error,la figurita  se encuentra en figuritas faltantes")
     }
     fun validarFiguritaRepetida(figurita: Figurita){
-        if(tieneRepetidaLa(figurita)) throw genericException("error, la figurita se encuentra en figuritas repetidas")
+        if(tieneRepetidaLa(figurita)) throw GenericException("error, la figurita se encuentra en figuritas repetidas")
     }
 
     fun tieneRepetidas() = figuritasRepetidas.count() >0

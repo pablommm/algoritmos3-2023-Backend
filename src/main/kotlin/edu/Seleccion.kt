@@ -25,13 +25,13 @@ class Seleccion(
     }
     fun esValidaConfederacion() = confederacion !=null
     fun validarConfederacion(){
-        if (!esValidaConfederacion()) throw genericException("La conferacion  no es valido ")
+        if (!esValidaConfederacion()) throw GenericException("La conferacion  no es valido ")
     }
     fun esValidaCantidadCopasDelMundo():Boolean = cantidadDeCopasDelMundo >= 0
-    fun validarCantidadDeCopasMundo(){if(!esValidaCantidadCopasDelMundo()) throw genericException("El numero de copas  del mundo  no es valido ")}
+    fun validarCantidadDeCopasMundo(){if(!esValidaCantidadCopasDelMundo()) throw GenericException("El numero de copas  del mundo  no es valido ")}
 
     fun esValidaCantidadCopasConfederacion():Boolean= cantidadCopasConfederacion >= 0
-    fun validarCantidadDeCopasConfederacion(){if(!esValidaCantidadCopasConfederacion()) throw  genericException("El numero de copas  confederaciones no es valido ")}
+    fun validarCantidadDeCopasConfederacion(){if(!esValidaCantidadCopasConfederacion()) throw  GenericException("El numero de copas  confederaciones no es valido ")}
     override fun validar() {
         validarNombre()
         validarConfederacion()

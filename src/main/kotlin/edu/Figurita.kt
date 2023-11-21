@@ -96,13 +96,13 @@ class Figurita(
 
     // validaciones
     fun esValidoNumero() :Boolean = numero.esValidoNumero()
-    fun validarNumero(){ if(!esValidoNumero()) throw genericException("El numero no es valido ") }
+    fun validarNumero(){ if(!esValidoNumero()) throw GenericException("El numero no es valido ") }
     fun esValidaNivelDeImpresion() :Boolean = nivelDeImpresion != null
-    fun ValidaNivelDeImpresion(){ if (!esValidaNivelDeImpresion()) throw genericException("Nivel de Impresion no valida")}
+    fun ValidaNivelDeImpresion(){ if (!esValidaNivelDeImpresion()) throw GenericException("Nivel de Impresion no valida")}
     fun esValidaOnFire() :Boolean = onFire != null
-    fun ValidaOnFire(){ if (!esValidaOnFire()) throw genericException("nivel On Fire no valido")}
+    fun ValidaOnFire(){ if (!esValidaOnFire()) throw GenericException("nivel On Fire no valido")}
     fun esValidaJugador() :Boolean = jugador != null
-    fun ValidaJugador(){ if (!esValidaJugador()) throw genericException("jugador no valido")}
+    fun ValidaJugador(){ if (!esValidaJugador()) throw GenericException("jugador no valido")}
 
     override fun validar() {
         ValidaNivelDeImpresion()

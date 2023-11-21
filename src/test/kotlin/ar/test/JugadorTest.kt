@@ -61,11 +61,11 @@ class JugadorTest : DescribeSpec({
     }
     it("Jugador no valido") {
         val JugadorNoValido = Jugador("","",LocalDate.now().minusYears(30),-7,Portugal,LocalDate.now().minusYears(14),-187.0,-83.0, Delantero,false,"Portugal",21000000)
-        assertThrows<genericException> { JugadorNoValido.validarApellido() }
-        assertThrows<genericException> { JugadorNoValido.validarNombre() }
-        assertThrows<genericException> { JugadorNoValido.validarnroDeCamiseta() }
-        assertThrows<genericException> { JugadorNoValido.validarAltura() }
-        assertThrows<genericException> { JugadorNoValido.validarPeso() }
+        assertThrows<GenericException> { JugadorNoValido.validarApellido() }
+        assertThrows<GenericException> { JugadorNoValido.validarNombre() }
+        assertThrows<GenericException> { JugadorNoValido.validarnroDeCamiseta() }
+        assertThrows<GenericException> { JugadorNoValido.validarAltura() }
+        assertThrows<GenericException> { JugadorNoValido.validarPeso() }
     }
     it ("metodo de busqueda"){
         Ronaldo.coincideSeleccion("Portugal").shouldBe(true)

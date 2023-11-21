@@ -215,7 +215,7 @@ class figuritaTest : DescribeSpec({
     }
     it (" validar figurita"){
         val figuritaParidadPar = Figurita(numero = -2, nivelDeImpresion = NivelDeImpresion.BAJA, onFire = true, Ronaldo)
-        assertThrows<genericException> {figuritaParidadPar.validar()  }
+        assertThrows<GenericException> {figuritaParidadPar.validar()  }
     }
     it (" cambio onfire de figurita"){
         val figuritaParidadPar = Figurita(numero = 2, nivelDeImpresion = NivelDeImpresion.BAJA, onFire = false, Ronaldo)

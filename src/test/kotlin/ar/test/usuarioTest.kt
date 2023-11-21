@@ -1,9 +1,7 @@
 import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.matchers.booleans.shouldBeFalse
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import java.time.LocalDate
@@ -98,7 +96,7 @@ class usuarioTest : DescribeSpec({
 
         it("prueba de funciones ") {
             usuarioMayorEdad.aniadirFiguritaRepetidas(figuritaRiquelme)
-            assertThrows<genericException> { usuarioMayorEdad.aniadirFiguritaFaltantes(figuritaRiquelme) }
+            assertThrows<GenericException> { usuarioMayorEdad.aniadirFiguritaFaltantes(figuritaRiquelme) }
         }
         it("una figurita que no esta repetida") {
             usuarioMayorEdad.tieneRepetidaLa(figuritamessi) shouldBe (false)
@@ -131,10 +129,10 @@ class usuarioTest : DescribeSpec({
         }
 
         it ("Error Figurita No repetida"){
-            assertThrows<genericException> {usuarioMayorEdad.figuritaNoRepetida(figuritaRiquelme)  }
+            assertThrows<GenericException> {usuarioMayorEdad.figuritaNoRepetida(figuritaRiquelme)  }
         }
         it ("Error Figurita No Faltante"){
-            assertThrows<genericException> {usuarioMayorEdad.figuritaNoFaltante(figuritaRiquelme)  }
+            assertThrows<GenericException> {usuarioMayorEdad.figuritaNoFaltante(figuritaRiquelme)  }
         }
 
 
