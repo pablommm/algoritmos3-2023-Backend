@@ -5,6 +5,7 @@ import PuntoDeVentas
 import Usuario
 import ar.edu.unsam.algo3.repository.RepoPuntoDeVentas
 import ar.edu.unsam.algo3.repository.RepoUser
+import ar.edu.unsam.algo3.repository.RepositorioGeneral
 import ar.edu.unsam.algo3.repository.Repositorio
 
 data class RepositorioDTO(
@@ -13,7 +14,7 @@ data class RepositorioDTO(
     val cantidadFiguritasRepetidas: Int,
     val cantidadFiguritasFaltantes: Int
 )
-fun Repositorio<Entidad>.toDTO() = RepositorioDTO(cantidadPuntosDeVentas = RepoPuntoDeVentas().cantidadElementos(), cantidadUsuarios = RepoUser().cantidadElementos(),
+fun RepositorioGeneral.toDTO() = RepositorioDTO(cantidadPuntosDeVentas = RepositorioGeneral().cantidadRepoVentas(), cantidadUsuarios = RepoUser().cantidadElementos(),
     cantidadFiguritasRepetidas = RepoUser().allInstances().map { it.figuritasRepetidas.size }.sum(), cantidadFiguritasFaltantes = RepoUser().allInstances().map { it.figuritasFaltantes.size }.sum())
 
 

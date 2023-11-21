@@ -85,5 +85,11 @@ class RepoJugador: Repositorio<Jugador>()
 @Repository
 class RepoUser: Repositorio<Usuario>(){
     fun getUserPass(userIdentificador: UsuarioLoginDTO) = elementos.filter { user -> user.accesoUsuario(userIdentificador) }
+
+}
+@Repository
+class RepositorioGeneral{
+    fun cantidadRepoVentas() = RepoPuntoDeVentas().cantidadElementos()
+
 }
 

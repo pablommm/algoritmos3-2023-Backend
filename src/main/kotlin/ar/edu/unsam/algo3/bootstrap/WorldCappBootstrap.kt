@@ -127,8 +127,8 @@ class WorldCappBootstrap: InitializingBean {
     val figuritasFaltantes2 = mutableListOf<Figurita>()
     val figuritasRepetidas2 = mutableListOf<Figurita>()
 
-
-
+    @Autowired(required = true)
+    lateinit var repositorioGeneral: RepositorioGeneral
 
     val DireccionSanMartin =
         Direccion(org.uqbar.geodds.Point(-34.582137, -58.520687), "San Martin", "Buenos Aires", "25 de Mayo", 1653)
