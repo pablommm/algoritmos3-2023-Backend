@@ -32,7 +32,7 @@ class UsuarioService {
         if(repoUsuario.getUserPass(user).isNotEmpty()) {
             return repoUsuario.getUserPass(user).first().id
         } else {
-            throw BusinessException("El usuario ingresado es incorrecto")
+            throw BusinessException("Los datos ingresados son incorrectos")
         }
     }
     //fun updateUser(user: UsuarioLoginDTO) = repoUsuario.update(user)
