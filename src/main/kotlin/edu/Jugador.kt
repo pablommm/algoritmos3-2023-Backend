@@ -1,4 +1,6 @@
 
+import com.fasterxml.jackson.annotation.JsonIgnore
+import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDate
 
 class Jugador(
@@ -6,11 +8,15 @@ class Jugador(
     val apellido: String = "",
     var fechaDeNacimiento: LocalDate = LocalDate.now(),
     val nroDeCamiseta: Int = 0,
+    @JsonIgnore
     val seleccion: Seleccion = Seleccion("Argentina", Confederacion.CONMEBOL, 3 , 17),
+    @JsonIgnore
     var anioDebut: LocalDate = LocalDate.now(),
     val altura: Double = 0.0,
     val peso: Double = 0.0,
+    @JsonIgnore
     var posicion: Posicion = Delantero,
+    @JsonIgnore
     var lider: Boolean = false,
     val pais: String = "",
     var cotizacion: Int = 0
@@ -44,6 +50,8 @@ class Jugador(
     fun cambiarPosicion(nuevaPosicion: Posicion) {  posicion = nuevaPosicion    }
     fun calcularFactor() =posicion.valorPorPosicion(this).toInt()
 
+    @JsonProperty
+    fun posicion():String = posicion.posicion
 
     fun coincideSeleccion(parametro:String) = seleccion.coincideSeleccion(parametro)
     fun coincideParcialNombreJugador(parametro:String) = nombre.contains(parametro)
