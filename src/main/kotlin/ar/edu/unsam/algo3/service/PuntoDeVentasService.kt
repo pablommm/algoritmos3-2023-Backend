@@ -3,7 +3,9 @@ package ar.edu.unsam.algo3.service
 import PuntoDeVentas
 import Usuario
 import ar.edu.unsam.algo3.dto.PuntoDeVentasDTO
+import ar.edu.unsam.algo3.dto.PuntosDeVentaDTOUserless
 import ar.edu.unsam.algo3.dto.toDTO
+import ar.edu.unsam.algo3.dto.toDTOUserless
 import ar.edu.unsam.algo3.repository.RepoPuntoDeVentas
 import ar.edu.unsam.algo3.repository.RepoUser
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,7 +20,7 @@ class PuntoDeVentasService {
     @Autowired
     lateinit var usuarioRepository: RepoUser
 
-    fun getPuntoDeVentas(): List<PuntoDeVentas> = puntoDeVentasRepository.allInstances()
+    fun getPuntosDeVenta(): List<PuntosDeVentaDTOUserless> = puntoDeVentasRepository.allInstances().map { it.toDTOUserless() }
 
     fun getPuntoDeVentasFiltrado(nombreABuscar: String?, criterioOrdenamiento: CriterioOrdenamiento?, idUsuario: Int): List<PuntoDeVentasDTO> {
         return this.ordenarPorCriterio(criterioOrdenamiento, nombreABuscar, idUsuario)
