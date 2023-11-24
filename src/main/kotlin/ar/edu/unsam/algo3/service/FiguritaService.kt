@@ -17,7 +17,15 @@ class FiguritaService {
     lateinit var usuarioRepository: RepoUser
 
     lateinit var figuritas: List<FiguritaUsuarioDTO>
+
+    lateinit var figuritasUserless: List<Figurita>
     fun getFiguritaFiltrado(nombreABuscar: String) = figuritaRepository.search(nombreABuscar)
+
+    fun getAllFiguritas(campoDeBusqueda: String?):List<Figurita> {
+        this.figuritasUserless = figuritaRepository.allInstances()
+        filtrarBusquedaUserless(campoDeBusqueda)
+        return this.figuritasUserless
+    }
 
     fun getFigurines() :List<Figurita> = figuritaRepository.allInstances()
 
@@ -43,6 +51,14 @@ class FiguritaService {
         } else {
             val campoBusqueda = campoDeBusqueda.uppercase()
             this.figuritas = this.figuritas.filter { it.figurita.nombre.uppercase().contains(campoBusqueda) || it.figurita.apellido.uppercase().contains(campoBusqueda)}
+        }
+    }
+
+    private fun filtrarBusquedaUserless(campoDeBusqueda: String?) {
+        if (campoDeBusqueda === null || campoDeBusqueda === ""){
+        } else {
+            val campoBusqueda = campoDeBusqueda.uppercase()
+            this.figuritasUserless = this.figuritasUserless.filter { it.nombre().uppercase().contains(campoBusqueda) || it.apellido().uppercase().contains(campoBusqueda)}
         }
     }
 
