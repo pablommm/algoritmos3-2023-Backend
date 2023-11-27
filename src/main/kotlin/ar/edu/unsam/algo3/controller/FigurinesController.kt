@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*
 import ar.edu.unsam.algo3.dto.toDTO
 
 @RestController
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin("*")
 class FigurinesController (@Autowired val figuritaService :FiguritaService ){
 
     @GetMapping("/BusquedaFiguritasPerfil/")

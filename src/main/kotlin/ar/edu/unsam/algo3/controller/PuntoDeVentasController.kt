@@ -1,6 +1,7 @@
 package ar.edu.unsam.algo3.controller
 
 import PuntoDeVentas
+import ar.edu.unsam.algo3.dto.UsuarioLoginDTO
 import ar.edu.unsam.algo3.service.CriterioOrdenamiento
 import ar.edu.unsam.algo3.service.PuntoDeVentasService
 import io.swagger.v3.oas.annotations.Operation
@@ -20,6 +21,9 @@ class PuntoDeVentasController(@Autowired val puntoDeVentasService: PuntoDeVentas
     @GetMapping("/puntoDeVentas/")
     fun getAllPuntoDeVentas()
             = puntoDeVentasService.getPuntosDeVenta()
+
+    @DeleteMapping("/deletePuntoDeVentas")
+    fun deletePuntoDeVentas (@RequestParam("idPuntoDeVentas") idPuntoDeVentas: Int) = puntoDeVentasService.deletePuntoDeVenta(idPuntoDeVentas)
 
     //@GetMapping("/puntoDeVentas/")
     //fun getPuntoDeVentas() = puntoDeVentasService.getPuntoDeVentasFiltrado(null)

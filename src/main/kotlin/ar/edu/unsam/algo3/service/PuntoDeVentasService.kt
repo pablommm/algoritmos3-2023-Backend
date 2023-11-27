@@ -64,6 +64,10 @@ class PuntoDeVentasService {
             else -> {return this.orderByAscendingDistancia(idUsuario, nombreABuscar)}
         }
     }
+
+    fun deletePuntoDeVenta(id: Int) {
+        puntoDeVentasRepository.delete(puntoDeVentasRepository.getById(id))
+    }
 }
 
 enum class CriterioOrdenamiento {
