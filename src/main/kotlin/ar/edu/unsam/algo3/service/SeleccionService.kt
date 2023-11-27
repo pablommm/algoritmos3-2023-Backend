@@ -11,7 +11,7 @@ class SeleccionService {
     @Autowired
     lateinit var repoSeleccion: RepoSeleccion
 
-    fun getSelecciones() = repoSeleccion.allInstances()
+    fun getSelecciones(campoDeBusqueda: String?) = repoSeleccion.searchByName(campoDeBusqueda)
     fun getSeleccion(id: Int) = repoSeleccion.getById(id)
 
     fun deleteSeleccion(id: Int) {

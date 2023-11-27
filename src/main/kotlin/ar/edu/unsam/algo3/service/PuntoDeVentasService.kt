@@ -20,7 +20,7 @@ class PuntoDeVentasService {
     @Autowired
     lateinit var usuarioRepository: RepoUser
 
-    fun getPuntosDeVenta(): List<PuntosDeVentaDTOUserless> = puntoDeVentasRepository.allInstances().map { it.toDTOUserless() }
+    fun getPuntosDeVenta(campoDeBusqueda: String?): List<PuntosDeVentaDTOUserless> = puntoDeVentasRepository.searchByName(campoDeBusqueda).map { it.toDTOUserless() }
 
     fun getPuntoDeVentasFiltrado(nombreABuscar: String?, criterioOrdenamiento: CriterioOrdenamiento?, idUsuario: Int): List<PuntoDeVentasDTO> {
         return this.ordenarPorCriterio(criterioOrdenamiento, nombreABuscar, idUsuario)

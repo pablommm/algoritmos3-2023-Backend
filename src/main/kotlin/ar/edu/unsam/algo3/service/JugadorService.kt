@@ -11,6 +11,6 @@ class JugadorService {
     @Autowired
     lateinit var jugadorRepo: RepoJugador
 
-    fun getJugadores() :List<Jugador> = jugadorRepo.allInstances()
+    fun getJugadores(campoDeBusqueda: String?) :List<Jugador> = jugadorRepo.searchByName(campoDeBusqueda)
     fun getJugadores(id: Int) = jugadorRepo.getById(id)
 }

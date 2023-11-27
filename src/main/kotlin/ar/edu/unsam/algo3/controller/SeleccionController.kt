@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*
 
 
 @RestController
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin("*")
 class SeleccionController( @Autowired val seleccionService: SeleccionService
 ) {
 
     @GetMapping("/Selecciones")
-    fun getSeleccion() = seleccionService.getSelecciones()
+    fun getSeleccion(@RequestParam campoDeBusqueda: String? = "") = seleccionService.getSelecciones(campoDeBusqueda)
 
     @GetMapping("/Seleccion/{id}")
     @Operation(summary = "Devuelve una seleccion buscado por id")

@@ -19,8 +19,8 @@ class PuntoDeVentasController(@Autowired val puntoDeVentasService: PuntoDeVentas
     = puntoDeVentasService.getPuntoDeVentasFiltrado(campoDeBusqueda, criterioOrdenamiento, idUsuario)
 
     @GetMapping("/puntoDeVentas/")
-    fun getAllPuntoDeVentas()
-            = puntoDeVentasService.getPuntosDeVenta()
+    fun getAllPuntoDeVentas(@RequestParam campoDeBusqueda: String? = "")
+            = puntoDeVentasService.getPuntosDeVenta(campoDeBusqueda)
 
     @DeleteMapping("/deletePuntoDeVentas")
     fun deletePuntoDeVentas (@RequestParam("idPuntoDeVentas") idPuntoDeVentas: Int) = puntoDeVentasService.deletePuntoDeVenta(idPuntoDeVentas)

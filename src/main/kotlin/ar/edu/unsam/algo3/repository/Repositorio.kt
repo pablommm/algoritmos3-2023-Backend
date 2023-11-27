@@ -73,15 +73,48 @@ open class Repositorio<T : Entidad>() {
 }
 
 @Repository
-class  RepoSeleccion: Repositorio<Seleccion>()
+class  RepoSeleccion: Repositorio<Seleccion>() {
+    fun searchByName(campoDeBusqueda: String?): List<Seleccion> {
+        if (campoDeBusqueda === null || campoDeBusqueda === "") {
+            return allInstances()
+        } else {
+            val campoBusqueda = campoDeBusqueda.uppercase()
+            return elementos.filter {
+                it.nombre.uppercase().contains(campoBusqueda)
+            }
+        }
+    }
+}
 
 @Repository
-class RepoPuntoDeVentas: Repositorio<PuntoDeVentas>()
+class RepoPuntoDeVentas: Repositorio<PuntoDeVentas>() {
+    fun searchByName(campoDeBusqueda: String?): List<PuntoDeVentas> {
+        if (campoDeBusqueda === null || campoDeBusqueda === "") {
+            return allInstances()
+        } else {
+            val campoBusqueda = campoDeBusqueda.uppercase()
+            return elementos.filter {
+                it.nombre.uppercase().contains(campoBusqueda)
+            }
+        }
+    }
+}
 @Repository
 class RepoFigurita: Repositorio<Figurita>()
 
 @Repository
-class RepoJugador: Repositorio<Jugador>()
+class RepoJugador: Repositorio<Jugador>() {
+    fun searchByName(campoDeBusqueda: String?): List<Jugador> {
+        if (campoDeBusqueda === null || campoDeBusqueda === "") {
+            return allInstances()
+        } else {
+            val campoBusqueda = campoDeBusqueda.uppercase()
+            return elementos.filter {
+                it.nombre.uppercase().contains(campoBusqueda) || it.apellido.uppercase().contains(campoBusqueda)
+            }
+        }
+    }
+}
 @Repository
 class RepoUser: Repositorio<Usuario>(){
     fun getUserPass(userIdentificador: UsuarioLoginDTO) = elementos.filter { user -> user.accesoUsuario(userIdentificador) }
