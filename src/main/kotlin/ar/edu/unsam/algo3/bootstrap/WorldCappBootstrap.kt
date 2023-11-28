@@ -111,9 +111,10 @@ class WorldCappBootstrap: InitializingBean {
     val jugadorDibu =  Jugador("Emiliano","Martinez",LocalDate.now().minusYears(18),19,argentina,LocalDate.now().minusYears(14),187.0,83.0, Arquero,false,"Argentina",100000)
     val jugadorJulian =  Jugador("Julián","Álvarez",LocalDate.now().minusYears(18),20,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",570000)
     val jugadorOrtega =  Jugador("Ariel","Ortega",LocalDate.now().minusYears(49),10,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",800000)
+    val jugadorPalacios =  Jugador("Exequiel","Palacios",LocalDate.now().minusYears(25),15,argentina,LocalDate.now().minusYears(14),187.0,83.0, Mediocampista,false,"Argentina",600000)
 
 
-    val jugadores = listOf(jugadorLeyenda,jugadorPromesa)
+    val jugadores = listOf(jugadorLeyenda, jugadorPromesa, jugadorEnzo, jugadorDalessandro, jugadorDibu, jugadorJulian, jugadorOrtega, jugadorPalacios)
     fun crearJugador() {
         jugadores.forEach { jugadorRepo.create(it)}
     }
