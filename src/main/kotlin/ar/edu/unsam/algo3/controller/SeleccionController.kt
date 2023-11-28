@@ -34,10 +34,8 @@ class SeleccionController( @Autowired val seleccionService: SeleccionService
         return seleccionService.updateSeleccion(seleccionBody)
     }
 
-    @DeleteMapping("/Seleccion/{id}")
-    fun deleteSeleccion(@PathVariable id : Int) = seleccionService.deleteSeleccion(id)
-
-
+    @DeleteMapping("/deleteSeleccion")
+    fun deletePuntoDeVentas (@RequestParam("idSeleccion") idSeleccion: Int) = seleccionService.deleteSeleccion(idSeleccion)
 
 
 

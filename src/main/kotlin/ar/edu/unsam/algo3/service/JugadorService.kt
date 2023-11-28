@@ -13,4 +13,8 @@ class JugadorService {
 
     fun getJugadores(campoDeBusqueda: String?) :List<Jugador> = jugadorRepo.searchByName(campoDeBusqueda)
     fun getJugadores(id: Int) = jugadorRepo.getById(id)
+
+    fun deleteJugador(id: Int) {
+        jugadorRepo.delete(jugadorRepo.getById(id))
+    }
 }

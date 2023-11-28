@@ -117,4 +117,8 @@ class FiguritaService {
         val figuritaASacar = figuritaRepository.getById(idFigurita)
         usuarioLogueado.quitarFiguritaFaltantes(figuritaASacar)
     }
+
+    fun deleteFigurita(id: Int) {
+        figuritaRepository.delete(figuritaRepository.getById(id))
+    }
 }

@@ -14,9 +14,6 @@ class SeleccionService {
     fun getSelecciones(campoDeBusqueda: String?) = repoSeleccion.searchByName(campoDeBusqueda)
     fun getSeleccion(id: Int) = repoSeleccion.getById(id)
 
-    fun deleteSeleccion(id: Int) {
-        repoSeleccion.delete(repoSeleccion.getById(id))
-    }
     fun updateSeleccion(seleccion: Seleccion) = repoSeleccion.update(seleccion)
 
     fun create(nuevaSeleccion: Seleccion): Seleccion { repoSeleccion.create(nuevaSeleccion)
@@ -24,6 +21,10 @@ class SeleccionService {
     }
 
     fun getSeleccionesFiltrado(nombreABuscar: String) = repoSeleccion.search(nombreABuscar)
+
+    fun deleteSeleccion(id: Int) {
+        repoSeleccion.delete(repoSeleccion.getById(id))
+    }
 
     //fun allInstance() = repoSeleccion.allInstances()
 

@@ -56,4 +56,7 @@ class FigurinesController (@Autowired val figuritaService :FiguritaService ){
     @PostMapping("/PerfilUsuario/FiguritasFaltantes/QuitarFigurita/{idUsuarioLogueado}")
     fun quitarFiguritaFaltante(@PathVariable idUsuarioLogueado: Int,
                                @RequestBody idFigurita: Int) = figuritaService.quitarFiguritaFaltante(idUsuarioLogueado, idFigurita)
+
+    @DeleteMapping("/deleteFigurita")
+    fun deletePuntoDeVentas (@RequestParam("idFigurita") idFigurita: Int) = figuritaService.deleteFigurita(idFigurita)
 }
