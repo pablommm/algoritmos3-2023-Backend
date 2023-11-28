@@ -128,12 +128,4 @@ class FiguritaService {
             figuritaRepository.delete(figurita)
         }
     }
-
-    /*fun getUsuarioLogin(user:UsuarioLoginDTO): Int {
-        if(repoUsuario.getUserPass(user).isNotEmpty()) {
-            return repoUsuario.getUserPass(user).first().id
-        } else {
-            throw BusinessException("Los datos ingresados son incorrectos")
-        }
-    }*/
 }

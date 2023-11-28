@@ -27,14 +27,4 @@ class JugadorService {
             jugadorRepo.delete(jugador)
         }
     }
-
-    /*fun deleteFigurita(id: Int) {
-        val figurita = figuritaRepository.getById(id)
-        if(usuarioRepository.allInstances().flatMap { usuario -> usuario.figuritasFaltantes}.contains(figurita)
-            || usuarioRepository.allInstances().flatMap { usuario -> usuario.figuritasRepetidas}.contains(figurita)){
-            throw BusinessException("La figurita pertenece a un usuario, y no puede ser eliminada ")
-        } else {
-            figuritaRepository.delete(figurita)
-        }
-    }*/
 }

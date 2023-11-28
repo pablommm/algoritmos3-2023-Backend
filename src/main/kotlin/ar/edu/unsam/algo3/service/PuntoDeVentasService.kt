@@ -66,7 +66,8 @@ class PuntoDeVentasService {
     }
 
     fun deletePuntoDeVenta(id: Int) {
-        puntoDeVentasRepository.delete(puntoDeVentasRepository.getById(id))
+        val puntoDeVenta = puntoDeVentasRepository.getById(id)
+        puntoDeVentasRepository.delete(puntoDeVenta)
     }
 }
 
