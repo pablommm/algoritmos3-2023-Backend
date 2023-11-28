@@ -1,5 +1,6 @@
 package ar.edu.unsam.algo3.service
 
+import BusinessException
 import Figurita
 import ar.edu.unsam.algo3.dto.*
 import ar.edu.unsam.algo3.repository.RepoFigurita
@@ -119,6 +120,20 @@ class FiguritaService {
     }
 
     fun deleteFigurita(id: Int) {
-        figuritaRepository.delete(figuritaRepository.getById(id))
+        val figurita = figuritaRepository.getById(id)
+        if(usuarioRepository.allInstances().flatMap { usuario -> usuario.figuritasFaltantes}.contains(figurita)
+            || usuarioRepository.allInstances().flatMap { usuario -> usuario.figuritasRepetidas}.contains(figurita)){
+            throw BusinessException("Los datos ingresados son incorrectos")
+        } else {
+            figuritaRepository.delete(figurita)
+        }
     }
+
+    /*fun getUsuarioLogin(user:UsuarioLoginDTO): Int {
+        if(repoUsuario.getUserPass(user).isNotEmpty()) {
+            return repoUsuario.getUserPass(user).first().id
+        } else {
+            throw BusinessException("Los datos ingresados son incorrectos")
+        }
+    }*/
 }
