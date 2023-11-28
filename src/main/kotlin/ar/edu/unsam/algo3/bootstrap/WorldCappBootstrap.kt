@@ -110,6 +110,7 @@ class WorldCappBootstrap: InitializingBean {
     val jugadorDalessandro =  Jugador("Andrés","D'Alessandro",LocalDate.now().minusYears(18),14,argentina,LocalDate.now().minusYears(14),187.0,83.0, Mediocampista,false,"Argentina",320000)
     val jugadorDibu =  Jugador("Emiliano","Martinez",LocalDate.now().minusYears(18),19,argentina,LocalDate.now().minusYears(14),187.0,83.0, Arquero,false,"Argentina",100000)
     val jugadorJulian =  Jugador("Julián","Álvarez",LocalDate.now().minusYears(18),20,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",570000)
+    val jugadorOrtega =  Jugador("Ariel","Ortega",LocalDate.now().minusYears(49),10,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,false,"Argentina",800000)
 
 
     val jugadores = listOf(jugadorLeyenda,jugadorPromesa)
@@ -125,8 +126,9 @@ class WorldCappBootstrap: InitializingBean {
     val figuritaDalessandro =Figurita(4, nivelDeImpresion = NivelDeImpresion.BAJA,true,jugadorDalessandro, imagen = "https://shorturl.at/oGR24")
     val figuritaDibu =Figurita(5, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorDibu, imagen = "https://shorturl.at/npISZ")
     val figuritaJulian =Figurita(6, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorJulian, imagen = "https://shorturl.at/rszX2")
+    val figuritaOrtega =Figurita(7, nivelDeImpresion = NivelDeImpresion.ALTA,false,jugadorOrtega, imagen = "https://shorturl.at/pqrwI")
 
-    val figuritas = listOf(figuritaLeyenda,figuritaPromesa, figuritaEnzo, figuritaDalessandro, figuritaDibu, figuritaJulian)
+    val figuritas = listOf(figuritaLeyenda,figuritaPromesa, figuritaEnzo, figuritaDalessandro, figuritaDibu, figuritaJulian, figuritaOrtega)
 
     fun crearFiguritas(){
         figuritas.forEach { figuritaRepo.create(it) }
