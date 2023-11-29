@@ -19,4 +19,5 @@ class Direccion(
     }
     fun esValido(): Boolean =
         ubicacion != null && provincia.isNotEmpty() && localidad.isNotEmpty() && calle.isNotEmpty() && altura > 0
+
 }

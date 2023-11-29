@@ -1,7 +1,16 @@
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonSubTypes
+import com.fasterxml.jackson.annotation.JsonTypeInfo
 import java.time.LocalDate
 import kotlin.math.ceil
+
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "tipo")
+@JsonSubTypes(
+    JsonSubTypes.Type(value = Kiosco::class, name = "kiosco"),
+    JsonSubTypes.Type(value = Libreria::class, name = "libreria"),
+    JsonSubTypes.Type(value = Supermercado::class, name = "supermercado")
+)
 
 abstract class PuntoDeVentas(
     var nombre: String = "",
@@ -12,6 +21,7 @@ abstract class PuntoDeVentas(
     var pedidosPendientes: Pedido,
     @JsonIgnore
     val listaDePedidosPendientes :MutableList<Pedido> = mutableListOf()
+
 ):Entidad(){
     companion object{
         const val COSTO_BASE_ENVIO = 1000.0
@@ -89,7 +99,7 @@ abstract class PuntoDeVentas(
 
 class Kiosco (
 
-  @JsonIgnore val esDueño: Boolean, @JsonIgnore val esEmpleado: Boolean, costoDeSobre: Int, nombre: String, ubicacion: Direccion,
+  @JsonIgnore val esDueño: Boolean, @JsonIgnore val esEmpleado: Boolean, costoDeSobre: Int, nombre: String,  ubicacion: Direccion,
     stockDeFigurita: Int, pedidosPendientesDeEntrega: Pedido,listaDePedidosPendientes: MutableList<Pedido>
 ) : PuntoDeVentas(nombre, ubicacion, stockDeFigurita, pedidosPendientesDeEntrega, listaDePedidosPendientes) {
 

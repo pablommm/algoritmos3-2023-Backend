@@ -1,7 +1,6 @@
 package ar.edu.unsam.algo3.service
 
 import PuntoDeVentas
-import Usuario
 import ar.edu.unsam.algo3.dto.PuntoDeVentasDTO
 import ar.edu.unsam.algo3.dto.PuntosDeVentaDTOUserless
 import ar.edu.unsam.algo3.dto.toDTO
@@ -68,6 +67,11 @@ class PuntoDeVentasService {
     fun deletePuntoDeVenta(id: Int) {
         val puntoDeVenta = puntoDeVentasRepository.getById(id)
         puntoDeVentasRepository.delete(puntoDeVenta)
+    }
+
+    fun create(puntoDeVentasBody: PuntoDeVentas): PuntoDeVentas {
+        puntoDeVentasRepository.create(puntoDeVentasBody)
+        return puntoDeVentasBody
     }
 }
 
