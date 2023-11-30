@@ -14,7 +14,7 @@ class Jugador(
     var anioDebut: LocalDate = LocalDate.now(),
     val altura: Double = 0.0,
     val peso: Double = 0.0,
-    @JsonIgnore
+
     var posicion: Posicion = Delantero,
     @JsonIgnore
     var lider: Boolean = false,
