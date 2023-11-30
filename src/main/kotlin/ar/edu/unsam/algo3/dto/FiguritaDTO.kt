@@ -8,9 +8,9 @@ import NivelDeImpresion
 import Usuario
 import ar.edu.unsam.algo3.repository.RepoJugador
 import ar.edu.unsam.algo3.service.FiguritaService
+import org.springframework.beans.factory.annotation.Autowired
 import java.time.LocalDate
 
-lateinit var jugadorRepo: RepoJugador
 data class FiguritaUsuarioDTO(
     val idUsuario : Int,
     val nombreUsuario:  String,
@@ -55,6 +55,7 @@ fun Figurita.toDTO() = FiguritaDTO(id = id, numero = numero, nivelDeImpresion = 
                                     valoracionFigurita = valoracionFigurita(), esJugadorPromesa = esJugadorPromesa())
 
 
+
 data class CreateFiguritaDTO(
     val numero: Int,
     val id: Int,
@@ -62,15 +63,6 @@ data class CreateFiguritaDTO(
     val nivelDeImpresion: NivelDeImpresion,
     val imagen: String
 ){}
-
-fun CreateFiguritaDTO.toEntity() = Figurita(
-    numero = numero,
-    jugador = jugadorRepo.getById(id),
-    onFire = onFire,
-    nivelDeImpresion = nivelDeImpresion,
-    imagen = imagen
-)
-
 
 
 

@@ -57,7 +57,7 @@ class FigurinesController (@Autowired val figuritaService :FiguritaService ){
 
 
     @PostMapping("/crearFigurita")
-    fun create(@RequestBody figurita: CreateFiguritaDTO) = figuritaService.createFigurita(figurita.toEntity())
+    fun create(@RequestBody figurita: CreateFiguritaDTO) = figuritaService.createFigurita(figurita)
 
     @DeleteMapping("/deleteFigurita")
     fun deletePuntoDeVentas (@RequestParam("idFigurita") idFigurita: Int) = figuritaService.deleteFigurita(idFigurita)

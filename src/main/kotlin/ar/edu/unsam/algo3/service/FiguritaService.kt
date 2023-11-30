@@ -4,6 +4,7 @@ import BusinessException
 import Figurita
 import ar.edu.unsam.algo3.dto.*
 import ar.edu.unsam.algo3.repository.RepoFigurita
+import ar.edu.unsam.algo3.repository.RepoJugador
 import ar.edu.unsam.algo3.repository.RepoUser
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -13,6 +14,9 @@ class FiguritaService {
 
     @Autowired
     lateinit var figuritaRepository: RepoFigurita
+
+    @Autowired
+    lateinit var jugadorRepo: RepoJugador
 
     @Autowired
     lateinit var usuarioRepository: RepoUser
@@ -129,7 +133,14 @@ class FiguritaService {
         }
     }
 
-    fun createFigurita(figurita: Figurita) {
-        figuritaRepository.create(figurita)
+    fun createFigurita(figurita: CreateFiguritaDTO) {
+        val figuritaTest = Figurita(
+            numero = figurita.numero,
+            jugador = jugadorRepo.getById(figurita.id),
+            onFire = figurita.onFire,
+            nivelDeImpresion = figurita.nivelDeImpresion,
+            imagen = figurita.imagen
+        )
+        figuritaRepository.create(figuritaTest)
     }
 }
