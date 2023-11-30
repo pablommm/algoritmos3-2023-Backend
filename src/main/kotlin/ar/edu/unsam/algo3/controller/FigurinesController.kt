@@ -1,13 +1,11 @@
 package ar.edu.unsam.algo3.controller
 
 import Figurita
-import ar.edu.unsam.algo3.dto.FiguritaUsuarioDTO
-import ar.edu.unsam.algo3.dto.UsuarioLoginDTO
+import ar.edu.unsam.algo3.dto.*
 import ar.edu.unsam.algo3.service.FiguritaService
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
-import ar.edu.unsam.algo3.dto.toDTO
 
 @RestController
 @CrossOrigin("*")
@@ -56,6 +54,10 @@ class FigurinesController (@Autowired val figuritaService :FiguritaService ){
     @PostMapping("/PerfilUsuario/FiguritasFaltantes/QuitarFigurita/{idUsuarioLogueado}")
     fun quitarFiguritaFaltante(@PathVariable idUsuarioLogueado: Int,
                                @RequestBody idFigurita: Int) = figuritaService.quitarFiguritaFaltante(idUsuarioLogueado, idFigurita)
+
+
+    @PostMapping("/crearFigurita")
+    fun create(@RequestBody figurita: CreateFiguritaDTO) = figuritaService.createFigurita(figurita.toEntity())
 
     @DeleteMapping("/deleteFigurita")
     fun deletePuntoDeVentas (@RequestParam("idFigurita") idFigurita: Int) = figuritaService.deleteFigurita(idFigurita)

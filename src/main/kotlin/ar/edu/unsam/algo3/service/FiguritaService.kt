@@ -128,4 +128,8 @@ class FiguritaService {
             figuritaRepository.delete(figurita)
         }
     }
+
+    fun createFigurita(figurita: Figurita) {
+        figuritaRepository.create(figurita)
+    }
 }
