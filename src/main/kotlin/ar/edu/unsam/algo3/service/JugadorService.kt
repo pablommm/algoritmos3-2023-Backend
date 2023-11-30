@@ -2,6 +2,8 @@ package ar.edu.unsam.algo3.service
 
 import BusinessException
 import Jugador
+import ar.edu.unsam.algo3.dto.JugadorDTO
+import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.repository.RepoFigurita
 import ar.edu.unsam.algo3.repository.RepoJugador
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,6 +20,8 @@ class JugadorService {
 
     fun getJugadores(campoDeBusqueda: String?) :List<Jugador> = jugadorRepo.searchByName(campoDeBusqueda)
     fun getJugadores(id: Int) = jugadorRepo.getById(id)
+
+    fun getJugadoresDTO() :List<JugadorDTO> = jugadorRepo.allInstances().map { it.toDTO() }
 
     fun deleteJugador(id: Int) {
         val jugador = jugadorRepo.getById(id)

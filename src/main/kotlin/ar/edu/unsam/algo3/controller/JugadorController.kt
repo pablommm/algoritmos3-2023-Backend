@@ -16,6 +16,9 @@ class JugadorController(@Autowired val jugadorService: JugadorService) {
     @GetMapping("/jugadores/{id}")
     fun getJugador(id: Int) = jugadorService.getJugadores(id)
 
+    @GetMapping("/jugadores/createFigurita")
+    fun getJugador() = jugadorService.getJugadoresDTO()
+
     @DeleteMapping("/deleteJugador")
     fun deletePuntoDeVentas (@RequestParam("idJugador") idJugador: Int) = jugadorService.deleteJugador(idJugador)
 
