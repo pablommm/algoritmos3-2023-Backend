@@ -136,7 +136,7 @@ class FiguritaService {
     fun createFigurita(figurita: CreateFiguritaDTO) {
         val figuritaTest = Figurita(
             numero = figurita.numero,
-            jugador = jugadorRepo.getById(figurita.id),
+            jugador = jugadorRepo.getById(figurita.idJugador),
             onFire = figurita.onFire,
             nivelDeImpresion = figurita.nivelDeImpresion,
             imagen = figurita.imagen
