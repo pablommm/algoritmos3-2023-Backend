@@ -23,6 +23,10 @@ class JugadorService {
 
     fun getJugadoresDTO() :List<JugadorDTO> = jugadorRepo.allInstances().map { it.toDTO() }
 
+    fun create(nuevoJugador: Jugador): Jugador {
+        jugadorRepo.create(nuevoJugador)
+        return nuevoJugador
+    }
     fun deleteJugador(id: Int) {
         val jugador = jugadorRepo.getById(id)
         if(figuritaRepository.allInstances().map { it.jugador }.contains(jugador)){

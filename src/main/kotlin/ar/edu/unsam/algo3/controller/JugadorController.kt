@@ -2,7 +2,9 @@ package ar.edu.unsam.algo3.controller
 
 
 
+import Jugador
 import ar.edu.unsam.algo3.service.JugadorService
+import io.swagger.v3.oas.annotations.Operation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
@@ -18,6 +20,12 @@ class JugadorController(@Autowired val jugadorService: JugadorService) {
 
     @GetMapping("/jugadores/createFigurita")
     fun getJugador() = jugadorService.getJugadoresDTO()
+
+    @PostMapping("/nuevoJugador")
+    @Operation(summary = "Crea un nuevo jugador")
+    fun create(@RequestBody jugadorBody : Jugador): Jugador {
+        return jugadorService.create(jugadorBody)
+    }
 
     @DeleteMapping("/deleteJugador")
     fun deletePuntoDeVentas (@RequestParam("idJugador") idJugador: Int) = jugadorService.deleteJugador(idJugador)
