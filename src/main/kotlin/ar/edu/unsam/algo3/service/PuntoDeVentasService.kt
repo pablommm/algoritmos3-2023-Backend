@@ -1,6 +1,5 @@
 package ar.edu.unsam.algo3.service
 
-import Figurita
 import PuntoDeVentas
 import ar.edu.unsam.algo3.dto.*
 import ar.edu.unsam.algo3.repository.RepoPuntoDeVentas
@@ -67,9 +66,18 @@ class PuntoDeVentasService {
         puntoDeVentasRepository.delete(puntoDeVenta)
     }
 
-    fun create(puntoDeVentasBody: PuntoDeVentas): PuntoDeVentas {
-        puntoDeVentasRepository.create(puntoDeVentasBody)
-        return puntoDeVentasBody
+    fun create(PuntosDeVentaDTOUserless: PuntosDeVentaDTOUserless) {
+        val puntoDeVentas = PuntosDeVentaDTOUserless(
+            id = PuntosDeVentaDTOUserless.id,
+            nombre = PuntosDeVentaDTOUserless.nombre,
+            direccion = PuntosDeVentaDTOUserless.direccion,
+            ubicacionGeograficaX = PuntosDeVentaDTOUserless.ubicacionGeograficaX,
+            ubicacionGeograficaY = PuntosDeVentaDTOUserless.ubicacionGeograficaY,
+            stockDeSobres = PuntosDeVentaDTOUserless.stockDeSobres,
+            tipo = PuntosDeVentaDTOUserless.tipo,
+            pedidosPendientes = PuntosDeVentaDTOUserless.pedidosPendientes
+        )
+
     }
 
 }
