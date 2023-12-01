@@ -133,7 +133,7 @@ class FiguritaService {
         }
     }
 
-<<<<<<< HEAD
+
     fun create(figuritaDTO: CreateFiguritaDTO) {
         val figurita = Figurita(
             numero = figuritaDTO.numero,
@@ -141,15 +141,6 @@ class FiguritaService {
             onFire = figuritaDTO.onFire,
             nivelDeImpresion = figuritaDTO.nivelDeImpresion,
             imagen = figuritaDTO.imagen
-=======
-    fun createFigurita(figurita: CreateFiguritaDTO) {
-        val figuritaTest = Figurita(
-            numero = figurita.numero,
-            jugador = jugadorRepo.getById(figurita.idJugador),
-            onFire = figurita.onFire,
-            nivelDeImpresion = figurita.nivelDeImpresion,
-            imagen = figurita.imagen
->>>>>>> 264f4414594e3e9f1f275d7bbd7e7bdb02db0d23
         )
         figuritaRepository.create(figurita)
     }
