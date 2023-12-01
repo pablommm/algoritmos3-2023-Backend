@@ -14,7 +14,6 @@ class Jugador(
     val peso: Double = 0.0,
 
     var posicion: Posicion = Delantero,
-    @JsonIgnore
     var lider: Boolean = false,
     val pais: String = "",
     var cotizacion: Int = 0

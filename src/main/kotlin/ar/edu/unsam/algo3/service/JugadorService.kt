@@ -1,7 +1,12 @@
 package ar.edu.unsam.algo3.service
 
+import Arquero
 import BusinessException
+import Defensor
+import Delantero
 import Jugador
+import Mediocampista
+import Posicion
 import ar.edu.unsam.algo3.dto.CreateJugadorDTO
 import ar.edu.unsam.algo3.dto.JugadorDTO
 import ar.edu.unsam.algo3.dto.toDTO
@@ -31,6 +36,7 @@ class JugadorService {
     fun getJugadoresDTO() :List<JugadorDTO> = jugadorRepo.allInstances().map { it.toDTO() }
 
     fun create(jugadorDTO: CreateJugadorDTO) {
+
         val jugador = Jugador(
             nombre = jugadorDTO.nombre,
             apellido = jugadorDTO.apellido,
@@ -38,13 +44,28 @@ class JugadorService {
             nroDeCamiseta = jugadorDTO.nroDeCamiseta,
             altura = jugadorDTO.altura,
             peso = jugadorDTO.peso,
-            posicion = jugadorDTO.posicion,
-            pais = jugadorDTO.pais,
+            lider = jugadorDTO.lider,
+            anioDebut = LocalDate.parse(jugadorDTO.anioDebut),
+            posicion = definirPosicion(jugadorDTO.posicion),
             cotizacion = jugadorDTO.cotizacion,
             seleccion = repoSeleccion.getById(jugadorDTO.idSeleccion)
         )
         jugadorRepo.create(jugador)
     }
+
+    fun definirPosicion(posicion: String): Posicion {
+        val posicionUpper = posicion.uppercase()
+        if(posicionUpper == "DELANTERO"){
+            return Delantero
+        } else if(posicionUpper == "MEDIOCAMPISTA"){
+            return Mediocampista
+        } else if (posicionUpper == "DEFENSOR"){
+            return Defensor
+        } else {
+            return Arquero
+        }
+    }
+
     fun deleteJugador(id: Int) {
         val jugador = jugadorRepo.getById(id)
         if(figuritaRepository.allInstances().map { it.jugador }.contains(jugador)){

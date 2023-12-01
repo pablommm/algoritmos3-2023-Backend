@@ -15,10 +15,11 @@ data class CreateJugadorDTO(
     val apellido: String,
     val fechaDeNacimiento: String,
     val nroDeCamiseta: Int,
+    val lider: Boolean,
+    val anioDebut: String,
     val altura: Double,
     val peso: Double,
-    val posicion: Posicion,
-    val pais: String,
+    val posicion: String,
     val cotizacion: Int,
     val idSeleccion: Int
 ){}

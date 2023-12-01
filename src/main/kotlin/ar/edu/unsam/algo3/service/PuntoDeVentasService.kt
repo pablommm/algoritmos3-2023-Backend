@@ -77,6 +77,7 @@ class PuntoDeVentasService {
 //            tipo = PuntosDeVentaDTOUserless.tipo,
 //            pedidosPendientes = PuntosDeVentaDTOUserless.pedidosPendientes
         )
+        //puntoDeVentasRepository.create(puntoDeVentas)
 
     }
 
