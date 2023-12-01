@@ -1,10 +1,8 @@
 package ar.edu.unsam.algo3.service
 
+import Figurita
 import PuntoDeVentas
-import ar.edu.unsam.algo3.dto.PuntoDeVentasDTO
-import ar.edu.unsam.algo3.dto.PuntosDeVentaDTOUserless
-import ar.edu.unsam.algo3.dto.toDTO
-import ar.edu.unsam.algo3.dto.toDTOUserless
+import ar.edu.unsam.algo3.dto.*
 import ar.edu.unsam.algo3.repository.RepoPuntoDeVentas
 import ar.edu.unsam.algo3.repository.RepoUser
 import org.springframework.beans.factory.annotation.Autowired
@@ -73,6 +71,7 @@ class PuntoDeVentasService {
         puntoDeVentasRepository.create(puntoDeVentasBody)
         return puntoDeVentasBody
     }
+
 }
 
 enum class CriterioOrdenamiento {

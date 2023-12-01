@@ -8,9 +8,7 @@ class Jugador(
     val apellido: String = "",
     var fechaDeNacimiento: LocalDate = LocalDate.now(),
     val nroDeCamiseta: Int = 0,
-    @JsonIgnore
     val seleccion: Seleccion = Seleccion("Argentina", Confederacion.CONMEBOL, 3 , 17),
-    @JsonIgnore
     var anioDebut: LocalDate = LocalDate.now(),
     val altura: Double = 0.0,
     val peso: Double = 0.0,

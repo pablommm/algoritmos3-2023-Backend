@@ -1,6 +1,7 @@
 package ar.edu.unsam.algo3.controller
 
 import PuntoDeVentas
+import ar.edu.unsam.algo3.dto.CreateFiguritaDTO
 import ar.edu.unsam.algo3.service.CriterioOrdenamiento
 import ar.edu.unsam.algo3.service.PuntoDeVentasService
 import io.swagger.v3.oas.annotations.Operation
@@ -32,6 +33,9 @@ class PuntoDeVentasController(@Autowired val puntoDeVentasService: PuntoDeVentas
     fun create(@RequestBody puntoDeVentasBody : PuntoDeVentas) : PuntoDeVentas {
         return puntoDeVentasService.create(puntoDeVentasBody)
     }
+
+   /* @PostMapping("/crearPuntoDeVentas")
+    fun create(@RequestBody figurita: CreateFiguritaDTO) = puntoDeVentasService.create(figurita)*/
 
     @DeleteMapping("/deletePuntoDeVentas")
     fun deletePuntoDeVentas (@RequestParam("idPuntoDeVentas") idPuntoDeVentas: Int) = puntoDeVentasService.deletePuntoDeVenta(idPuntoDeVentas)

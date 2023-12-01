@@ -2,9 +2,9 @@
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type
 import com.fasterxml.jackson.annotation.JsonTypeInfo
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="posicion")
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property="Posicion")
 @JsonSubTypes(
-    Type(value=Arquero::class, name="arquero"),
+    Type(value=Arquero::class, name="Arquero"),
     Type(value=Delantero::class, name="Delantero")
 
 )
@@ -30,7 +30,7 @@ object Arquero: Posicion {
     override fun factorCriterio(jugador: Jugador): Double =jugador.altura
     override fun factorPosicion(jugador: Jugador): Double = if (criterio(jugador))factorCriterio(jugador) else 1.0
 
-    override val posicion: String = "arquero"
+    override val posicion: String = "Arquero"
 }
 
 object Defensor : Posicion {
@@ -39,7 +39,7 @@ object Defensor : Posicion {
     override fun criterio(jugador: Jugador): Boolean = jugador.lider
     override fun factorCriterio(jugador: Jugador): Double = 10.0 * jugador.aniosJugadosEnSeleccion()
 
-    override val posicion: String = "defensor"
+    override val posicion: String = "Defensor"
 }
 
 object Mediocampista : Posicion {
@@ -49,7 +49,7 @@ object Mediocampista : Posicion {
     override fun criterio(jugador: Jugador): Boolean = esLigero(jugador)
     override fun factorCriterio(jugador: Jugador): Double = jugador.peso
 
-    override val posicion: String = "mediocampista"
+    override val posicion: String = "Mediocampista"
 }
 
 
@@ -60,7 +60,7 @@ object Delantero : Posicion {
 
     override fun factorCriterio(jugador: Jugador): Double = jugador.nroDeCamiseta.toDouble() *  10.0
 
-    override val posicion: String = "delantero"
+    override val posicion: String = "Delantero"
 }
  class Polivalentes(val posiciones : MutableList<Posicion>) : Posicion{
      override val puntos: Double = posiciones.sumOf { it.puntos}/cantidadDePosiciones()
@@ -69,7 +69,7 @@ object Delantero : Posicion {
      fun ValorPosicion(jugador: Jugador) = posiciones.sumOf { it.valorPorPosicion(jugador) }/cantidadDePosiciones()
      override fun factorCriterio(jugador: Jugador): Double = ValorPosicion(jugador) - jugador.aniosDelJugador()
 
-     override val posicion: String = "polivalente"
+     override val posicion: String = "Polivalente"
  }
 
 

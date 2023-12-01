@@ -2,18 +2,25 @@ package ar.edu.unsam.algo3.service
 
 import BusinessException
 import Jugador
+import ar.edu.unsam.algo3.dto.CreateJugadorDTO
 import ar.edu.unsam.algo3.dto.JugadorDTO
 import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.repository.RepoFigurita
 import ar.edu.unsam.algo3.repository.RepoJugador
+import ar.edu.unsam.algo3.repository.RepoSeleccion
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 
 @Service
 class JugadorService {
 
     @Autowired
     lateinit var jugadorRepo: RepoJugador
+
+    @Autowired
+    lateinit var repoSeleccion: RepoSeleccion
+
 
     @Autowired
     lateinit var figuritaRepository: RepoFigurita
@@ -23,9 +30,20 @@ class JugadorService {
 
     fun getJugadoresDTO() :List<JugadorDTO> = jugadorRepo.allInstances().map { it.toDTO() }
 
-    fun create(nuevoJugador: Jugador): Jugador {
-        jugadorRepo.create(nuevoJugador)
-        return nuevoJugador
+    fun create(jugadorDTO: CreateJugadorDTO) {
+        val jugador = Jugador(
+            nombre = jugadorDTO.nombre,
+            apellido = jugadorDTO.apellido,
+            fechaDeNacimiento = LocalDate.parse(jugadorDTO.fechaDeNacimiento),
+            nroDeCamiseta = jugadorDTO.nroDeCamiseta,
+            altura = jugadorDTO.altura,
+            peso = jugadorDTO.peso,
+            posicion = jugadorDTO.posicion,
+            pais = jugadorDTO.pais,
+            cotizacion = jugadorDTO.cotizacion,
+            seleccion = repoSeleccion.getById(jugadorDTO.idSeleccion)
+        )
+        jugadorRepo.create(jugador)
     }
     fun deleteJugador(id: Int) {
         val jugador = jugadorRepo.getById(id)
