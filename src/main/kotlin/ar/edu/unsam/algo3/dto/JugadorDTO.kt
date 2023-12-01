@@ -20,6 +20,7 @@ data class CreateJugadorDTO(
     val altura: Double,
     val peso: Double,
     val posicion: String,
+    val pais: String,
     val cotizacion: Int,
     val idSeleccion: Int
 ){}

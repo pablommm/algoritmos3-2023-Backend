@@ -47,6 +47,7 @@ class JugadorService {
             lider = jugadorDTO.lider,
             anioDebut = LocalDate.parse(jugadorDTO.anioDebut),
             posicion = definirPosicion(jugadorDTO.posicion),
+            pais = jugadorDTO.pais,
             cotizacion = jugadorDTO.cotizacion,
             seleccion = repoSeleccion.getById(jugadorDTO.idSeleccion)
         )
