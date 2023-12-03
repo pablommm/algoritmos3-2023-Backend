@@ -37,7 +37,8 @@ class SeleccionController( @Autowired val seleccionService: SeleccionService
     @DeleteMapping("/deleteSeleccion")
     fun deletePuntoDeVentas (@RequestParam("idSeleccion") idSeleccion: Int) = seleccionService.deleteSeleccion(idSeleccion)
 
-
+    @GetMapping("/confederaciones")
+    fun getConfederaciones() = seleccionService.getConfederaciones()
 
     //fun seleccionesGet() = service.allInstance()
 

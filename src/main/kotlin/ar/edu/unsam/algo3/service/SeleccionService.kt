@@ -6,7 +6,7 @@ import ar.edu.unsam.algo3.repository.RepoJugador
 import ar.edu.unsam.algo3.repository.RepoSeleccion
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-
+import Confederacion
 @Service
 class SeleccionService {
 
@@ -36,7 +36,19 @@ class SeleccionService {
         }
     }
 
+    fun getConfederaciones():Array<String> {
+        return Confederacion.values().map{it.name}.toTypedArray()
+    }
     //fun allInstance() = repoSeleccion.allInstances()
 
 
+}
+
+enum class Confederacion {
+    AFC,
+    CAF,
+    CONCACAF,
+    CONMEBOL,
+    OFC,
+    UEFA
 }

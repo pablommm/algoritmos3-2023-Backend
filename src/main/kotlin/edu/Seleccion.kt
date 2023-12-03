@@ -4,6 +4,7 @@ class Seleccion(
    @JsonProperty("pais") val nombre: String,
    @JsonProperty("confederacion")  val confederacion: Confederacion,
    @JsonProperty("copasDelMundo")  val cantidadDeCopasDelMundo: Int,
+
    @JsonProperty("copasConfederacion")  val cantidadCopasConfederacion: Int
 ):Entidad() {
 
