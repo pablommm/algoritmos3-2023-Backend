@@ -144,4 +144,6 @@ class FiguritaService {
         )
         figuritaRepository.create(figurita)
     }
+
+    fun getById(id: Int) = figuritaRepository.getById(id)
 }

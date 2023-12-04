@@ -61,4 +61,9 @@ class FigurinesController (@Autowired val figuritaService :FiguritaService ){
 
     @DeleteMapping("/deleteFigurita")
     fun deletePuntoDeVentas (@RequestParam("idFigurita") idFigurita: Int) = figuritaService.deleteFigurita(idFigurita)
+
+    @GetMapping("/editarFigurita/{idFigurita}")
+    @Operation(summary = "Sirve para traer los datos de la figurita a editar en el frontend")
+    fun getById(@PathVariable idFigurita : Int) = figuritaService.getById(idFigurita)
+
 }
