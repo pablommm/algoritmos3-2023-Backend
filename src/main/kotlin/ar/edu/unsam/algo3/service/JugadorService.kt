@@ -7,6 +7,7 @@ import Delantero
 import Jugador
 import Mediocampista
 import Posicion
+import ar.edu.unsam.algo3.dto.CreateFiguritaDTO
 import ar.edu.unsam.algo3.dto.CreateJugadorDTO
 import ar.edu.unsam.algo3.dto.JugadorDTO
 import ar.edu.unsam.algo3.dto.toDTO
@@ -31,29 +32,9 @@ class JugadorService {
     lateinit var figuritaRepository: RepoFigurita
 
     fun getJugadores(campoDeBusqueda: String?) :List<Jugador> = jugadorRepo.searchByName(campoDeBusqueda)
-    fun getJugadores(id: Int) = jugadorRepo.getById(id)
+    fun getJugador(id: Int) = jugadorRepo.getById(id)
 
     fun getJugadoresDTO() :List<JugadorDTO> = jugadorRepo.allInstances().map { it.toDTO() }
-
-    fun create(jugadorDTO: CreateJugadorDTO): Jugador {
-
-        val jugador = Jugador(
-            nombre = jugadorDTO.nombre,
-            apellido = jugadorDTO.apellido,
-            fechaDeNacimiento = LocalDate.parse(jugadorDTO.fechaDeNacimiento),
-            nroDeCamiseta = jugadorDTO.nroDeCamiseta,
-            altura = jugadorDTO.altura,
-            peso = jugadorDTO.peso,
-            lider = jugadorDTO.lider,
-            anioDebut = LocalDate.parse(jugadorDTO.anioDebut),
-            posicion = definirPosicion(jugadorDTO.posicion),
-            pais = jugadorDTO.pais,
-            cotizacion = jugadorDTO.cotizacion,
-            seleccion = repoSeleccion.getById(jugadorDTO.idSeleccion)
-        )
-        jugadorRepo.create(jugador)
-        return jugador
-    }
 
     fun definirPosicion(posicion: String): Posicion {
         val posicionUpper = posicion.uppercase()
@@ -76,4 +57,33 @@ class JugadorService {
             jugadorRepo.delete(jugador)
         }
     }
+
+    fun dtoToJugador(jugadorDTO: CreateJugadorDTO) : Jugador{
+        val jugador = Jugador(
+            nombre = jugadorDTO.nombre,
+            apellido = jugadorDTO.apellido,
+            fechaDeNacimiento = LocalDate.parse(jugadorDTO.fechaDeNacimiento),
+            nroDeCamiseta = jugadorDTO.nroDeCamiseta,
+            altura = jugadorDTO.altura,
+            peso = jugadorDTO.peso,
+            lider = jugadorDTO.lider,
+            anioDebut = LocalDate.parse(jugadorDTO.anioDebut),
+            posicion = definirPosicion(jugadorDTO.posicion),
+            pais = jugadorDTO.pais,
+            cotizacion = jugadorDTO.cotizacion,
+            //seleccion = jugadorDTO.seleccion
+            seleccion = repoSeleccion.getById(jugadorDTO.idSeleccion)
+        ).also { it.id = jugadorDTO.id }
+        return jugador
+    }
+    fun create(jugadorDTO: CreateJugadorDTO) {
+        jugadorRepo.create(dtoToJugador(jugadorDTO))
+    }
+
+    fun update(jugadorDTO: CreateJugadorDTO) {
+        jugadorRepo.update(dtoToJugador(jugadorDTO))
+    }
+
+
+
 }

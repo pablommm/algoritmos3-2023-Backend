@@ -1,6 +1,7 @@
 package ar.edu.unsam.algo3.controller
 
 import Seleccion
+import ar.edu.unsam.algo3.dto.CreateFiguritaDTO
 import ar.edu.unsam.algo3.service.SeleccionService
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.beans.factory.annotation.Autowired
@@ -40,6 +41,12 @@ class SeleccionController( @Autowired val seleccionService: SeleccionService
     @GetMapping("/confederaciones")
     fun getConfederaciones() = seleccionService.getConfederaciones()
 
-    //fun seleccionesGet() = service.allInstance()
+    @GetMapping("/editarSeleccion/{idSeleccion}")
+    @Operation(summary = "Sirve para traer los datos de la selección a editar en el frontend")
+    fun getById(@PathVariable idSeleccion: Int) = seleccionService.getSeleccion(idSeleccion)
+
+    @PutMapping("/updateSeleccion")
+    @Operation(summary = "Edita la figurita en el backend")
+    fun update(@RequestBody seleccion: Seleccion) = seleccionService.updateSeleccion(seleccion)
 
 }

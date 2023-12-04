@@ -11,6 +11,7 @@ fun Jugador.toDTO() = JugadorDTO(id = id, nombre = nombre, apellido = apellido)
 
 
 data class CreateJugadorDTO(
+    val id: Int,
     val nombre: String,
     val apellido: String,
     val fechaDeNacimiento: String,
@@ -23,4 +24,5 @@ data class CreateJugadorDTO(
     val pais: String,
     val cotizacion: Int,
     val idSeleccion: Int
+    //val seleccion: Seleccion
 ){}
