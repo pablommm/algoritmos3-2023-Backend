@@ -35,7 +35,7 @@ class JugadorService {
 
     fun getJugadoresDTO() :List<JugadorDTO> = jugadorRepo.allInstances().map { it.toDTO() }
 
-    fun create(jugadorDTO: CreateJugadorDTO) {
+    fun create(jugadorDTO: CreateJugadorDTO): Jugador {
 
         val jugador = Jugador(
             nombre = jugadorDTO.nombre,
@@ -52,6 +52,7 @@ class JugadorService {
             seleccion = repoSeleccion.getById(jugadorDTO.idSeleccion)
         )
         jugadorRepo.create(jugador)
+        return jugador
     }
 
     fun definirPosicion(posicion: String): Posicion {

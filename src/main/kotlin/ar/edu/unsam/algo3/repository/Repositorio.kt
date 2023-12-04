@@ -1,4 +1,5 @@
 package ar.edu.unsam.algo3.repository
+import BusinessException
 import Entidad
 import Figurita
 import Jugador

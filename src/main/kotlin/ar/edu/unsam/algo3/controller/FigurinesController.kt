@@ -66,4 +66,8 @@ class FigurinesController (@Autowired val figuritaService :FiguritaService ){
     @Operation(summary = "Sirve para traer los datos de la figurita a editar en el frontend")
     fun getById(@PathVariable idFigurita : Int) = figuritaService.getById(idFigurita)
 
+    @PutMapping("/updateFigurita")
+    @Operation(summary = "Edita la figurita en el backend")
+    fun update(@RequestBody figurita: CreateFiguritaDTO) = figuritaService.update(figurita)
+
 }

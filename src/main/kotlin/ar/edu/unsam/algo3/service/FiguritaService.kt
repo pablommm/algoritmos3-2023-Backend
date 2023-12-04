@@ -133,16 +133,23 @@ class FiguritaService {
         }
     }
 
-
-    fun create(figuritaDTO: CreateFiguritaDTO) {
+    fun dtoToFigurita(figuritaDTO: CreateFiguritaDTO) : Figurita{
         val figurita = Figurita(
             numero = figuritaDTO.numero,
             jugador = jugadorRepo.getById(figuritaDTO.idJugador),
             onFire = figuritaDTO.onFire,
             nivelDeImpresion = figuritaDTO.nivelDeImpresion,
             imagen = figuritaDTO.imagen
-        )
-        figuritaRepository.create(figurita)
+        ).also { it.id = figuritaDTO.numero }
+        return figurita
+    }
+
+    fun create(figuritaDTO: CreateFiguritaDTO) {
+        figuritaRepository.create(dtoToFigurita(figuritaDTO))
+    }
+
+    fun update(figuritaDTO: CreateFiguritaDTO) {
+        figuritaRepository.update(dtoToFigurita(figuritaDTO))
     }
 
     fun getById(id: Int) = figuritaRepository.getById(id)
