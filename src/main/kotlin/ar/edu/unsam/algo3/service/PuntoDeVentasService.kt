@@ -70,12 +70,12 @@ class PuntoDeVentasService {
         val puntoDeVentas = PuntosDeVentaDTOUserless(
             id = PuntosDeVentaDTOUserless.id,
             nombre = PuntosDeVentaDTOUserless.nombre,
-//            direccion = PuntosDeVentaDTOUserless.direccion,
+            direccion = PuntosDeVentaDTOUserless.direccion,
 //            ubicacionGeograficaX = PuntosDeVentaDTOUserless.ubicacionGeograficaX,
 //            ubicacionGeograficaY = PuntosDeVentaDTOUserless.ubicacionGeograficaY,
-//            stockDeSobres = PuntosDeVentaDTOUserless.stockDeSobres,
-//            tipo = PuntosDeVentaDTOUserless.tipo,
-//            pedidosPendientes = PuntosDeVentaDTOUserless.pedidosPendientes
+            stockDeSobres = PuntosDeVentaDTOUserless.stockDeSobres,
+            tipo = PuntosDeVentaDTOUserless.tipo,
+            pedidosPendientes = PuntosDeVentaDTOUserless.pedidosPendientes
         )
         //puntoDeVentasRepository.create(puntoDeVentas)
 
