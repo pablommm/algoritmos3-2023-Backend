@@ -31,12 +31,6 @@ class PuntoDeVentasController(@Autowired val puntoDeVentasService: PuntoDeVentas
     @Operation(summary = "Crea un nuevo punto de ventas")
     fun create(@RequestBody puntoDeVentas : PuntosDeVentaDTOUserless) = puntoDeVentasService.create(puntoDeVentas)
 
-
-
-
-   /* @PostMapping("/crearPuntoDeVentas")
-    fun create(@RequestBody figurita: CreateFiguritaDTO) = puntoDeVentasService.create(figurita)*/
-
     @DeleteMapping("/deletePuntoDeVentas")
     fun deletePuntoDeVentas (@RequestParam("idPuntoDeVentas") idPuntoDeVentas: Int) = puntoDeVentasService.deletePuntoDeVenta(idPuntoDeVentas)
 
