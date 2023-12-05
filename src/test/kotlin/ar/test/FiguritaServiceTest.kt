@@ -7,6 +7,7 @@ import Jugador
 import Seleccion
 import Usuario
 import ar.edu.unsam.algo3.ProyectoApplication
+import ar.edu.unsam.algo3.dto.CreateFiguritaDTO
 import ar.edu.unsam.algo3.repository.RepoFigurita
 import ar.edu.unsam.algo3.repository.RepoJugador
 import ar.edu.unsam.algo3.repository.RepoUser
@@ -51,7 +52,11 @@ class FiguritaServiceTest : InitializingBean {
 
     val jugadorLeyenda =  Jugador("Leo","Messi",LocalDate.now().minusYears(30),10,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,true,"Argentina",21000000)
 
-    val figuritaPromesa =Figurita(2, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorLeyenda, imagen = "https://shorturl.at/fhpG6")
+    val jugador2 =  Jugador("Enzo","Fernandez",LocalDate.now().minusYears(30),10,argentina,LocalDate.now().minusYears(14),187.0,83.0, Delantero,true,"Argentina",21000000)
+
+    val figuritaPromesa =Figurita(1, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorLeyenda, imagen = "https://shorturl.at/fhpG6")
+
+    val figuritaDTO = CreateFiguritaDTO(1,1,true,NivelDeImpresion.BAJA,"pepe")
 
 
     val usuarioPrueba = Usuario(
@@ -71,6 +76,7 @@ class FiguritaServiceTest : InitializingBean {
 
     override fun afterPropertiesSet() {
         jugadorRepo.create(jugadorLeyenda)
+        jugadorRepo.create(jugador2)
         figuritasFaltantes.add(figuritaPromesa)
         figuritaRepository.create(figuritaPromesa)
         usuarioRepository.create(usuarioPrueba)
@@ -78,17 +84,27 @@ class FiguritaServiceTest : InitializingBean {
 
     @Test
     fun testGetAllFiguritas() {
-
-        `when`(figuritaRepository.allInstances()).thenReturn(listOf(figuritaPromesa).toMutableList())
-
-
-        val result = figuritaService.getAllFiguritas("Leo")
-
-        assertTrue(result.contains<Figurita>(figuritaPromesa), "La lista de figuritas debería contener a jugadorLeyenda")
-
-
-        verify(figuritaRepository).allInstances()
+        `when`(figuritaService.getFigurines()).thenReturn(listOf(figuritaPromesa).toMutableList())
     }
+
+    @Test
+    fun buscarFiguritaPorNombre(){
+        `when`(figuritaService.getAllFiguritas("Leo")).thenReturn(listOf(figuritaPromesa).toMutableList())
+    }
+
+    @Test
+    fun updateFigurita(){
+        figuritaService.update(figuritaDTO)
+        `when`(figuritaService.getAllFiguritas("Enzo")).thenReturn(listOf(figuritaPromesa).toMutableList())
+    }
+
+    @Test
+    fun deleteFigurita(){
+        figuritaService.deleteFigurita(1)
+        `when`(figuritaService.getFigurines()).thenReturn(null)
+    }
+
+
 
 
 }

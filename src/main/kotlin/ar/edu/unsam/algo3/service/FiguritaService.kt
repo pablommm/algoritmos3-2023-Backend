@@ -149,7 +149,13 @@ class FiguritaService {
     }
 
     fun update(figuritaDTO: CreateFiguritaDTO) {
-        figuritaRepository.update(dtoToFigurita(figuritaDTO))
+        val jugador = jugadorRepo.getById(figuritaDTO.idJugador)
+        if (jugador != null) {
+            figuritaRepository.update(dtoToFigurita(figuritaDTO))
+        }
+        else {
+            throw BusinessException("No se encontró el jugador con el ID ${figuritaDTO.idJugador}")
+        }
     }
 
     fun getById(id: Int) = figuritaRepository.getById(id)
