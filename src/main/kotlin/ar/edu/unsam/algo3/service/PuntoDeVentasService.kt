@@ -76,7 +76,9 @@ class PuntoDeVentasService {
 //            ubicacionGeograficaY = PuntosDeVentaDTOUserless.ubicacionGeograficaY,
             stockDeSobres = PuntosDeVentaDTOUserless.stockDeSobres,
             tipo = PuntosDeVentaDTOUserless.tipo,
-            pedidosPendientes = PuntosDeVentaDTOUserless.pedidosPendientes
+            pedidosPendientes = PuntosDeVentaDTOUserless.pedidosPendientes,
+            ubicacionGeograficaX = PuntosDeVentaDTOUserless.ubicacionGeograficaX,
+            ubicacionGeograficaY = PuntosDeVentaDTOUserless.ubicacionGeograficaY
         )
         //puntoDeVentasRepository.create(puntoDeVentas)
 
