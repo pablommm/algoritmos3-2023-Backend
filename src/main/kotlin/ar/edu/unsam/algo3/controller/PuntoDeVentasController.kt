@@ -34,6 +34,10 @@ class PuntoDeVentasController(@Autowired val puntoDeVentasService: PuntoDeVentas
     @DeleteMapping("/deletePuntoDeVentas")
     fun deletePuntoDeVentas (@RequestParam("idPuntoDeVentas") idPuntoDeVentas: Int) = puntoDeVentasService.deletePuntoDeVenta(idPuntoDeVentas)
 
+    @GetMapping("/editarPuntoDeVentas/{idJugador}")
+    @Operation(summary = "Sirve para traer los datos del PuntoDeVentas a editar en el frontend")
+    fun getById(@PathVariable idPuntoDeVentas: Int) = puntoDeVentasService.getUnPuntoDeVentas(idPuntoDeVentas)
+
     //@GetMapping("/puntoDeVentas/")
     //fun getPuntoDeVentas() = puntoDeVentasService.getPuntoDeVentasFiltrado(null)
     //fun getPuntoDeVentas() = puntoDeVentasService.puntoDeVentasRepository.allInstances()

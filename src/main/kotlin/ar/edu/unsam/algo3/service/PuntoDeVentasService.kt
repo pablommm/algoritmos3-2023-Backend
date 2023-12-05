@@ -18,6 +18,7 @@ class PuntoDeVentasService {
 
     fun getPuntosDeVenta(campoDeBusqueda: String?): List<PuntosDeVentaDTOUserless> = puntoDeVentasRepository.searchByName(campoDeBusqueda).map { it.toDTOUserless() }
 
+    fun getUnPuntoDeVentas(id: Int) = puntoDeVentasRepository.getById(id)
     fun getPuntoDeVentasFiltrado(nombreABuscar: String?, criterioOrdenamiento: CriterioOrdenamiento?, idUsuario: Int): List<PuntoDeVentasDTO> {
         return this.ordenarPorCriterio(criterioOrdenamiento, nombreABuscar, idUsuario)
     }
