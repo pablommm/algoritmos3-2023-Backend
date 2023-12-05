@@ -80,7 +80,7 @@ class tipoDeUsuarioTest : DescribeSpec({
         "ARG",
 
     )
-    val figuritaApostador = Figurita(3, NivelDeImpresion.BAJA, false, jugadorApostador)
+    val figuritaApostador = Figurita(3, NivelDeImpresion.BAJA, false, jugadorApostador, imagen = "pepe")
     val jugadorJavier = Jugador(
         "Javier",
         "lopez",
@@ -109,9 +109,9 @@ class tipoDeUsuarioTest : DescribeSpec({
         "ARG",
         30000000
     )
-    val figuritaRiquelme = Figurita(9, NivelDeImpresion.ALTA, false, jugadorRiquelme)
-    val figuritaJavier = Figurita(3, NivelDeImpresion.BAJA, false, jugadorJavier)
-    val jugador20MLiderycamiseta5y10 = Figurita(4, NivelDeImpresion.MEDIA, false, jugadorRoman)
+    val figuritaRiquelme = Figurita(9, NivelDeImpresion.ALTA, false, jugadorRiquelme, imagen = "pepe")
+    val figuritaJavier = Figurita(3, NivelDeImpresion.BAJA, false, jugadorJavier, imagen = "pepe")
+    val jugador20MLiderycamiseta5y10 = Figurita(4, NivelDeImpresion.MEDIA, false, jugadorRoman, imagen = "pepe")
     val usuario = Usuario(
         name = "Jose",
         apellido = "Martinez",
@@ -155,7 +155,7 @@ class tipoDeUsuarioTest : DescribeSpec({
         numero = 2,
         nivelDeImpresion = NivelDeImpresion.MEDIA,
         onFire = true,
-        Ronaldo
+        Ronaldo, imagen = "pepe"
     )
     describe("test puede regalar figurita") {
         var listaDeSolicitudDeIntercambio : MutableList<Figurita>

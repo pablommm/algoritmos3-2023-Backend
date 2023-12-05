@@ -48,8 +48,8 @@ class usuarioTest : DescribeSpec({
         "ARG"
     )
 
-    val figuritaRiquelme = Figurita(10, NivelDeImpresion.ALTA, true, jugadorRiquelme)
-    val figuritamessi = Figurita(1, NivelDeImpresion.ALTA, true, jugadorMessi)
+    val figuritaRiquelme = Figurita(10, NivelDeImpresion.ALTA, true, jugadorRiquelme, imagen = "pepe")
+    val figuritamessi = Figurita(1, NivelDeImpresion.ALTA, true, jugadorMessi, imagen = "pepe")
     val usuarioMayorEdad = Usuario(
         name = "Jose",
         apellido = "Martinez",

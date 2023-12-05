@@ -135,14 +135,14 @@ class ObserverTest : DescribeSpec({
         lider = false,
         "ARG"
     )
-    val figuritaRiquelme = Figurita(10, NivelDeImpresion.ALTA, true, jugadorRiquelme)
-    val figuritaAlberto = Figurita(2, NivelDeImpresion.BAJA, false, jugadorAlberto)
-    val figuritaRoman = Figurita(3, NivelDeImpresion.BAJA, false, jugadorRoman)
-    val figuritaHenri = Figurita(3, NivelDeImpresion.BAJA, false, jugadorHenri)
-    val figuritaRoberto = Figurita(11, NivelDeImpresion.ALTA, true, jugadorRoberto)
+    val figuritaRiquelme = Figurita(10, NivelDeImpresion.ALTA, true, jugadorRiquelme, "pepe")
+    val figuritaAlberto = Figurita(2, NivelDeImpresion.BAJA, false, jugadorAlberto, "pepe")
+    val figuritaRoman = Figurita(3, NivelDeImpresion.BAJA, false, jugadorRoman, "pepe")
+    val figuritaHenri = Figurita(3, NivelDeImpresion.BAJA, false, jugadorHenri, "pepe")
+    val figuritaRoberto = Figurita(11, NivelDeImpresion.ALTA, true, jugadorRoberto, "pepe")
 
-    val figuritaJuan = Figurita(11, NivelDeImpresion.ALTA, true, jugadorJuan)
-    val figuritaPedro = Figurita(15, NivelDeImpresion.MEDIA, false, jugadorPedro)
+    val figuritaJuan = Figurita(11, NivelDeImpresion.ALTA, true, jugadorJuan, "pepe")
+    val figuritaPedro = Figurita(15, NivelDeImpresion.MEDIA, false, jugadorPedro, "pepe")
     usuarioMenorEdad.aniadirFiguritaRepetidas(figuritaRiquelme)
     usuarioMenorEdad.aniadirFiguritaRepetidas(figuritaAlberto)
     usuarioMenorEdad.aniadirFiguritaRepetidas(figuritaRoman)
