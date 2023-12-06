@@ -64,6 +64,10 @@ open class Repositorio<T : Entidad>() {
         if (!existeElId(id)) throw GenericException("El ID $id no es valido")
     }
 
+    fun clear(){
+        elementos.clear()
+    }
+
     /*fun orderByAscending(parameterName: String): List<T> {
         return elementos.sortedBy { it.parameterName }
     }
