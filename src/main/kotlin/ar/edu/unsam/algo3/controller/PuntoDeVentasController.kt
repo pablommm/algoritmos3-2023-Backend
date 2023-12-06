@@ -1,5 +1,6 @@
 package ar.edu.unsam.algo3.controller
 
+import PuntoDeVentas
 import ar.edu.unsam.algo3.dto.PuntosDeVentaDTOUserless
 import ar.edu.unsam.algo3.service.CriterioOrdenamiento
 import ar.edu.unsam.algo3.service.PuntoDeVentasService
@@ -17,24 +18,32 @@ class PuntoDeVentasController(@Autowired val puntoDeVentasService: PuntoDeVentas
                          @RequestParam("criterioOrdenamiento") criterioOrdenamiento: CriterioOrdenamiento?)
     = puntoDeVentasService.getPuntoDeVentasFiltrado(campoDeBusqueda, criterioOrdenamiento, idUsuario)
 
+//    @GetMapping("/puntoDeVentas/")
+//    fun getAllPuntoDeVentas(@RequestParam campoDeBusqueda: String? = "")
+//            = puntoDeVentasService.getPuntosDeVenta(campoDeBusqueda)
+
     @GetMapping("/puntoDeVentas/")
     fun getAllPuntoDeVentas(@RequestParam campoDeBusqueda: String? = "")
-            = puntoDeVentasService.getPuntosDeVenta(campoDeBusqueda)
+            = puntoDeVentasService.getPuntosDeVenta()
 
     @GetMapping("/puntoDeVentas2/")
     fun getAllPuntoDeVentas2()
             = puntoDeVentasService.getPuntosDeVenta()
 
 
-//    @PostMapping("/puntoDeVentas/")
-//    @Operation(summary = "Crea un nuevo punto de ventas")
-//    fun create(@RequestBody puntoDeVentasBody : PuntoDeVentas): PuntoDeVentas {
-//        return puntoDeVentasService.create(puntoDeVentasBody)
-//    }
-
     @PostMapping("/nuevoPuntoDeVentas/")
     @Operation(summary = "Crea un nuevo punto de ventas")
-    fun create(@RequestBody puntoDeVentas : PuntosDeVentaDTOUserless) = puntoDeVentasService.create(puntoDeVentas)
+    fun create(@RequestBody puntoDeVentasBody : PuntoDeVentas) {
+        return puntoDeVentasService.create(puntoDeVentas = puntoDeVentasBody)
+    }
+
+//    @PostMapping("/nuevoPuntoDeVentas/")
+//    @Operation(summary = "Crea un nuevo punto de ventas")
+//    fun create(@RequestBody puntoDeVentas : PuntosDeVentaDTOUserless) = puntoDeVentasService.create(puntoDeVentas)
+
+//    @PostMapping("/nuevoPuntoDeVentas2/")
+//    @Operation(summary = "Crea un nuevo punto de ventas")
+//    fun create2(@RequestBody puntoVentas : puntoDeVentas ) = puntoDeVentasService.create(puntoDeVentas)
 
     @DeleteMapping("/deletePuntoDeVentas")
     fun deletePuntoDeVentas (@RequestParam("idPuntoDeVentas") idPuntoDeVentas: Int) = puntoDeVentasService.deletePuntoDeVenta(idPuntoDeVentas)

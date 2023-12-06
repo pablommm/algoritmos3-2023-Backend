@@ -16,7 +16,7 @@ class PuntoDeVentasService {
     @Autowired
     lateinit var usuarioRepository: RepoUser
     fun getPuntosDeVenta()= puntoDeVentasRepository.allInstances()
-    fun getPuntosDeVenta(campoDeBusqueda: String?): List<PuntosDeVentaDTOUserless> = puntoDeVentasRepository.searchByName(campoDeBusqueda).map { it.toDTOUserless() }
+    //fun getPuntosDeVenta(campoDeBusqueda: String?): List<PuntosDeVentaDTOUserless> = puntoDeVentasRepository.searchByName(campoDeBusqueda).map { it.toDTOUserless() }
 
     fun getUnPuntoDeVentas(id: Int) = puntoDeVentasRepository.getById(id)
     fun getPuntoDeVentasFiltrado(nombreABuscar: String?, criterioOrdenamiento: CriterioOrdenamiento?, idUsuario: Int): List<PuntoDeVentasDTO> {
@@ -67,7 +67,7 @@ class PuntoDeVentasService {
         puntoDeVentasRepository.delete(puntoDeVenta)
     }
 
-    fun create(PuntosDeVentaDTOUserless: PuntosDeVentaDTOUserless) {
+    fun createpdv(PuntosDeVentaDTOUserless: PuntosDeVentaDTOUserless) {
         val puntoDeVentas = PuntosDeVentaDTOUserless(
             id = PuntosDeVentaDTOUserless.id,
             nombre = PuntosDeVentaDTOUserless.nombre,
@@ -83,7 +83,13 @@ class PuntoDeVentasService {
         //puntoDeVentasRepository.create(puntoDeVentas)
 
     }
+    fun create(puntoDeVentas: PuntoDeVentas){
+        puntoDeVentasRepository.create(puntoDeVentas)
+    }
 
+    fun update(puntoDeVentas: PuntoDeVentas){
+        puntoDeVentasRepository.update(puntoDeVentas)
+    }
 }
 
 enum class CriterioOrdenamiento {

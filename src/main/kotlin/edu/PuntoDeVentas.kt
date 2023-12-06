@@ -14,12 +14,10 @@ import kotlin.math.ceil
 
 abstract class PuntoDeVentas(
     var nombre: String = "",
-    @JsonIgnore
+
     val ubicacion: Direccion = Direccion(),
     var stockDeSobres: Int = 0,
-    @JsonIgnore
-    var pedidosPendientes: Pedido,
-    @JsonIgnore
+    var pedidosPendientes: Pedido = Pedido(),
     val listaDePedidosPendientes :MutableList<Pedido> = mutableListOf()
 
 ):Entidad(){
@@ -62,7 +60,8 @@ abstract class PuntoDeVentas(
     fun costoMinimo(cantidadDeSobres: Int,usuario: Usuario) = costoPorPedido(cantidadDeSobres,usuario) + costoDeEnvio(usuario)
     abstract fun factorPuntoDeventa(cantidadDeSobres:Int):Double
 
-    @JsonProperty
+    //@JsonProperty
+    @JsonIgnore
     fun importeACobrar(usuario: Usuario,cantidadDeSobres: Int) = costoMinimo(cantidadDeSobres,usuario) * factorPuntoDeventa(cantidadDeSobres)
 
     //@JsonProperty
@@ -86,13 +85,16 @@ abstract class PuntoDeVentas(
         validarPedidoPendientesDeEntrega()
     }
 
-    @JsonProperty
+    //@JsonProperty
+    @JsonIgnore
     fun cantidadPedidosPendientes() = listaDePedidosPendientes.count()
 
-    @JsonProperty
+    //@JsonProperty
+    @JsonIgnore
     fun direccion () = "${ubicacion.calle} ${ubicacion.altura}"
 
-    @JsonProperty
+    //@JsonProperty
+    @JsonIgnore
     fun ubicacionGeografica () = ubicacion.ubicacion
 
 }
@@ -130,7 +132,7 @@ class Libreria(
 }
 class Supermercado(
     costoDeSobre: Int, nombre: String, ubicacion: Direccion,
-    stockDeFigurita: Int, pedidosPendientes: Pedido,var promocion: Promocion = NoHayPromocion,listaDePedidosPendientes: MutableList<Pedido>
+    stockDeFigurita: Int, pedidosPendientes: Pedido,@JsonIgnore var promocion: Promocion = NoHayPromocion,listaDePedidosPendientes: MutableList<Pedido>
 ) : PuntoDeVentas(nombre, ubicacion, stockDeFigurita, pedidosPendientes,listaDePedidosPendientes) {
 
     fun cambioDePromocion(nuevaPromocion: Promocion) {
