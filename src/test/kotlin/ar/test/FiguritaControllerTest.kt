@@ -19,8 +19,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @AutoConfigureMockMvc
 @DisplayName("Dado un controller de Figurita")
 class FiguritaControllerTest (@Autowired val mockMvc: MockMvc){
-    @Autowired
-    lateinit var repoFigurita: RepoFigurita
+    //@Autowired
+    //lateinit var repoFigurita: RepoFigurita
 
     @Test
     fun `Se puede traer la lista de todas las figuritas del repositorio`() {

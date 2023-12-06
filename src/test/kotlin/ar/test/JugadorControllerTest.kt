@@ -32,8 +32,8 @@ import java.time.LocalDate
 @DisplayName("Dado un controller de Jugador")
 class JugadorControllerTest(@Autowired val mockMvc: MockMvc) {
 
-    @Autowired
-    lateinit var jugadorRepo: RepoJugador
+    //@Autowired
+    //lateinit var jugadorRepo: RepoJugador
 
     @Test
     fun `Se puede traer la lista de todos los jugadores del repositorio`() {
