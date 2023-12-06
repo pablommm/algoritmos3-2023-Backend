@@ -21,6 +21,11 @@ class PuntoDeVentasController(@Autowired val puntoDeVentasService: PuntoDeVentas
     fun getAllPuntoDeVentas(@RequestParam campoDeBusqueda: String? = "")
             = puntoDeVentasService.getPuntosDeVenta(campoDeBusqueda)
 
+    @GetMapping("/puntoDeVentas2/")
+    fun getAllPuntoDeVentas2()
+            = puntoDeVentasService.getPuntosDeVenta()
+
+
 //    @PostMapping("/puntoDeVentas/")
 //    @Operation(summary = "Crea un nuevo punto de ventas")
 //    fun create(@RequestBody puntoDeVentasBody : PuntoDeVentas): PuntoDeVentas {

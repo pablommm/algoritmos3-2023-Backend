@@ -3,6 +3,7 @@ package ar.edu.unsam.algo3.controller
 
 
 import Jugador
+import PuntoDeVentas
 import ar.edu.unsam.algo3.dto.CreateFiguritaDTO
 import ar.edu.unsam.algo3.dto.CreateJugadorDTO
 import ar.edu.unsam.algo3.service.JugadorService
