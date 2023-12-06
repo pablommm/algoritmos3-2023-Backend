@@ -56,4 +56,11 @@ class PuntoDeVentasController(@Autowired val puntoDeVentasService: PuntoDeVentas
     //fun getPuntoDeVentas() = puntoDeVentasService.getPuntoDeVentasFiltrado(null)
     //fun getPuntoDeVentas() = puntoDeVentasService.puntoDeVentasRepository.allInstances()
 
+    @PutMapping("/editarPuntoDeVentas/{idPuntoDeVenta}")
+    @Operation(summary = "Sirve para editar un PuntoDeVentas")
+    fun update(@RequestBody puntoDeVentas : PuntoDeVentas) = puntoDeVentasService.update(puntoDeVentas)
+
+
+
+
 }

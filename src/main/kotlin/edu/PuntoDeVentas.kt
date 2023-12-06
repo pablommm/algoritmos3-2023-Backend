@@ -102,7 +102,7 @@ abstract class PuntoDeVentas(
 class Kiosco (
 
   @JsonIgnore val esDueño: Boolean, @JsonIgnore val esEmpleado: Boolean, costoDeSobre: Int, nombre: String,  ubicacion: Direccion,
-    stockDeFigurita: Int, pedidosPendientesDeEntrega: Pedido,listaDePedidosPendientes: MutableList<Pedido>
+    stockDeFigurita: Int, pedidosPendientesDeEntrega: Pedido = Pedido(),listaDePedidosPendientes: MutableList<Pedido> = mutableListOf(),
 ) : PuntoDeVentas(nombre, ubicacion, stockDeFigurita, pedidosPendientesDeEntrega, listaDePedidosPendientes) {
 
     companion object {
@@ -119,8 +119,8 @@ class Kiosco (
 
 
 class Libreria(
-    costoDeSobre: Int, nombre: String, ubicacion: Direccion,
-    stockDeFigurita: Int, pedidosPendientes: Pedido,listaDePedidosPendientes: MutableList<Pedido>) : PuntoDeVentas(nombre, ubicacion, stockDeFigurita, pedidosPendientes,listaDePedidosPendientes) {
+    costoDeSobre: Int = 0, nombre: String, ubicacion: Direccion = Direccion(),
+    stockDeFigurita: Int, pedidosPendientes: Pedido = Pedido(),listaDePedidosPendientes: MutableList<Pedido> = mutableListOf()) : PuntoDeVentas(nombre, ubicacion, stockDeFigurita, pedidosPendientes,listaDePedidosPendientes) {
 
 
     fun entregaDentroDeLos10() = pedidosPendientes.seCumpleDentroDe(10)
@@ -131,8 +131,8 @@ class Libreria(
 
 }
 class Supermercado(
-    costoDeSobre: Int, nombre: String, ubicacion: Direccion,
-    stockDeFigurita: Int, pedidosPendientes: Pedido,@JsonIgnore var promocion: Promocion = NoHayPromocion,listaDePedidosPendientes: MutableList<Pedido>
+    costoDeSobre: Int, nombre: String, ubicacion: Direccion = Direccion(),
+    stockDeFigurita: Int, pedidosPendientes: Pedido = Pedido(),@JsonIgnore var promocion: Promocion = NoHayPromocion,listaDePedidosPendientes: MutableList<Pedido> = mutableListOf()
 ) : PuntoDeVentas(nombre, ubicacion, stockDeFigurita, pedidosPendientes,listaDePedidosPendientes) {
 
     fun cambioDePromocion(nuevaPromocion: Promocion) {
