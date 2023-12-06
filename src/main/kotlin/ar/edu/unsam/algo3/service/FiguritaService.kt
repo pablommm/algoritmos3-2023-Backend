@@ -140,7 +140,7 @@ class FiguritaService {
             onFire = figuritaDTO.onFire,
             nivelDeImpresion = figuritaDTO.nivelDeImpresion,
             imagen = figuritaDTO.imagen
-        ).also { it.id = figuritaDTO.numero }
+        ).also { it.id = figuritaDTO.id }
         return figurita
     }
 
@@ -149,12 +149,12 @@ class FiguritaService {
     }
 
     fun update(figuritaDTO: CreateFiguritaDTO) {
-        val jugador = jugadorRepo.getById(figuritaDTO.idJugador)
-        if (jugador != null) {
+        val figurita = dtoToFigurita(figuritaDTO)
+        if (!figuritaRepository.elementos.any{it.numero == figurita.numero}) {
             figuritaRepository.update(dtoToFigurita(figuritaDTO))
         }
         else {
-            throw BusinessException("No se encontró el jugador con el ID ${figuritaDTO.idJugador}")
+            throw BusinessException("El número ingresado ya pertenece a otra figurita")
         }
     }
 

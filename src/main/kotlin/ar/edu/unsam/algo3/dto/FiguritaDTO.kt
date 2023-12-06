@@ -57,6 +57,7 @@ fun Figurita.toDTO() = FiguritaDTO(id = id, numero = numero, nivelDeImpresion = 
 
 
 data class CreateFiguritaDTO(
+    val id: Int,
     val numero: Int,
     val idJugador: Int,
     val onFire: Boolean,
