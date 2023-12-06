@@ -3,6 +3,7 @@ package ar.edu.unsam.algo3.controller
 
 
 import Jugador
+import PuntoDeVentas
 import ar.edu.unsam.algo3.dto.CreateFiguritaDTO
 import ar.edu.unsam.algo3.dto.CreateJugadorDTO
 import ar.edu.unsam.algo3.service.JugadorService
@@ -36,6 +37,6 @@ class JugadorController(@Autowired val jugadorService: JugadorService) {
 
     @PutMapping("/updateJugador")
     @Operation(summary = "Edita el jugador en el backend")
-    fun update(@RequestBody jugador: CreateJugadorDTO) = jugadorService.update(jugador)
+    fun update(@RequestBody jugador: PuntoDeVentas) = jugadorService.update(jugador)
 
 }

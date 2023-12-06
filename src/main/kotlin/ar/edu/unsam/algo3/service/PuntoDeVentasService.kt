@@ -15,7 +15,7 @@ class PuntoDeVentasService {
 
     @Autowired
     lateinit var usuarioRepository: RepoUser
-
+    fun getPuntosDeVenta()= puntoDeVentasRepository.allInstances()
     fun getPuntosDeVenta(campoDeBusqueda: String?): List<PuntosDeVentaDTOUserless> = puntoDeVentasRepository.searchByName(campoDeBusqueda).map { it.toDTOUserless() }
 
     fun getUnPuntoDeVentas(id: Int) = puntoDeVentasRepository.getById(id)
