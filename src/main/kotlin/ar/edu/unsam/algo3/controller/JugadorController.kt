@@ -37,6 +37,6 @@ class JugadorController(@Autowired val jugadorService: JugadorService) {
 
     @PutMapping("/updateJugador")
     @Operation(summary = "Edita el jugador en el backend")
-    fun update(@RequestBody jugador: PuntoDeVentas) = jugadorService.update(jugador)
+    fun update(@RequestBody jugador: CreateJugadorDTO) = jugadorService.update(jugador)
 
 }
