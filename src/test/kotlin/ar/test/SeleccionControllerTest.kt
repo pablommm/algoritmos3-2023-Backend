@@ -75,6 +75,23 @@ class SeleccionControllerTest (@Autowired val mockMvc: MockMvc){
             .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(1))
     }
 
+    @Test
+    fun `No se puede eliminar una seleccion que no existe`() {
+        mockMvc.perform(
+            MockMvcRequestBuilders.delete("/deleteSeleccion")
+                .param("idSeleccion", "200")
+        )
+            .andExpect(MockMvcResultMatchers.status().isBadRequest)
+    }
+    @Test
+    fun `No se puede eliminar una seleccion boca `() {
+        mockMvc.perform(
+            MockMvcRequestBuilders.delete("/deleteSeleccion")
+                .param("pais", "Boca")
+        )
+            .andExpect(MockMvcResultMatchers.status().isBadRequest)
+    }
+
 }
 
 

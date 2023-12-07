@@ -70,5 +70,10 @@ class PuntoDeVentasControllerTest(@Autowired val mockMvc: MockMvc) {
             .andExpect(MockMvcResultMatchers.status().isOk)
     }
 
+    @Test
+    fun `No se puede validar url template o punto de venta con ID no existente `(){
+        mockMvc.perform(MockMvcRequestBuilders.get("/puntoDeVentas/99"))
+            .andExpect(MockMvcResultMatchers.status().isBadRequest)
+    }
 
 }
