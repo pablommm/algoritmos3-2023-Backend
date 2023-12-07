@@ -1,11 +1,18 @@
 package ar.test
 
+import PuntoDeVentas
 import ar.edu.unsam.algo3.ProyectoApplication
-import ar.edu.unsam.algo3.repository.RepoFigurita
-import ar.edu.unsam.algo3.repository.RepoJugador
+import ar.edu.unsam.algo3.service.CriterioOrdenamiento
+import ar.edu.unsam.algo3.service.PuntoDeVentasService
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.should
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.mockito.InjectMocks
+import org.mockito.Mock
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -17,50 +24,25 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @ContextConfiguration(classes = [ProyectoApplication::class])
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@DisplayName("Dado un controller de Figurita")
-class FiguritaControllerTest (@Autowired val mockMvc: MockMvc){
+@DisplayName("Dado un controller de PuntoDeVentas")
+class PuntoDeVentasControllerTest(@Autowired val mockMvc: MockMvc) {
+
     //@Autowired
-    //lateinit var repoFigurita: RepoFigurita
+    //lateinit var puntoDeVentasRepo: RepoPuntoDeVentas
 
     @Test
-    fun `Se puede traer la lista de todas las figuritas del repositorio`() {
-        mockMvc.perform(MockMvcRequestBuilders.get("/TodasLasFiguritas/"))
+    fun `Se puede traer la lista de todos los puntos de ventas del repositorio`() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/puntoDeVentas/"))
             .andExpect(MockMvcResultMatchers.status().isOk)
     }
 
-    @Test
-    fun `Se puede traer la lista de todas las figuritas del repositorio según el campo de búsqueda`() {
-        mockMvc.perform(
-            MockMvcRequestBuilders.get("/TodasLasFiguritas/")
-            .param("campoDeBusqueda", "enzo"))
-            .andExpect(MockMvcResultMatchers.status().isOk)
-            .andExpect(MockMvcResultMatchers.jsonPath("$[0].nombre").value("Enzo"))
-    }
 
     @Test
-    fun `No se puede traer una figurita que no exista a través del campo de búsqueda`() {
-        mockMvc.perform(
-            MockMvcRequestBuilders.get("/TodasLasFiguritas/")
-            .param("campoDeBusqueda", "pepe"))
-            .andExpect(MockMvcResultMatchers.status().isOk)
-            .andExpect(MockMvcResultMatchers.content().json("[]"))
-    }
-
-    @Test
-    fun `Se puede eliminar una figurita del repositorio`(){
-        mockMvc.perform(
-            MockMvcRequestBuilders.delete("/deleteFigurita")
-            .param("idFigurita", "7"))
+    fun `Se puede eliminar un punto de ventas del repositorio`(){
+        mockMvc.perform(MockMvcRequestBuilders.delete("/deletePuntoDeVentas")
+            .param("idPuntoDeVentas", "1"))
             .andExpect(MockMvcResultMatchers.status().isOk)
     }
 
-    @Test
-    fun `No se puede eliminar una figurita del repositorio que está asociada a un usuario`(){
-        val errorMessage = mockMvc.perform(
-            MockMvcRequestBuilders.delete("/deleteFigurita")
-            .param("idFigurita", "6"))
-            .andReturn().resolvedException?.message
 
-        Assertions.assertEquals(errorMessage,"La figurita pertenece a un usuario, y no puede ser eliminada")
-    }
 }
