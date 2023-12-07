@@ -14,15 +14,11 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
-
-
 @ContextConfiguration(classes = [ProyectoApplication::class])
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @DisplayName("Dado un controller de Figurita")
 class SeleccionControllerTest (@Autowired val mockMvc: MockMvc){
-
-
 
     @Test
     fun `Se puede traer la lista de todas las selecciones`() {
@@ -40,6 +36,12 @@ class SeleccionControllerTest (@Autowired val mockMvc: MockMvc){
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andExpect(MockMvcResultMatchers.jsonPath("$.pais").value(expectedNombre))
 
+    }
+
+    @Test
+    fun `Se puede traer la lista de todas las confederaciones`() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/confederaciones"))
+            .andExpect(MockMvcResultMatchers.status().isOk)
     }
 
 
