@@ -70,15 +70,14 @@ class JugadorControllerTest(@Autowired val mockMvc: MockMvc) {
             .andExpect(MockMvcResultMatchers.status().isOk)
     }
 
-//    @Test
-//    fun `No se puede eliminar un jugador del repositorio que está asociado a una figurita`() {
-  //      val errorMessage = mockMvc.perform(
-    //        MockMvcRequestBuilders.delete("/deleteJugador")
-      //          .param("idJugador", "7")
-        //)
-          //  .andReturn().resolvedException?.message
+ // @Test       este test funciona individualmente pero a la hora correrlos masivamente rompe
+ // fun `No se puede eliminar un jugador del repositorio que está asociado a una figurita`() {
+    //     val errorMessage = mockMvc.perform(
+    //     MockMvcRequestBuilders.delete("/deleteJugador")
+    //        .param("idJugador", "7")
+    //)
+    //       .andExpect(MockMvcResultMatchers.status().isBadRequest)
 
-      //  Assertions.assertEquals(errorMessage, "El jugador está asociado a una figurita, y no puede ser eliminado")
     //}
 
 }
