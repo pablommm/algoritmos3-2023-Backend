@@ -44,5 +44,31 @@ class PuntoDeVentasControllerTest(@Autowired val mockMvc: MockMvc) {
             .andExpect(MockMvcResultMatchers.status().isOk)
     }
 
+    @Test
+    fun `total de todos los puntos de ventas del repositorio`() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/puntoDeVentas2/"))
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(4))
+    }
+
+
+    @Test
+    fun `Se puede traer un punto de ventas del repositorio`(){
+        mockMvc.perform(MockMvcRequestBuilders.get("/editarPuntoDeVentas/1"))
+            .andExpect(MockMvcResultMatchers.status().isOk)
+    }
+
+    @Test
+    fun `Se puede traer un punto de ventas del repositorio por id`(){
+        mockMvc.perform(MockMvcRequestBuilders.get("/puntoDeVentas/1"))
+            .andExpect(MockMvcResultMatchers.status().isOk)
+    }
+
+    @Test
+    fun `Se puede traer un punto de ventas del repositorio por nombre`(){
+        mockMvc.perform(MockMvcRequestBuilders.get("/puntoDeVentas/1"))
+            .andExpect(MockMvcResultMatchers.status().isOk)
+    }
+
 
 }

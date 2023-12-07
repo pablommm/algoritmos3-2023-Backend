@@ -43,34 +43,42 @@ class JugadorControllerTest(@Autowired val mockMvc: MockMvc) {
 
     @Test
     fun `Se puede traer la lista de todos los jugadores del repositorio según el campo de búsqueda`() {
-        mockMvc.perform(MockMvcRequestBuilders.get("/jugadores")
-            .param("campoDeBusqueda", "enzo"))
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/jugadores")
+                .param("campoDeBusqueda", "enzo")
+        )
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andExpect(MockMvcResultMatchers.jsonPath("$[0].nombre").value("Enzo"))
     }
 
     @Test
     fun `No se puede traer un jugador que no exista a través del campo de búsqueda`() {
-        mockMvc.perform(MockMvcRequestBuilders.get("/jugadores")
-            .param("campoDeBusqueda", "pepe"))
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/jugadores")
+                .param("campoDeBusqueda", "pepe")
+        )
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andExpect(MockMvcResultMatchers.content().json("[]"))
     }
 
     @Test
-    fun `Se puede eliminar un jugador del repositorio`(){
-        mockMvc.perform(MockMvcRequestBuilders.delete("/deleteJugador")
-            .param("idJugador", "8"))
+    fun `Se puede eliminar un jugador del repositorio`() {
+        mockMvc.perform(
+            MockMvcRequestBuilders.delete("/deleteJugador")
+                .param("idJugador", "8")
+        )
             .andExpect(MockMvcResultMatchers.status().isOk)
     }
 
     @Test
-    fun `No se puede eliminar un jugador del repositorio que está asociado a una figurita`(){
-        val errorMessage = mockMvc.perform(MockMvcRequestBuilders.delete("/deleteJugador")
-            .param("idJugador", "7"))
+    fun `No se puede eliminar un jugador del repositorio que está asociado a una figurita`() {
+        val errorMessage = mockMvc.perform(
+            MockMvcRequestBuilders.delete("/deleteJugador")
+                .param("idJugador", "7")
+        )
             .andReturn().resolvedException?.message
 
-        Assertions.assertEquals(errorMessage,"El jugador está asociado a una figurita, y no puede ser eliminado")
+        Assertions.assertEquals(errorMessage, "El jugador está asociado a una figurita, y no puede ser eliminado")
     }
 
 }

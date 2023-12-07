@@ -19,6 +19,7 @@ class SeleccionControllerTest(@Autowired val mockMvc: MockMvc) {
     //@Autowired
     //lateinit var seleccionRepo: RepoSeleccion
 
+
     @Test
     fun `Se puede traer la lista de todas las selecciones del repositorio`() {
         mockMvc.perform(MockMvcRequestBuilders.get("/Selecciones"))
@@ -26,22 +27,34 @@ class SeleccionControllerTest(@Autowired val mockMvc: MockMvc) {
     }
 
 
-
     @Test
     fun `No se puede traer una selección que no exista a través del campo de búsqueda`() {
-        mockMvc.perform(MockMvcRequestBuilders.get("/Selecciones")
-            .param("campoDeBusqueda", "seleccionInexistente"))
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/Selecciones")
+                .param("campoDeBusqueda", "seleccionInexistente")
+        )
             .andExpect(MockMvcResultMatchers.status().isOk)
             .andExpect(MockMvcResultMatchers.content().json("[]"))
     }
 
     @Test
-    fun `Se puede eliminar una selección del repositorio`(){
-        mockMvc.perform(MockMvcRequestBuilders.delete("/deleteSeleccion")
-            .param("idSeleccion", "2"))
+    fun `Se puede eliminar una selección del repositorio`() {
+        mockMvc.perform(
+            MockMvcRequestBuilders.delete("/deleteSeleccion")
+                .param("idSeleccion", "2")
+        )
             .andExpect(MockMvcResultMatchers.status().isOk)
     }
 
 
+    @Test
+    fun `Se puede traer una selección del repositorio a través del campo de búsqueda`() {
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/Selecciones")
+                .param("campoDeBusqueda", "Argentina")
+        )
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(1))
+    }
 
 }
