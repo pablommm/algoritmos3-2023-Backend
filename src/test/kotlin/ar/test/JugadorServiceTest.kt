@@ -26,7 +26,7 @@ import java.time.LocalDate
 
 @ContextConfiguration(classes = [ProyectoApplication::class])
 @SpringBootTest
-class JugaodrServiceTest : InitializingBean {
+class JugadorServiceTest : InitializingBean {
 
     @InjectMocks
     lateinit var jugadorService: JugadorService
@@ -57,7 +57,7 @@ class JugaodrServiceTest : InitializingBean {
 
     val figuritaPromesa =Figurita(1, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorLeyenda, imagen = "https://shorturl.at/fhpG6")
 
-    val figuritaDTO = CreateFiguritaDTO(1,1,true,NivelDeImpresion.BAJA,"pepe")
+
 
 
     val usuarioPrueba = Usuario(

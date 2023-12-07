@@ -101,7 +101,7 @@ abstract class PuntoDeVentas(
 
 class Kiosco (
 
-  @JsonIgnore val esDueño: Boolean, @JsonIgnore val esEmpleado: Boolean, costoDeSobre: Int, nombre: String,  ubicacion: Direccion,
+  @JsonIgnore val esDueño: Boolean, @JsonIgnore val esEmpleado: Boolean, costoDeSobre: Int, nombre: String,  ubicacion: Direccion = Direccion(),
     stockDeFigurita: Int, pedidosPendientesDeEntrega: Pedido = Pedido(),listaDePedidosPendientes: MutableList<Pedido> = mutableListOf(),
 ) : PuntoDeVentas(nombre, ubicacion, stockDeFigurita, pedidosPendientesDeEntrega, listaDePedidosPendientes) {
 

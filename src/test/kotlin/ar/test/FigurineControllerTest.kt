@@ -1,8 +1,6 @@
 package ar.test
 
 import ar.edu.unsam.algo3.ProyectoApplication
-import ar.edu.unsam.algo3.repository.RepoFigurita
-import ar.edu.unsam.algo3.repository.RepoJugador
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -18,7 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @DisplayName("Dado un controller de Figurita")
-class FiguritaControllerTest (@Autowired val mockMvc: MockMvc){
+class FigurineControllerTest (@Autowired val mockMvc: MockMvc){
     //@Autowired
     //lateinit var repoFigurita: RepoFigurita
 

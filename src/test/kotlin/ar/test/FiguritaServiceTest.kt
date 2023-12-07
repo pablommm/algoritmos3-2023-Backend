@@ -56,7 +56,7 @@ class FiguritaServiceTest : InitializingBean {
 
     val figuritaPromesa =Figurita(1, nivelDeImpresion = NivelDeImpresion.BAJA,false,jugadorLeyenda, imagen = "https://shorturl.at/fhpG6")
 
-    val figuritaDTO = CreateFiguritaDTO(1,1,true,NivelDeImpresion.BAJA,"pepe")
+    val figuritaDTO = CreateFiguritaDTO(1,1,1,true, NivelDeImpresion.BAJA, "https://shorturl.at/fhpG6")
 
 
     val usuarioPrueba = Usuario(
