@@ -1,18 +1,7 @@
 package ar.test
-
-import PuntoDeVentas
 import ar.edu.unsam.algo3.ProyectoApplication
-import ar.edu.unsam.algo3.service.CriterioOrdenamiento
-import ar.edu.unsam.algo3.service.PuntoDeVentasService
-import io.kotest.matchers.nulls.shouldBeNull
-import io.kotest.matchers.should
-import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.mockito.InjectMocks
-import org.mockito.Mock
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -24,25 +13,35 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @ContextConfiguration(classes = [ProyectoApplication::class])
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@DisplayName("Dado un controller de PuntoDeVentas")
-class PuntoDeVentasControllerTest(@Autowired val mockMvc: MockMvc) {
+@DisplayName("Dado un controller de Seleccion")
+class SeleccionControllerTest(@Autowired val mockMvc: MockMvc) {
 
     //@Autowired
-    //lateinit var puntoDeVentasRepo: RepoPuntoDeVentas
+    //lateinit var seleccionRepo: RepoSeleccion
 
     @Test
-    fun `Se puede traer la lista de todos los puntos de ventas del repositorio`() {
-        mockMvc.perform(MockMvcRequestBuilders.get("/puntoDeVentas/"))
+    fun `Se puede traer la lista de todas las selecciones del repositorio`() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/Selecciones"))
             .andExpect(MockMvcResultMatchers.status().isOk)
     }
 
 
+
     @Test
-    fun `Se puede eliminar un punto de ventas del repositorio`(){
-        mockMvc.perform(MockMvcRequestBuilders.delete("/deletePuntoDeVentas")
-            .param("idPuntoDeVentas", "1"))
+    fun `No se puede traer una selección que no exista a través del campo de búsqueda`() {
+        mockMvc.perform(MockMvcRequestBuilders.get("/Selecciones")
+            .param("campoDeBusqueda", "seleccionInexistente"))
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.content().json("[]"))
+    }
+
+    @Test
+    fun `Se puede eliminar una selección del repositorio`(){
+        mockMvc.perform(MockMvcRequestBuilders.delete("/deleteSeleccion")
+            .param("idSeleccion", "2"))
             .andExpect(MockMvcResultMatchers.status().isOk)
     }
+
 
 
 }
