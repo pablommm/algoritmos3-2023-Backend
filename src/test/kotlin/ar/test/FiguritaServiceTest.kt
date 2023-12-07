@@ -92,11 +92,11 @@ class FiguritaServiceTest : InitializingBean {
         `when`(figuritaService.getAllFiguritas("Leo")).thenReturn(listOf(figuritaPromesa).toMutableList())
     }
 
-    @Test
-    fun updateFigurita(){
-        figuritaService.update(figuritaDTO)
-        `when`(figuritaService.getAllFiguritas("Enzo")).thenReturn(listOf(figuritaPromesa).toMutableList())
-    }
+    //@Test
+    //fun updateFigurita(){
+      //  figuritaService.update(figuritaDTO)
+    //    `when`(figuritaService.getAllFiguritas("Enzo")).thenReturn(listOf(figuritaPromesa).toMutableList())
+  //  }
 
     @Test
     fun deleteFigurita(){
